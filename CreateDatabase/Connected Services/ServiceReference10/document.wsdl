@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsoap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="urn:sap-com:document:sap:soap:functions:mc-style" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:n1="urn:sap-com:document:sap:rfc:functions" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" targetNamespace="urn:sap-com:document:sap:soap:functions:mc-style" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+    <sidl:sidl xmlns:sidl="http://www.sap.com/2007/03/sidl" />
+  </wsdl:documentation>
+  <wsp:UsingPolicy wsdl:required="true" />
+  <wsp:Policy wsu:Id="BN_BN_ZRFID">
+    <saptrnbnd:OptimizedXMLTransfer uri="http://xml.sap.com/2006/11/esi/esp/binxml" xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/" wsp:Optional="true" />
+    <saptrnbnd:OptimizedMimeSerialization xmlns:saptrnbnd="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" wsp:Optional="true" />
+    <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+    <wsp:ExactlyOne xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" xmlns:sapsp="http://www.sap.com/webas/630/soap/features/security/policy" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512" xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/07/utility" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken>
+                  <wsp:Policy>
+                    <sp:HttpBasicAuthentication />
+                  </wsp:Policy>
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic128Rsa15 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+    <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" wsp:Optional="true" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="BN_BN_ZRFID_SOAP12">
+    <saptrnbnd:OptimizedXMLTransfer uri="http://xml.sap.com/2006/11/esi/esp/binxml" xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/" wsp:Optional="true" />
+    <saptrnbnd:OptimizedMimeSerialization xmlns:saptrnbnd="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" wsp:Optional="true" />
+    <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+    <wsp:ExactlyOne xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" xmlns:sapsp="http://www.sap.com/webas/630/soap/features/security/policy" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512" xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/07/utility" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken>
+                  <wsp:Policy>
+                    <sp:HttpBasicAuthentication />
+                  </wsp:Policy>
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic128Rsa15 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+    <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" wsp:Optional="true" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="IF_IF_ZRFID">
+    <sapsession:Session xmlns:sapsession="http://www.sap.com/webas/630/soap/features/session/">
+      <sapsession:enableSession>false</sapsession:enableSession>
+    </sapsession:Session>
+    <sapcentraladmin:CentralAdministration xmlns:sapcentraladmin="http://www.sap.com/webas/700/soap/features/CentralAdministration/" wsp:Optional="true">
+      <sapcentraladmin:BusinessApplicationID>0050568E11241EE39AF87F868484BD33</sapcentraladmin:BusinessApplicationID>
+    </sapcentraladmin:CentralAdministration>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ZrfidComponentUpdate">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ZrfidMaterialDocument">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ZrfidMaterialList">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ZrfidMaterialStockList">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ZrfidOrderList">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+      <xsd:simpleType name="char1">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char12">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char18">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="18" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char20">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char220">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="220" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char25">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="25" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char30">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="30" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char32">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="32" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char4">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char40">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char50">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="date10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+          <xsd:pattern value="\d\d\d\d-\d\d-\d\d" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric4">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric6">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="6" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="quantum13.3">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="13" />
+          <xsd:fractionDigits value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="unit3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ZRFID_STR_IWERK">
+        <xsd:sequence>
+          <xsd:element name="IWERK" type="n1:char4" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TABLE_OF_ZRFID_STR_IWERK">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="n1:ZRFID_STR_IWERK" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:n0="urn:sap-com:document:sap:rfc:functions" attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:soap:functions:mc-style">
+      <xsd:import namespace="urn:sap-com:document:sap:rfc:functions" />
+      <xsd:simpleType name="char10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char12">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char40">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Bapiret2">
+        <xsd:sequence>
+          <xsd:element name="Type" type="n0:char1" />
+          <xsd:element name="Id" type="n0:char20" />
+          <xsd:element name="Number" type="n0:numeric3" />
+          <xsd:element name="Message" type="n0:char220" />
+          <xsd:element name="LogNo" type="n0:char20" />
+          <xsd:element name="LogMsgNo" type="n0:numeric6" />
+          <xsd:element name="MessageV1" type="n0:char50" />
+          <xsd:element name="MessageV2" type="n0:char50" />
+          <xsd:element name="MessageV3" type="n0:char50" />
+          <xsd:element name="MessageV4" type="n0:char50" />
+          <xsd:element name="Parameter" type="n0:char32" />
+          <xsd:element name="Row" type="xsd:int" />
+          <xsd:element name="Field" type="n0:char30" />
+          <xsd:element name="System" type="n0:char10" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZrfidStrComponentUpdate">
+        <xsd:sequence>
+          <xsd:element name="Rsnum" type="n0:numeric10" />
+          <xsd:element name="Rspos" type="n0:numeric4" />
+          <xsd:element name="Posnr" type="n0:char4" />
+          <xsd:element name="Vornr" type="n0:char4" />
+          <xsd:element name="Matnr" type="n0:char18" />
+          <xsd:element name="Werks" type="n0:char4" />
+          <xsd:element name="Lgort" type="n0:char4" />
+          <xsd:element name="Postp" type="n0:char1" />
+          <xsd:element name="Bdmng" type="n0:quantum13.3" />
+          <xsd:element name="Meins" type="n0:unit3" />
+          <xsd:element name="Wempf" type="n0:char12" />
+          <xsd:element name="Ablad" type="n0:char25" />
+          <xsd:element name="Rgekz" type="n0:char1" />
+          <xsd:element name="Indc" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZrfidStrMaterialDocument">
+        <xsd:sequence>
+          <xsd:element name="Aufnr" type="n0:char12" />
+          <xsd:element name="Mblnr" type="n0:char10" />
+          <xsd:element name="Mjahr" type="n0:numeric4" />
+          <xsd:element name="Zeile" type="n0:numeric4" />
+          <xsd:element name="Matnr" type="n0:char18" />
+          <xsd:element name="Maktx" type="n0:char40" />
+          <xsd:element name="Sernr" type="n0:char18" />
+          <xsd:element name="Lgort" type="n0:char4" />
+          <xsd:element name="Menge" type="n0:quantum13.3" />
+          <xsd:element name="Meins" type="n0:unit3" />
+          <xsd:element name="Bwart" type="n0:char3" />
+          <xsd:element name="Budat" type="n0:date10" />
+          <xsd:element name="Vornr" type="n0:char4" />
+          <xsd:element name="Mblnr2" type="n0:char10" />
+          <xsd:element name="Zeile2" type="n0:numeric4" />
+          <xsd:element name="Mjahr2" type="n0:numeric4" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZrfidStrBudat">
+        <xsd:sequence>
+          <xsd:element name="BudatLow" type="n0:date10" />
+          <xsd:element name="BudatHigh" type="n0:date10" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZrfidStrAufnr">
+        <xsd:sequence>
+          <xsd:element name="Aufnr" type="n0:char12" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZrfidStrIwerk">
+        <xsd:sequence>
+          <xsd:element name="Iwerk" type="n0:char4" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZrfidStrMaterialList">
+        <xsd:sequence>
+          <xsd:element name="Matnr" type="n0:char18" />
+          <xsd:element name="Maktx" type="n0:char40" />
+          <xsd:element name="Meins" type="n0:unit3" />
+          <xsd:element name="Mtart" type="n0:char4" />
+          <xsd:element name="Mtbez" type="n0:char25" />
+          <xsd:element name="Werks" type="n0:char4" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZrfidStrMtart">
+        <xsd:sequence>
+          <xsd:element name="Mtart" type="n0:char4" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZrfidStrMaterialStock">
+        <xsd:sequence>
+          <xsd:element name="Matnr" type="n0:char18" />
+          <xsd:element name="Maktx" type="n0:char40" />
+          <xsd:element name="Meins" type="n0:unit3" />
+          <xsd:element name="Mtart" type="n0:char4" />
+          <xsd:element name="Mtbez" type="n0:char25" />
+          <xsd:element name="Werks" type="n0:char4" />
+          <xsd:element name="Lgort" type="n0:char4" />
+          <xsd:element name="Labst" type="n0:quantum13.3" />
+          <xsd:element name="Speme" type="n0:quantum13.3" />
+          <xsd:element name="Lgpbe" type="n0:char10" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZrfidStrSerialNumber">
+        <xsd:sequence>
+          <xsd:element name="Matnr" type="n0:char18" />
+          <xsd:element name="Sernr" type="n0:char18" />
+          <xsd:element name="Ebeln" type="tns:char10" />
+          <xsd:element name="Maktx" type="n0:char40" />
+          <xsd:element name="BWerk" type="n0:char4" />
+          <xsd:element name="BLager" type="n0:char4" />
+          <xsd:element name="Aciklama" type="n0:char30" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZrfidStrLgort">
+        <xsd:sequence>
+          <xsd:element name="Lgort" type="n0:char4" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZrfidStrOrderList">
+        <xsd:sequence>
+          <xsd:element name="Aufnr" type="n0:char12" />
+          <xsd:element name="Posnr" type="n0:char4" />
+          <xsd:element name="Matnr" type="n0:char18" />
+          <xsd:element name="Maktx" type="n0:char40" />
+          <xsd:element name="Bdmng" type="n0:quantum13.3" />
+          <xsd:element name="Enmng" type="n0:quantum13.3" />
+          <xsd:element name="Kzear" type="n0:char1" />
+          <xsd:element name="Meins" type="n0:unit3" />
+          <xsd:element name="Werks" type="n0:char4" />
+          <xsd:element name="Lgort" type="n0:char4" />
+          <xsd:element name="Vornr" type="n0:char4" />
+          <xsd:element name="Erdat" type="n0:date10" />
+          <xsd:element name="Rsnum" type="n0:numeric10" />
+          <xsd:element name="Rspos" type="n0:numeric4" />
+          <xsd:element name="Ktext" type="tns:char40" />
+          <xsd:element name="Ernam" type="tns:char12" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZrfidStrErdat">
+        <xsd:sequence>
+          <xsd:element name="ErdatLow" type="n0:date10" />
+          <xsd:element name="ErdatHigh" type="n0:date10" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapiret2">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapiret2" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfZrfidStrComponentUpdate">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZrfidStrComponentUpdate" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfZrfidStrMaterialDocument">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZrfidStrMaterialDocument" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfZrfidStrAufnr">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZrfidStrAufnr" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfZrfidStrIwerk">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZrfidStrIwerk" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfZrfidStrMaterialList">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZrfidStrMaterialList" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfZrfidStrMtart">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZrfidStrMtart" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfZrfidStrMaterialStock">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZrfidStrMaterialStock" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfZrfidStrSerialNumber">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZrfidStrSerialNumber" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfZrfidStrLgort">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZrfidStrLgort" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfZrfidStrOrderList">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZrfidStrOrderList" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ZrfidComponentUpdate">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="EtReturn" type="tns:TableOfBapiret2" />
+            <xsd:element minOccurs="0" name="IpAufnr" type="n0:char12" />
+            <xsd:element minOccurs="0" name="ItComponent" type="tns:TableOfZrfidStrComponentUpdate" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZrfidComponentUpdateResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="EtReturn" type="tns:TableOfBapiret2" />
+            <xsd:element minOccurs="0" name="ItComponent" type="tns:TableOfZrfidStrComponentUpdate" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZrfidMaterialDocument">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="EtMaterialDocument" type="tns:TableOfZrfidStrMaterialDocument" />
+            <xsd:element minOccurs="0" name="EtReturn" type="tns:TableOfBapiret2" />
+            <xsd:element minOccurs="0" name="IsBudat" type="tns:ZrfidStrBudat" />
+            <xsd:element minOccurs="0" name="ItAufnr" type="tns:TableOfZrfidStrAufnr" />
+            <xsd:element minOccurs="0" name="ItIwerk" type="tns:TableOfZrfidStrIwerk" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZrfidMaterialDocumentResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="EtMaterialDocument" type="tns:TableOfZrfidStrMaterialDocument" />
+            <xsd:element minOccurs="0" name="EtReturn" type="tns:TableOfBapiret2" />
+            <xsd:element minOccurs="0" name="ItAufnr" type="tns:TableOfZrfidStrAufnr" />
+            <xsd:element minOccurs="0" name="ItIwerk" type="tns:TableOfZrfidStrIwerk" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZrfidMaterialList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="EtMaterialList" type="tns:TableOfZrfidStrMaterialList" />
+            <xsd:element minOccurs="0" name="EtReturn" type="tns:TableOfBapiret2" />
+            <xsd:element minOccurs="0" name="ItIwerk" type="n0:TABLE_OF_ZRFID_STR_IWERK" />
+            <xsd:element minOccurs="0" name="ItMtart" type="tns:TableOfZrfidStrMtart" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZrfidMaterialListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="EtMaterialList" type="tns:TableOfZrfidStrMaterialList" />
+            <xsd:element minOccurs="0" name="EtReturn" type="tns:TableOfBapiret2" />
+            <xsd:element minOccurs="0" name="ItIwerk" type="tns:TableOfZrfidStrIwerk" />
+            <xsd:element minOccurs="0" name="ItMtart" type="tns:TableOfZrfidStrMtart" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZrfidMaterialStockList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="EtMaterialstock" type="tns:TableOfZrfidStrMaterialStock" />
+            <xsd:element minOccurs="0" name="EtReturn" type="tns:TableOfBapiret2" />
+            <xsd:element minOccurs="0" name="EtSerialnumber" type="tns:TableOfZrfidStrSerialNumber" />
+            <xsd:element minOccurs="0" name="ItIwerk" type="tns:TableOfZrfidStrIwerk" />
+            <xsd:element minOccurs="0" name="ItLgort" type="tns:TableOfZrfidStrLgort" />
+            <xsd:element minOccurs="0" name="ItMtart" type="tns:TableOfZrfidStrMtart" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZrfidMaterialStockListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="EtMaterialstock" type="tns:TableOfZrfidStrMaterialStock" />
+            <xsd:element minOccurs="0" name="EtReturn" type="tns:TableOfBapiret2" />
+            <xsd:element minOccurs="0" name="EtSerialnumber" type="tns:TableOfZrfidStrSerialNumber" />
+            <xsd:element minOccurs="0" name="ItIwerk" type="tns:TableOfZrfidStrIwerk" />
+            <xsd:element minOccurs="0" name="ItLgort" type="tns:TableOfZrfidStrLgort" />
+            <xsd:element minOccurs="0" name="ItMtart" type="tns:TableOfZrfidStrMtart" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZrfidOrderList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="EtOrderList" type="tns:TableOfZrfidStrOrderList" />
+            <xsd:element minOccurs="0" name="EtReturn" type="tns:TableOfBapiret2" />
+            <xsd:element minOccurs="0" name="IsErdat" type="tns:ZrfidStrErdat" />
+            <xsd:element minOccurs="0" name="ItAufnr" type="tns:TableOfZrfidStrAufnr" />
+            <xsd:element minOccurs="0" name="ItIwerk" type="tns:TableOfZrfidStrIwerk" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZrfidOrderListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="EtOrderList" type="tns:TableOfZrfidStrOrderList" />
+            <xsd:element minOccurs="0" name="EtReturn" type="tns:TableOfBapiret2" />
+            <xsd:element minOccurs="0" name="ItAufnr" type="tns:TableOfZrfidStrAufnr" />
+            <xsd:element minOccurs="0" name="ItIwerk" type="tns:TableOfZrfidStrIwerk" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ZrfidComponentUpdate">
+    <wsdl:part name="parameters" element="tns:ZrfidComponentUpdate" />
+  </wsdl:message>
+  <wsdl:message name="ZrfidComponentUpdateResponse">
+    <wsdl:part name="parameter" element="tns:ZrfidComponentUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZrfidMaterialDocument">
+    <wsdl:part name="parameters" element="tns:ZrfidMaterialDocument" />
+  </wsdl:message>
+  <wsdl:message name="ZrfidMaterialDocumentResponse">
+    <wsdl:part name="parameter" element="tns:ZrfidMaterialDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZrfidMaterialList">
+    <wsdl:part name="parameters" element="tns:ZrfidMaterialList" />
+  </wsdl:message>
+  <wsdl:message name="ZrfidMaterialListResponse">
+    <wsdl:part name="parameter" element="tns:ZrfidMaterialListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZrfidMaterialStockList">
+    <wsdl:part name="parameters" element="tns:ZrfidMaterialStockList" />
+  </wsdl:message>
+  <wsdl:message name="ZrfidMaterialStockListResponse">
+    <wsdl:part name="parameter" element="tns:ZrfidMaterialStockListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZrfidOrderList">
+    <wsdl:part name="parameters" element="tns:ZrfidOrderList" />
+  </wsdl:message>
+  <wsdl:message name="ZrfidOrderListResponse">
+    <wsdl:part name="parameter" element="tns:ZrfidOrderListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ZRFID">
+    <wsp:Policy>
+      <wsp:PolicyReference URI="#IF_IF_ZRFID" />
+    </wsp:Policy>
+    <wsdl:operation name="ZrfidComponentUpdate">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ZrfidComponentUpdate" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZrfidComponentUpdate" />
+      <wsdl:output message="tns:ZrfidComponentUpdateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ZrfidMaterialDocument">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ZrfidMaterialDocument" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZrfidMaterialDocument" />
+      <wsdl:output message="tns:ZrfidMaterialDocumentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ZrfidMaterialList">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ZrfidMaterialList" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZrfidMaterialList" />
+      <wsdl:output message="tns:ZrfidMaterialListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ZrfidMaterialStockList">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ZrfidMaterialStockList" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZrfidMaterialStockList" />
+      <wsdl:output message="tns:ZrfidMaterialStockListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ZrfidOrderList">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ZrfidOrderList" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZrfidOrderList" />
+      <wsdl:output message="tns:ZrfidOrderListResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ZRFID" type="tns:ZRFID">
+    <wsp:Policy>
+      <wsp:PolicyReference URI="#BN_BN_ZRFID" />
+    </wsp:Policy>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ZrfidComponentUpdate">
+      <soap:operation soapAction="urn:sap-com:document:sap:soap:functions:mc-style:ZRFID:ZrfidComponentUpdateRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZrfidMaterialDocument">
+      <soap:operation soapAction="urn:sap-com:document:sap:soap:functions:mc-style:ZRFID:ZrfidMaterialDocumentRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZrfidMaterialList">
+      <soap:operation soapAction="urn:sap-com:document:sap:soap:functions:mc-style:ZRFID:ZrfidMaterialListRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZrfidMaterialStockList">
+      <soap:operation soapAction="urn:sap-com:document:sap:soap:functions:mc-style:ZRFID:ZrfidMaterialStockListRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZrfidOrderList">
+      <soap:operation soapAction="urn:sap-com:document:sap:soap:functions:mc-style:ZRFID:ZrfidOrderListRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ZRFID_SOAP12" type="tns:ZRFID">
+    <wsp:Policy>
+      <wsp:PolicyReference URI="#BN_BN_ZRFID_SOAP12" />
+    </wsp:Policy>
+    <wsoap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ZrfidComponentUpdate">
+      <wsoap12:operation soapAction="urn:sap-com:document:sap:soap:functions:mc-style:ZRFID:ZrfidComponentUpdateRequest" style="document" />
+      <wsdl:input>
+        <wsoap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsoap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZrfidMaterialDocument">
+      <wsoap12:operation soapAction="urn:sap-com:document:sap:soap:functions:mc-style:ZRFID:ZrfidMaterialDocumentRequest" style="document" />
+      <wsdl:input>
+        <wsoap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsoap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZrfidMaterialList">
+      <wsoap12:operation soapAction="urn:sap-com:document:sap:soap:functions:mc-style:ZRFID:ZrfidMaterialListRequest" style="document" />
+      <wsdl:input>
+        <wsoap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsoap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZrfidMaterialStockList">
+      <wsoap12:operation soapAction="urn:sap-com:document:sap:soap:functions:mc-style:ZRFID:ZrfidMaterialStockListRequest" style="document" />
+      <wsdl:input>
+        <wsoap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsoap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZrfidOrderList">
+      <wsoap12:operation soapAction="urn:sap-com:document:sap:soap:functions:mc-style:ZRFID:ZrfidOrderListRequest" style="document" />
+      <wsdl:input>
+        <wsoap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsoap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ZRFID">
+    <wsdl:port name="ZRFID" binding="tns:ZRFID">
+      <soap:address location="http://SAPPDSRV.abdiibrahim.com.tr:8000/sap/bc/srt/rfc/sap/zrfid/500/zrfid/zrfid" />
+    </wsdl:port>
+    <wsdl:port name="ZRFID_SOAP12" binding="tns:ZRFID_SOAP12">
+      <wsoap12:address location="http://SAPPDSRV.abdiibrahim.com.tr:8000/sap/bc/srt/rfc/sap/zrfid/500/zrfid/zrfid" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

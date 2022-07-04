@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "./built",
+    "allowJs": true,
+    "sourceMap": true,
+    "experimentalDecorators": true
+  },
+  "include": [
+    "./src/**/*.js",
+    "./src/**/*.ts", "../../../../VeriTabaniTest/Entity/tblsehir1.cs", "../../../Response/ProjeListesiView.cs", "../../../../Aniventi.OgrenciDers.Arayuz/Javascript/jsogrenciekle.js", "../../../../Entity.YedekMalzemeTakip/EntityFramework/tblreaderkapiparam.cs", "../../../../YedekMalzeme.Arayuz/javascript/jsKisiGuncelle.js"
+  ]
+}

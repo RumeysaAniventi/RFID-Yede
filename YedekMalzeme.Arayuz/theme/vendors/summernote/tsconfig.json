@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "./built",
+    "allowJs": true,
+    "sourceMap": true,
+    "experimentalDecorators": true
+  },
+  "include": [
+    "./src/**/*.js",
+    "./src/**/*.ts", "../../../App_Code/v2AktElektronikTanim.cs", "../../../Javascript/v2Jsv2YaziciTanim.js", "../../../Javascript/JsV3BakimOnarimServis.js", "../../../../Entity.YedekMalzemeTakip/EntityFramework/tblreaderkapiparam.cs", "../../../javascript/jsKisiGuncelle.js"
+  ]
+}
