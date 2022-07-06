@@ -17,6 +17,7 @@ function fn_BilesenEkle(v_Durum)
     var v_zmaktx = $('#txtad').val();
     var v_zsernr = $('#txtseri').val();
     var v_zaufnr = $('#txtsiparisno').val();
+    var v_zeklecikar = $('#txteklecikar').val();
 
     var v_Yazi = "";
 
@@ -165,12 +166,15 @@ function js_MalzemeEkleCikar(v_aufnr)
                 if (msg.zeklesil == '1') {
                     $("#divCikar").css("display", "none");
                     $("#divEkle").css("display", "block");
-                   
+
+                    $('#txteklecikar').val(msg.zeklesil);
                 }
                 else
                 {
                     $("#divEkle").css("display", "none");
                     $("#divCikar").css("display", "block");
+
+                    $('#txteklecikar').val(msg.zeklesil);
                 }
 
             }

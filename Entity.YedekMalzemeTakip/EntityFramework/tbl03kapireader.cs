@@ -41,48 +41,17 @@ namespace Entity.YedekMalzemeTakip.EntityFramework
             get { return _okumabitis; }
             set { SetPropertyValue<DateTime>("okumabitis", ref _okumabitis, value); }
         }
-
-        int _gecisturu = 0;
-        [Persistent("gecisturu")]
-        public int gecisturu
-        {
-            get { return _gecisturu; }
-            set { SetPropertyValue<int>("gecisturu", ref _gecisturu, value); }
-        }
-
-        int _alarm = 0;
-        [Persistent("alarm")]
-        public int alarm
-        {
-            get { return _alarm; }
-            set { SetPropertyValue<int>("alarm", ref _alarm, value); }
-        }
-
-        DateTime _alarmkapatmatarihi;
-        [Persistent("alarmkapatmatarihi")]
-        public DateTime alarmkapatmatarihi
-        {
-            get { return _alarmkapatmatarihi; }
-            set { SetPropertyValue<DateTime>("alarmkapatmatarihi", ref _alarmkapatmatarihi, value); }
-        }
-
-        string _alarmkapatankullanici;
-        [Persistent("alarmkapatankullanici")]
+       
+        int _aktarim;
+        [Persistent("aktarim")]
         [Size(150)]
-        public string alarmkapatankullanici
+        public int aktarim
         {
-            get { return _alarmkapatankullanici; }
-            set { SetPropertyValue<string>("alarmkapatankullanici", ref _alarmkapatankullanici, value); }
+            get { return _aktarim; }
+            set { SetPropertyValue<int>("aktarim", ref _aktarim, value); }
         }
 
-        string _alarmkapatmaaciklama;
-        [Persistent("alarmkapatmaaciklama")]
-        [Size(150)]
-        public string alarmkapatmaaciklama
-        {
-            get { return _alarmkapatmaaciklama; }
-            set { SetPropertyValue<string>("alarmkapatmaaciklama", ref _alarmkapatmaaciklama, value); }
-        }
+       
 
     }
 }

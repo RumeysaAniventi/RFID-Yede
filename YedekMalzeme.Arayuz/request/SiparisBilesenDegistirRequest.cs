@@ -7,5 +7,6 @@
         public string zmaktx { get; set; }
         public string zsernr { get; set; }
         public string zaufnr { get; set; }
+        public string zeklesil { get; set; }
     }
 }

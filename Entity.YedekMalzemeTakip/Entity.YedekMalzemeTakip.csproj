@@ -152,6 +152,7 @@
     <Compile Include="EntityFramework\tbl03kapireader.cs" />
     <Compile Include="EntityFramework\tbl04arsivkimliklendirmeiptal.cs" />
     <Compile Include="EntityFramework\tbl05kullanici.cs" />
+    <Compile Include="EntityFramework\tbl06analiz.cs" />
     <Compile Include="EntityFramework\tblarayuzkullanici.cs" />
     <Compile Include="EntityFramework\tblarsivmalzemebelgelistesiresponse.cs" />
     <Compile Include="EntityFramework\tblarsivmalzemelistesiresponse.cs" />

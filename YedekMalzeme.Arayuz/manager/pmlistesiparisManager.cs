@@ -30,8 +30,6 @@ namespace YedekMalzeme.Arayuz.manager
 
             bool _LogAlindimi = false;
 
-
-
             #endregion
 
             try
@@ -826,11 +824,7 @@ namespace YedekMalzeme.Arayuz.manager
 
                        
                     }
-
-                    
-
-              
-
+                
             }
             catch (Exception ex)
             {
@@ -838,12 +832,10 @@ namespace YedekMalzeme.Arayuz.manager
                
             }
         }
-
-
-
+        
 
         internal SiparisBilesenDegistirResponse fn_SiparisBilesenDegistir(SiparisBilesenDegistirRequest v_Gelen)
-        {
+        {//4
             #region Değişkenler
             string _IslemKodu = "0";
             string _Posnr = "0";
@@ -921,6 +913,30 @@ namespace YedekMalzeme.Arayuz.manager
                         sernr = v_Gelen.zsernr
                     };
 
+                    tbl06analiz _guncelanalz = session.Query<tbl06analiz>().FirstOrDefault(a => a.aktif == 1 && a.epc.Equals(v_Gelen.zepc) && a.sernr.Equals(v_Gelen.zsernr) && a.matnr.Equals(v_Gelen.zmatnr) && a.maktx.Equals(v_Gelen.zmaktx));
+                    if (v_Gelen.zeklesil=="1")
+                    {
+                        _guncelanalz.aufnr = v_Gelen.zaufnr;
+                        _guncelanalz.iliskilendiren = HttpContext.Current.Session["KullaniciAdi"].ToString();
+                        _guncelanalz.iliskiyeri = 2;
+                        _guncelanalz.gecisizni = 1;
+                        _guncelanalz.alarmdurum = 0;
+                        _guncelanalz.lastupdateuser= HttpContext.Current.Session["KullaniciAdi"].ToString();
+                        _guncelanalz.guncellemezamani = DateTime.Now;
+                        _guncelanalz.Save();
+                    }
+                    else
+                    {
+                        _guncelanalz.aufnr = "ilişkisiz";
+                        _guncelanalz.iliskilendiren = "Yok";
+                        _guncelanalz.iliskiiptaleden = HttpContext.Current.Session["KullaniciAdi"].ToString();
+                        _guncelanalz.iliskiyeri = 0;
+                        _guncelanalz.gecisizni = 0;
+                        _guncelanalz.alarmdurum = 1;
+                        _guncelanalz.lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString();
+                        _guncelanalz.guncellemezamani = DateTime.Now;
+                        _guncelanalz.Save();
+                    }
                     _Takip.Save();
 
                     if (_IslemKodu.Equals("100"))
@@ -1186,6 +1202,21 @@ namespace YedekMalzeme.Arayuz.manager
 
                         fn_BilesenGuncelle(v_Giden);
 
+
+                        tbl06analiz _analizguncelle = session.Query<tbl06analiz>().FirstOrDefault(a => a.aktif == 1 && a.epc.Equals(v_Gelen.zepc) && a.maktx.Equals(v_Gelen.zmaktx) && a.matnr.Equals(v_Gelen.zmatnr));
+
+                        _analizguncelle.aufnr = v_Gelen.zaufnr;
+                        _analizguncelle.iliskilendiren = HttpContext.Current.Session["KullaniciAdi"].ToString();
+                        _analizguncelle.iliskiyeri = 2;
+                        _analizguncelle.gecisizni = 1;
+                        _analizguncelle.alarmdurum = 0;
+                        _analizguncelle.lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString();
+                        _analizguncelle.guncellemezamani = DateTime.Now;
+                        _analizguncelle.Save();
+
+
+
+
                         return _Cevap;
                     }
 
@@ -1222,7 +1253,7 @@ namespace YedekMalzeme.Arayuz.manager
 
 
         internal EpcKimlikBilgileriResponse fn_EpcKimlikBilgileri(EpcKimlikBilgileriRequest v_Gelen)
-        {
+        {//3
             #region Değişkenler
             EpcKimlikBilgileriResponse _Cevap = new EpcKimlikBilgileriResponse();
 
@@ -1282,6 +1313,9 @@ namespace YedekMalzeme.Arayuz.manager
                                 _Cevap.zeklesil = "-1";
                             }
 
+                            //
+
+                           
 
                             return _Cevap;
                         }
@@ -1303,7 +1337,7 @@ namespace YedekMalzeme.Arayuz.manager
         
 
         internal AcikPmListeleResponse fn_AcikPmListele(AcikPmListeleRequest v_Gelen)
-        {
+        {//1
             #region Değişkenler
 
             string _TabloYazisi = "";
@@ -1399,7 +1433,7 @@ namespace YedekMalzeme.Arayuz.manager
         
 
         internal SiparisMalzemeListesiResponse fn_SiparisMalzemeListesi(SiparisMalzemeListesiRequest v_Gelen)
-        {
+        {//2
             #region Değişkenler
 
             string _TabloYazisi = "";

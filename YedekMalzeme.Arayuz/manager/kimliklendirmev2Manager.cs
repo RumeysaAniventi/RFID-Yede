@@ -115,6 +115,36 @@ namespace YedekMalzeme.Arayuz.manager
                         matnr = v_gelen.zmatnr
                     }.Save();
 
+                    new tbl06analiz(session)
+                    {
+                        id = Guid.NewGuid().ToString().ToUpper(),
+                        createuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                        lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                        aktif = 1,
+                        databasekayitzamani = DateTime.Now,
+                        guncellemezamani = DateTime.Now,
+                        epc = v_gelen.zepc,
+                        sernr = v_gelen.zsernr,
+                        aufnr = "ilişkisiz",
+                        matnr = v_gelen.zmatnr,
+                        maktx = v_gelen.zmaktx,
+                        iliskilendiren = "yok",
+                        iliskiiptaleden = "yok",
+                        iliskiyeri = 0,
+                        kimliklendiren = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                        kimlikiptaleden="yok",
+                        tuketim = 0,
+                        gecisizni=0,
+                        okumabaslangic= DateTime.MinValue,
+                        okumabitis=DateTime.MaxValue,
+                        alarmdurum=0,
+                        alarmkapatmatarih=DateTime.MinValue,
+                        alarmkapatmaaciklama="",
+                        kapireader=0,
+                        
+
+                    }.Save();
+
 
 
                    // new tbl04arsivkimliklendirmeiptal(session)().s

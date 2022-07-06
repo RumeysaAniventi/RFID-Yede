@@ -970,6 +970,15 @@ namespace YedekMalzeme.Arayuz.manager
                             sernr = _tempkimliklendirme.sernr
                         }.Save();
 
+                        tbl06analiz _analizguncelle = session.Query<tbl06analiz>().FirstOrDefault(a => a.aktif == 1 && a.epc.Equals(v_gelen.zepc) && a.matnr.Equals(v_gelen.zmatnr) && a.maktx.Equals(v_gelen.zmaktx));
+
+                        _analizguncelle.kimlikiptaleden = HttpContext.Current.Session["KullaniciAdi"].ToString();
+                        _analizguncelle.lastupdateuser= HttpContext.Current.Session["KullaniciAdi"].ToString();
+                        _analizguncelle.guncellemezamani = DateTime.Now;
+                        _analizguncelle.aktif = 0;
+                        _analizguncelle.Save();
+
+
                         _tempkimliklendirme.aktif = 0;
                         _tempkimliklendirme.Save();
 

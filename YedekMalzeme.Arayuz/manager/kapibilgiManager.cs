@@ -48,34 +48,34 @@ namespace YedekMalzeme.Arayuz.manager
                             _TabloYazisi += "<td style='text-align:center;'>" + _siparisliListe.aufnr + "</td>";
                             _TabloYazisi += "<td style='text-align:center;'>" + _siparisliListe.matnr + "</td>";
                             _TabloYazisi += "<td style='text-align:center;'>" + _siparisliListe.maktx + "</td>";
-                            if (_Item_readerListesi.gecisturu == 0)
+                            //if (_Item_readerListesi.gecisturu == 0)
 
-                            {
+                            //{
 
-                                _TabloYazisi += " <td style='text - align: right'> <img src='resimler/0.png'  title='Resim' > izinsiz </ td > ";
+                            //    _TabloYazisi += " <td style='text - align: right'> <img src='resimler/0.png'  title='Resim' > izinsiz </ td > ";
 
-                            }
-                            else
-                            {
+                            //}
+                            //else
+                            //{
 
-                                _TabloYazisi += " <td style='text - align: right'> <img src='resimler/1.png'  title='Resim' > izinli </ td > ";
+                            //    _TabloYazisi += " <td style='text - align: right'> <img src='resimler/1.png'  title='Resim' > izinli </ td > ";
 
-                            }
-                            if (_Item_readerListesi.alarm == 0)
-                            {
+                            //}
+                            //if (_Item_readerListesi.alarm == 0)
+                            //{
 
-                                _TabloYazisi += "<td> <span class='m-badge  m-badge--success m-badge--wide'>ALARM YOK</span></td>";
-                            }
-                            if (_Item_readerListesi.alarm == 1)
-                            {
-                                _TabloYazisi += "<td> <span class='m-badge  m-badge--danger m-badge--wide'>ALARM VAR</span></td>";
+                            //    _TabloYazisi += "<td> <span class='m-badge  m-badge--success m-badge--wide'>ALARM YOK</span></td>";
+                            //}
+                            //if (_Item_readerListesi.alarm == 1)
+                            //{
+                            //    _TabloYazisi += "<td> <span class='m-badge  m-badge--danger m-badge--wide'>ALARM VAR</span></td>";
 
-                            }
-                            if (_Item_readerListesi.alarm == 2)
-                            {
-                                _TabloYazisi += "<td> <span class='m-badge  m-badge--metal  m-badge--wide'>ALARM KAPANDI</span></td>";
+                            //}
+                            //if (_Item_readerListesi.alarm == 2)
+                            //{
+                            //    _TabloYazisi += "<td> <span class='m-badge  m-badge--metal  m-badge--wide'>ALARM KAPANDI</span></td>";
 
-                            }
+                            //}
                             _TabloYazisi += "<td style='text-align:center;'>" + "" + "</td>";
                             _TabloYazisi += "</tr>";
 
@@ -95,29 +95,29 @@ namespace YedekMalzeme.Arayuz.manager
                             _TabloYazisi += "<td style='text-align:center;'>" + "İlişkisiz" + "</td>";
                             _TabloYazisi += "<td style='text-align:center;'>" + _iliskizikimliki.matnr + "</td>";
                             _TabloYazisi += "<td style='text-align:center;'>" + _iliskizikimliki.maktx + "</td>";
-                            if (_Item_readerListesi.gecisturu == 0)
-                            {
-                                _TabloYazisi += " <td 'text-align:center'> <img src='resimler/0.png' title='Resim'alt='İZİNSİZ GEÇİŞ' > izinsiz </ td > ";
-                            }
-                            else
-                            {
-                                _TabloYazisi += " <td style='text - align: right'> <img src='resimler/1.png' title='Resim' > izinli </ td > ";
-                            }
-                            if (_Item_readerListesi.alarm == 0)
-                            {
+                            //if (_Item_readerListesi.gecisturu == 0)
+                            //{
+                            //    _TabloYazisi += " <td 'text-align:center'> <img src='resimler/0.png' title='Resim'alt='İZİNSİZ GEÇİŞ' > izinsiz </ td > ";
+                            //}
+                            //else
+                            //{
+                            //    _TabloYazisi += " <td style='text - align: right'> <img src='resimler/1.png' title='Resim' > izinli </ td > ";
+                            //}
+                            //if (_Item_readerListesi.alarm == 0)
+                            //{
 
-                                _TabloYazisi += "<td> <span class='m-badge  m-badge--success m-badge--wide'>ALARM YOK</span></td>";
-                            }
-                            if (_Item_readerListesi.alarm == 1)
-                            {
-                                _TabloYazisi += "<td> <span class='m-badge  m-badge--danger m-badge--wide'>ALARM VAR</span></td>";
+                            //    _TabloYazisi += "<td> <span class='m-badge  m-badge--success m-badge--wide'>ALARM YOK</span></td>";
+                            //}
+                            //if (_Item_readerListesi.alarm == 1)
+                            //{
+                            //    _TabloYazisi += "<td> <span class='m-badge  m-badge--danger m-badge--wide'>ALARM VAR</span></td>";
 
-                            }
-                            if (_Item_readerListesi.alarm == 2)
-                            {
-                                _TabloYazisi += "<td> <span class='m-badge  m-badge--metal  m-badge--wide'>ALARM KAPANDI</span></td>";
+                            //}
+                            //if (_Item_readerListesi.alarm == 2)
+                            //{
+                            //    _TabloYazisi += "<td> <span class='m-badge  m-badge--metal  m-badge--wide'>ALARM KAPANDI</span></td>";
 
-                            }
+                            //}
 
                             _TabloYazisi += "<td style='text-align:center;'>" + "" + "</td>";
 
@@ -133,30 +133,30 @@ namespace YedekMalzeme.Arayuz.manager
                             _TabloYazisi += "<td style='text-align:center;'>" + "İlişkisiz" + "</td>";
                             _TabloYazisi += "<td style='text-align:center;'>" + "Kimliksiz" + "</td>";
                             _TabloYazisi += "<td style='text-align:center;'>" + "Kimliksiz" + "</td>";
-                            if (_Item_readerListesi.gecisturu == 0)
-                            {
-                                _TabloYazisi += " <td 'text-align:center'> <img src='resimler/0.png' title='Resim'alt='İZİNSİZ GEÇİŞ' > izinsiz </ td > ";
+                            //if (_Item_readerListesi.gecisturu == 0)
+                            //{
+                            //    _TabloYazisi += " <td 'text-align:center'> <img src='resimler/0.png' title='Resim'alt='İZİNSİZ GEÇİŞ' > izinsiz </ td > ";
 
-                            }
-                            else
-                            {
-                                _TabloYazisi += " <td style='text - align: right'> <img src='resimler/1.png' title='Resim' > izinli </ td > ";
+                            //}
+                            //else
+                            //{
+                            //    _TabloYazisi += " <td style='text - align: right'> <img src='resimler/1.png' title='Resim' > izinli </ td > ";
 
-                            }
-                            if (_Item_readerListesi.alarm == 0)
-                            {
-                                _TabloYazisi += "<td> <span class='m-badge  m-badge--success m-badge--wide'>ALARM YOK</span></td>";
-                            }
-                            if (_Item_readerListesi.alarm == 1)
-                            {
-                                _TabloYazisi += "<td> <span class='m-badge  m-badge--danger m-badge--wide'>ALARM VAR</span></td>";
+                            //}
+                            //if (_Item_readerListesi.alarm == 0)
+                            //{
+                            //    _TabloYazisi += "<td> <span class='m-badge  m-badge--success m-badge--wide'>ALARM YOK</span></td>";
+                            //}
+                            //if (_Item_readerListesi.alarm == 1)
+                            //{
+                            //    _TabloYazisi += "<td> <span class='m-badge  m-badge--danger m-badge--wide'>ALARM VAR</span></td>";
 
-                            }
-                            if (_Item_readerListesi.alarm == 2)
-                            {
-                                _TabloYazisi += "<td> <span class='m-badge  m-badge--metal  m-badge--wide'>ALARM KAPANDI</span></td>";
+                            //}
+                            //if (_Item_readerListesi.alarm == 2)
+                            //{
+                            //    _TabloYazisi += "<td> <span class='m-badge  m-badge--metal  m-badge--wide'>ALARM KAPANDI</span></td>";
 
-                            }
+                            //}
 
                             _TabloYazisi += "<td style='text-align:center;'>" + "" + "</td>";
                             _TabloYazisi += "</tr>";
@@ -1057,10 +1057,10 @@ namespace YedekMalzeme.Arayuz.manager
                     using (Session session = XpoManager.Instance.GetNewSession())
                     {
                         tbl03kapireader tbl03 = session.Query<tbl03kapireader>().FirstOrDefault(t => t.aktif == 1 && t.gelenepc.Equals(v_Gelen.zeps));
-                        tbl03.alarm = 2;
-                        tbl03.alarmkapatmaaciklama = v_Gelen.zaciklama;
-                        tbl03.alarmkapatankullanici = HttpContext.Current.Session["KullaniciAdi"].ToString();
-                        tbl03.alarmkapatmatarihi = DateTime.Now;
+                        //tbl03.alarm = 2;
+                        //tbl03.alarmkapatmaaciklama = v_Gelen.zaciklama;
+                        //tbl03.alarmkapatankullanici = HttpContext.Current.Session["KullaniciAdi"].ToString();
+                        //tbl03.alarmkapatmatarihi = DateTime.Now;
                         tbl03.guncellemezamani = DateTime.Now;
                         tbl03.lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString();
                         tbl03.Save();
@@ -1109,15 +1109,15 @@ namespace YedekMalzeme.Arayuz.manager
                         _TabloYazisi += "<td id='epc' name='epc' style='text-align:center'  > " + "1"+_Temp.gelenepc + "</td>";
 
 
-                        if (_Temp.alarm == 2)
-                        {
-                            _TabloBasligi += "<th style ='text-align: center'> Alarmı Kapatan </ th >";
-                            _TabloYazisi += "<td style='text-align:center;'>" + _Temp.alarmkapatankullanici + "</td>";
-                            _TabloBasligi += "<th style ='text-align: center'> Alarmı Kapatma Tarihi </ th >";
-                            _TabloYazisi += "<td style='text-align:center;'>" + _Temp.alarmkapatmatarihi + "</td>";
+                        //if (_Temp.alarm == 2)
+                        //{
+                        //    _TabloBasligi += "<th style ='text-align: center'> Alarmı Kapatan </ th >";
+                        //    _TabloYazisi += "<td style='text-align:center;'>" + _Temp.alarmkapatankullanici + "</td>";
+                        //    _TabloBasligi += "<th style ='text-align: center'> Alarmı Kapatma Tarihi </ th >";
+                        //    _TabloYazisi += "<td style='text-align:center;'>" + _Temp.alarmkapatmatarihi + "</td>";
 
                           
-                        }
+                        //}
 
                         tblkimliklendirme _Temp2 = session.Query<tblkimliklendirme>().FirstOrDefault(w => w.aktif == 1 && w.gelenepc.Equals(v_Gelen.zeps));
                         if (_Temp2 != null)
@@ -1135,23 +1135,23 @@ namespace YedekMalzeme.Arayuz.manager
 
                         }
 
-                        if (_Temp.alarm == 1 )
-                        {
-                            _TabloBasligi += "<th style ='text-align: center'> AÇIKLAMA</ th >";
-                            //_TabloYazisi += " <td <input type='text' class='form - control m - input--air' /> AÇIKLAMA: </td>";
-                            _TabloYazisi += " <td><input type = 'text' id = 'aciklama'autocomplete='off' name = 'aciklama' style='width:100% ;border:3px' ></td>";
+                        //if (_Temp.alarm == 1 )
+                        //{
+                        //    _TabloBasligi += "<th style ='text-align: center'> AÇIKLAMA</ th >";
+                        //    //_TabloYazisi += " <td <input type='text' class='form - control m - input--air' /> AÇIKLAMA: </td>";
+                        //    _TabloYazisi += " <td><input type = 'text' id = 'aciklama'autocomplete='off' name = 'aciklama' style='width:100% ;border:3px' ></td>";
 
-                            _TabloBasligi += "<th style ='text-align: center'> Alarm Kapat </ th >";
-                            _TabloYazisi += "<td style='text-align:center;'><a class='m-linkm-badge  m-badge--danger m-badge--wide' href=# onclick  = fn_AlarmKapat('" + v_Gelen.zeps + "');>Alarm Kapat</a></td>";
+                        //    _TabloBasligi += "<th style ='text-align: center'> Alarm Kapat </ th >";
+                        //    _TabloYazisi += "<td style='text-align:center;'><a class='m-linkm-badge  m-badge--danger m-badge--wide' href=# onclick  = fn_AlarmKapat('" + v_Gelen.zeps + "');>Alarm Kapat</a></td>";
 
-                            if (v_Gelen.zaufnr=="ilişkisiz" || v_Gelen.zmatnr!="Kimliksiz")
-                            {
-                                _TabloBasligi += "<th style ='text-align: center'> Siparişe Ekle </ th >";
-                                _TabloYazisi += "<td style='text-align:center;'><a class='m-linkm-badge  m-badge--danger m-badge--wide' href=# onclick  = fn_SipariseEkle('" + v_Gelen.zeps + "');>Siparişe Ekle</a></td>";
+                        //    if (v_Gelen.zaufnr=="ilişkisiz" || v_Gelen.zmatnr!="Kimliksiz")
+                        //    {
+                        //        _TabloBasligi += "<th style ='text-align: center'> Siparişe Ekle </ th >";
+                        //        _TabloYazisi += "<td style='text-align:center;'><a class='m-linkm-badge  m-badge--danger m-badge--wide' href=# onclick  = fn_SipariseEkle('" + v_Gelen.zeps + "');>Siparişe Ekle</a></td>";
 
-                            }
+                        //    }
 
-                        }
+                        //}
                         _TabloYazisi += "</tr>";
                     }
 

@@ -24,7 +24,7 @@
                                 <span class="m-portlet__head-icon m--hide">
                                     <i class="la la-gear"></i>
                                 </span>
-                                <h3 class="m-portlet__head-text">Koltuk Depo Siparişleri Listesi
+                                <h3 class="m-portlet__head-text">Koltuk Depo Bilgileri
                                 </h3>
                             </div>
                         </div>

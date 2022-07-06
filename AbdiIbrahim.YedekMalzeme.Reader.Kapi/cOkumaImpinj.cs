@@ -184,11 +184,6 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kapi
                                             okumabaslama = item.Value._SonOkumaZamani,
                                             createuser = "windows.service",
                                             databasekayitzamani = DateTime.Now,
-                                            alarm = 0,
-                                            alarmkapatankullanici = HttpContext.Current.Session["KullaniciAdi"].ToString(),
-                                            alarmkapatmaaciklama = "",
-                                            alarmkapatmatarihi = Convert.ToDateTime(""),
-                                            gecisturu = 1,//izinli
                                             gelenepc = item.Key,
                                             guncellemezamani = DateTime.Now,
                                             id = Guid.NewGuid().ToString().ToUpper(),
@@ -221,11 +216,6 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kapi
                                                 okumabaslama = item.Value._SonOkumaZamani,
                                                 createuser = "windows.service",
                                                 databasekayitzamani = DateTime.Now,
-                                                alarm = 1,
-                                                alarmkapatankullanici = "AlarmVar",
-                                                alarmkapatmaaciklama = "",
-                                                alarmkapatmatarihi = Convert.ToDateTime(""),
-                                                gecisturu = 0,//izinsiz
                                                 gelenepc = item.Key,
                                                 guncellemezamani = DateTime.Now,
                                                 id = Guid.NewGuid().ToString().ToUpper(),

@@ -146,6 +146,8 @@
                             <div class="col-lg-12">
                                 <h6>Seri Numarası</h6>
                                 <input type="text" autocomplete="off" class="form-control m-input" readonly="readonly" name="txtseri" id="txtseri" />
+                                <input type="text" autocomplete="off" class="form-control m-input" readonly="readonly" name="txteklecikar" id="txteklecikar" style=" display:none" />
+                            
                             </div>
                         </div>
 
