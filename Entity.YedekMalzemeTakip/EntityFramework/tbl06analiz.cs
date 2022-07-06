@@ -90,6 +90,16 @@ namespace Entity.YedekMalzemeTakip.EntityFramework
             set { SetPropertyValue<int>("iliskiyeri", ref _iliskiyeri, value); }
         }
 
+        string _alarmkapatan = "";
+        [Persistent("alarmkapatan")]
+        [Size(100)]
+        public string alarmkapatan
+        {
+            get { return _alarmkapatan; }
+            set { SetPropertyValue<string>("alarmkapatan", ref _alarmkapatan, value); }
+        }
+
+
         string _kimliklendiren = "";
         [Persistent("kimliklendiren")]
         [Size(100)]

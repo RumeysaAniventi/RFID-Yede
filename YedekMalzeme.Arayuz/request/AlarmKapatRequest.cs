@@ -7,7 +7,7 @@ namespace YedekMalzeme.Arayuz.request
 {
     public class AlarmKapatRequest : OrtakRequest
     {
-        public string zeps { get; set; }
+        public string zid { get; set; }
         public string zaciklama { get; set; }
     }
 }

@@ -1042,46 +1042,46 @@ namespace YedekMalzeme.Arayuz.manager
             return _Cevap;
         }
 
-        internal AlarmKapatResponse fn_AlarmKapat(AlarmKapatRequest v_Gelen)
-        {
-            AlarmKapatResponse _Cevap = new AlarmKapatResponse();
-            try
-            {
-                if (v_Gelen.zaciklama=="")
-                {
-                    _Cevap.zAciklama = "Açıklama Boş olamaz";
-                    _Cevap.zSonuc = -1;
-                }
-                else
-                {
-                    using (Session session = XpoManager.Instance.GetNewSession())
-                    {
-                        tbl03kapireader tbl03 = session.Query<tbl03kapireader>().FirstOrDefault(t => t.aktif == 1 && t.gelenepc.Equals(v_Gelen.zeps));
-                        //tbl03.alarm = 2;
-                        //tbl03.alarmkapatmaaciklama = v_Gelen.zaciklama;
-                        //tbl03.alarmkapatankullanici = HttpContext.Current.Session["KullaniciAdi"].ToString();
-                        //tbl03.alarmkapatmatarihi = DateTime.Now;
-                        tbl03.guncellemezamani = DateTime.Now;
-                        tbl03.lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString();
-                        tbl03.Save();
+        //internal AlarmKapatResponse fn_AlarmKapat(AlarmKapatRequest v_Gelen)
+        //{
+        //    AlarmKapatResponse _Cevap = new AlarmKapatResponse();
+        //    try
+        //    {
+        //        if (v_Gelen.zaciklama=="")
+        //        {
+        //            _Cevap.zAciklama = "Açıklama Boş olamaz";
+        //            _Cevap.zSonuc = -1;
+        //        }
+        //        else
+        //        {
+        //            using (Session session = XpoManager.Instance.GetNewSession())
+        //            {
+        //                tbl03kapireader tbl03 = session.Query<tbl03kapireader>().FirstOrDefault(t => t.aktif == 1 && t.gelenepc.Equals(v_Gelen.zid));
+        //                //tbl03.alarm = 2;
+        //                //tbl03.alarmkapatmaaciklama = v_Gelen.zaciklama;
+        //                //tbl03.alarmkapatankullanici = HttpContext.Current.Session["KullaniciAdi"].ToString();
+        //                //tbl03.alarmkapatmatarihi = DateTime.Now;
+        //                tbl03.guncellemezamani = DateTime.Now;
+        //                tbl03.lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString();
+        //                tbl03.Save();
 
-                        _Cevap.zAciklama = "";
-                        _Cevap.zSonuc = 1;
+        //                _Cevap.zAciklama = "";
+        //                _Cevap.zSonuc = 1;
 
-                    }
-                }
+        //            }
+        //        }
               
 
 
-            }
-            catch (Exception)
-            {
+        //    }
+        //    catch (Exception)
+        //    {
 
-                _Cevap.zAciklama = "";
-                _Cevap.zSonuc = -1;
-            }
-            return _Cevap;
-        }
+        //        _Cevap.zAciklama = "";
+        //        _Cevap.zSonuc = -1;
+        //    }
+        //    return _Cevap;
+        //}
 
         internal AlarmGoruntuleResponse fn_AlarmGoruntule(AlarmGoruntuleRequest v_Gelen)
         {

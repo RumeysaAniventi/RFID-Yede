@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Web;
 using YedekMalzeme.Arayuz.request;
 using YedekMalzeme.Arayuz.response;
 using YedekMalzeme.Arayuz.View;
@@ -73,6 +74,50 @@ namespace YedekMalzeme.Arayuz.manager
             return _Cevap;
         }
 
+        internal AlarmKapatResponse fn_AlarmKapat(AlarmKapatRequest v_Gelen)
+        {
+            AlarmKapatResponse _Cevap = new AlarmKapatResponse();
+            try
+            {
+                if (v_Gelen.zaciklama == "")
+                {
+                    _Cevap.zAciklama = "Açıklama Boş olamaz";
+                    _Cevap.zSonuc = -1;
+                }
+                else
+                {
+                    using (Session session = XpoManager.Instance.GetNewSession())
+                    {
+
+                        tbl06analiz _guncelleanliz = session.Query<tbl06analiz>().FirstOrDefault(a => a.id.Equals(v_Gelen.zid));
+                        _guncelleanliz.gecisizni = 0;
+                        _guncelleanliz.alarmdurum = 2;
+                        _guncelleanliz.alarmkapatmaaciklama = v_Gelen.zaciklama;
+                        _guncelleanliz.alarmkapatmatarih = DateTime.Now;
+                        _guncelleanliz.alarmkapatan = HttpContext.Current.Session["KullaniciAdi"].ToString();
+                        _guncelleanliz.lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString();
+                        _guncelleanliz.guncellemezamani = DateTime.Now;
+                        _guncelleanliz.Save();
+
+
+                        _Cevap.zAciklama = "";
+                        _Cevap.zSonuc = 1;
+
+                    }
+                }
+
+
+
+            }
+            catch (Exception)
+            {
+
+                _Cevap.zAciklama = "";
+                _Cevap.zSonuc = -1;
+            }
+            return _Cevap;
+        }
+
         internal AlarmDurumGoruntuleResponse fn_AlarmDurumGoruntule(AlarmDurumGoruntuleRequest v_Gelen)
         {
             AlarmDurumGoruntuleResponse _Cevap = new AlarmDurumGoruntuleResponse();
@@ -90,6 +135,8 @@ namespace YedekMalzeme.Arayuz.manager
                     _TabloYazisi += "<tr>";
                     _TabloBasligi += "<tr>";
 
+                
+
                     _TabloBasligi += "<th style ='text-align: center'> Etiket Değeri </ th >";
                     _TabloYazisi += "<td id='epc' name='epc' style='text-align:center'  >"+ _guncelanaliz.epc + "</td>";
 
@@ -104,11 +151,11 @@ namespace YedekMalzeme.Arayuz.manager
                     _TabloYazisi += "<td style='text-align:center;'>" + _guncelanaliz.sernr + "</td>";
 
 
-                    if (_guncelanaliz.alarmdurum ==1)
+                    if (_guncelanaliz.alarmdurum==1)
                     {
 
                         _TabloBasligi += "<th style ='text-align: center'> AÇIKLAMA</ th >";
-                        _TabloYazisi += " <td><input type = 'text' id = 'aciklama'autocomplete='off' name = 'aciklama' style='width:100% ;border:3px' ></td>";
+                        _TabloYazisi += " <td><input type = 'text' id = 'aciklama' autocomplete='off' name = 'aciklama' style='width:100% ;border:3px' > </td>";
 
                         _TabloBasligi += "<th style ='text-align: center'> Alarm Kapat </ th >";
                         _TabloYazisi += "<td style='text-align:center;'><a class='m-linkm-badge  m-badge--danger m-badge--wide' href=# onclick  = fn_AlarmKapat('" + v_Gelen.zid + "');>Alarm Kapat</a></td>";
@@ -120,7 +167,7 @@ namespace YedekMalzeme.Arayuz.manager
                     if (_guncelanaliz.alarmdurum == 2)
                     {
                         _TabloBasligi += "<th style ='text-align: center'> Alarmı Kapatan </ th >";
-                        _TabloYazisi += "<td style='text-align:center;'>" + "kpt" + "</td>";
+                        _TabloYazisi += "<td style='text-align:center;'>" + _guncelanaliz.alarmkapatan + "</td>";
                         _TabloBasligi += "<th style ='text-align: center'> Alarmı Kapatma Tarihi </ th >";
                         _TabloYazisi += "<td style='text-align:center;'>" + _guncelanaliz.alarmkapatmatarih + "</td>";
 
@@ -128,8 +175,9 @@ namespace YedekMalzeme.Arayuz.manager
 
                     if (_guncelanaliz.aufnr == "ilişkisiz")
                     {
+                        
                         _TabloBasligi += "<th style ='text-align: center'> Siparişe Ekle </ th >";
-                        _TabloYazisi += "<td style='text-align:center;'><a class='m-linkm-badge  m-badge--danger m-badge--wide' href=# onclick  = fn_SipariseEkle('" + _guncelanaliz.id + "');>Siparişe Ekle</a></td>";
+                        _TabloYazisi += "<td style='text-align:center;'><a class='m-linkm-badge  m-badge--danger m-badge--wide' href=# onclick  = fn_AlarmKapat('" + _guncelanaliz.id + "');>Siparişe Ekle</a></td>";
 
                     }
 

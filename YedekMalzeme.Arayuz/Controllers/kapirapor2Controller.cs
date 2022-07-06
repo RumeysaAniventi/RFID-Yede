@@ -30,5 +30,15 @@ namespace YedekMalzeme.Arayuz.Controllers
         {
             return new kapirapor2Manager().fn_AlarmDurumGoruntule(v_Gelen);
         }
+
+        
+        [HttpPost]
+        [Route("api/AlarmKapat")]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
+        [Authorize(Roles = "roleadmin")]
+        public AlarmKapatResponse fn_AlarmKapat(AlarmKapatRequest v_Gelen)
+        {
+            return new kapirapor2Manager().fn_AlarmKapat(v_Gelen);
+        }
     }
 }

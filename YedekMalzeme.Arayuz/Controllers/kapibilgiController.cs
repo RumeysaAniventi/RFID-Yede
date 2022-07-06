@@ -31,14 +31,14 @@ namespace YedekMalzeme.Arayuz.Controllers
         {
             return new kapibilgiManager().fn_SipariseEkle(v_Gelen);
         }
-        [HttpPost]
-        [Route("api/AlarmKapat")]
-        [System.Web.Mvc.ValidateAntiForgeryToken]
-        [Authorize(Roles = "roleadmin")]
-        public AlarmKapatResponse AlarmKapat(AlarmKapatRequest v_Gelen)
-        {
-            return new kapibilgiManager().fn_AlarmKapat(v_Gelen);
-        }
+        //[HttpPost]
+        //[Route("api/AlarmKapat")]
+        //[System.Web.Mvc.ValidateAntiForgeryToken]
+        //[Authorize(Roles = "roleadmin")]
+        //public AlarmKapatResponse AlarmKapat(AlarmKapatRequest v_Gelen)
+        //{
+        //    return new kapibilgiManager().fn_AlarmKapat(v_Gelen);
+        //}
 
       
 

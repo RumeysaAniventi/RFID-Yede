@@ -9,6 +9,71 @@ $(document).ready(function () {
     fn_DegerleriListele();
 });
 
+
+function fn_AlarmKapat(v_id) {
+
+    var v_zaciklama = $('#aciklama').val();
+
+    $.ajax({
+        type: "POST",
+        url: "api/AlarmKapat",
+        data: JSON.stringify
+            ({
+                zdeger: '1',
+                zid: v_id,
+                zaciklama: v_zaciklama
+            }),
+
+        contentType: "application/json; charset=utf-8",
+
+        dataType: "json",
+
+        beforeSend: function () {
+
+
+
+        },
+        error: function (request, status, error) {
+
+
+        },
+        success: function (msg) {
+
+
+
+            if (msg.zSonuc == "1") {
+
+                //$('#m_table_bilesen thead').html(msg.ztablobasligi);
+                //$('#m_table_bilesen tbody').html(msg.ztabloyazisi);
+
+                BasariliIslem('Alarm Kapatıldı');
+                $('#m_modal_5').modal({
+                    show: true,
+                    keyboard: false,
+                    backdrop: 'static'
+                });
+            }
+            else {
+                UyariMesajiVer('Alarm Kapatılamadı.  ' + msg.zAciklama);
+            }
+        },
+
+        complete: function () {
+
+
+            $('#m_modal_5').modal({
+                show: true,
+                keyboard: false,
+                backdrop: 'static'
+            });
+
+            fn_DegerleriListele();
+
+
+        }
+    });
+}
+
 function fn_AlarmGoruntule(v_id) {
     
 
@@ -59,8 +124,6 @@ function fn_AlarmGoruntule(v_id) {
 
 function fn_DegerleriListele() {
 
-
-
     $.ajax({
         type: "POST",
         url: "api/FiltreliKapiListesi",
@@ -79,7 +142,7 @@ function fn_DegerleriListele() {
 
             if ($.fn.dataTable.isDataTable('#m_table_1')) {
                 table = $('#m_table_1').DataTable();
-                debugger;
+               
                 table.clear();
                 table.destroy();
 
