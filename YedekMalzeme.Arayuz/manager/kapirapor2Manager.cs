@@ -22,7 +22,7 @@ namespace YedekMalzeme.Arayuz.manager
             try
             {
 
-                _Sql = "select * from tbl06analiz with (nolock) where aktif =1 and kapireader=1";
+                _Sql += "select * from tbl06analiz  where aktif =1 and kapireader=1";
 
                 _dTable = _myIslem._fnDataTable(_Sql);
                 _Cevap.zdizi = new List<KapiFiltreliListeleView>();
@@ -38,7 +38,8 @@ namespace YedekMalzeme.Arayuz.manager
                         zgecisizni= _dTable.Rows[i]["gecisizni"].ToString().Trim(),
                         zmaktx= _dTable.Rows[i]["maktx"].ToString().Trim(),
                         zmatnr=_dTable.Rows[i]["matnr"].ToString().Trim(),
-                        zsernr=_dTable.Rows[i]["sernr"].ToString().Trim()
+                        zsernr=_dTable.Rows[i]["sernr"].ToString().Trim(),
+                        zaufnr= _dTable.Rows[i]["aufnr"].ToString().Trim(),
 
 
                     });

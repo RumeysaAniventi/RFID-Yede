@@ -15,7 +15,8 @@ namespace YedekMalzeme.Arayuz.View
         public string zmaktx { get; set; }
         public string zgecisizni { get; set; }
         public string zalarm { get; set; }
-    
+        public string zaufnr { get; set; }
+
 
     }
 }

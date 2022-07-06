@@ -46,12 +46,35 @@ function fn_DegerleriListele() {
 
         success: function (msg) {
 
-
+           
 
             if (msg.zSonuc == "1") {
 
+                var vYanitDizi = msg.zdizi;
+                var content = '';
+
+                if (vYanitDizi.length) {
+
+                    for (var iSayac = 0; iSayac < vYanitDizi.length; iSayac++) {
 
 
+                        content += "<tr>";
+                        content += "<td>" + vYanitDizi[iSayac].zepc + "</td>";
+                        content += "<td>" + vYanitDizi[iSayac].zokumabaslangic + "</td>";
+                        content += "<td>" + vYanitDizi[iSayac].zokumabitis + "</td>";
+                        content += "<td>" + vYanitDizi[iSayac].zaufnr + "</td>";
+                        content += "<td>" + vYanitDizi[iSayac].zalarm + "</td>";
+                        content += "<td>" + vYanitDizi[iSayac].zgecisizni + "</td>";
+                        content += "<td>" + vYanitDizi[iSayac].zmaktx + "</td>";
+                        content += "<td>" + vYanitDizi[iSayac].zmatnr + "</td>";
+                        content += "<td>" + vYanitDizi[iSayac].zsernr + "</td>";
+                        content += "<td>...</td>";
+                        content += "</tr>";
+                    }
+
+                    $('#m_table_1 tbody').html(content);
+
+                }
 
             }
             else {

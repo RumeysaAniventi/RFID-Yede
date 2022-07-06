@@ -106,67 +106,54 @@
                                 </div>
                             </div>
                         </div>
-                </div>
-            </div>
+                        <div class="form-group m-form__group row">
+                            <div class="col-lg-12">
+                                <table name="m_table_1" id="m_table_1" class="table table-bordered m-table m-table--border-brand m-table--head-separator-primary" style="display: block;">
+                                    <thead>
+                                        <tr>
 
-            <div class="form-group m-form__group row">
-                <div class="col-lg-12">
-                    <table name="m_table_1" id="m_table_1" class="table table-bordered m-table m-table--border-brand m-table--head-separator-primary" style="display: none;">
-                        <thead>
-                            <tr>
-
-                                <th style="text-align: center">Etiket No</th>
-                                <th style="text-align: center">Okuma Başlangıç</th>
-                                <th style="text-align: center">Okuma Bitiş</th>
-                                <th style="text-align: center">Sipariş No</th>
-                                <th style="text-align: center">Seri No</th>
-                                <th style="text-align: center">Malzeme Kodu</th>
-                                <th style="text-align: center">Malzeme Adı</th>
-                                <th style="text-align: center">Geçiş İzni</th>
-                                <th style="text-align: center">Alarm Durumu</th>
-                                <th style="text-align: center"></th>
+                                            <th style="text-align: center">Etiket No</th>
+                                            <th style="text-align: center">Okuma Başlangıç</th>
+                                            <th style="text-align: center">Okuma Bitiş</th>
+                                            <th style="text-align: center">Sipariş No</th>
+                                            <th style="text-align: center">Seri No</th>
+                                            <th style="text-align: center">Malzeme Kodu</th>
+                                            <th style="text-align: center">Malzeme Adı</th>
+                                            <th style="text-align: center">Geçiş İzni</th>
+                                            <th style="text-align: center">Alarm Durumu</th>
+                                            <th style="text-align: center"></th>
 
 
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        </form>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
 
-                   
-
-        <!--end::Form-->
-    </div>
-
-    <!--end::Portlet-->
-    </div>
-    </div>
+                                </table>
+                            </div>
+                        </div>
+                    </form>
 
 
-   
+
+                    <!--end::Form-->
 
 
-    <!--begin::Modal-->
+                    <div class="modal fade" data-backdrop="static" id="m_modal_1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Alarm  Durumu</h5>
+                                    <img src="resimler/close.png" data-dismiss="modal" class="close" />
 
-    <div class="modal fade" data-backdrop="static" id="m_modal_1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Alarm  Durumu</h5>
-                    <img src="resimler/close.png" data-dismiss="modal" class="close" />
-
-                </div>
-                <div class="modal-body">
+                                </div>
+                                <div class="modal-body">
 
 
-                    <div class="form-group m-form__group row">
-                        <div class="col-lg-12">
-                            <table name="m_table_bilesen" id="m_table_bilesen" class="table table-bordered m-table m-table--border-brand m-table--head-separator-primary">
-                                <thead>
-                                    <%-- <tr>
+                                    <div class="form-group m-form__group row">
+                                        <div class="col-lg-12">
+                                            <table name="m_table_bilesen" id="m_table_bilesen" class="table table-bordered m-table m-table--border-brand m-table--head-separator-primary">
+                                                <thead>
+                                                    <%-- <tr>
                                             
                                             
                                             <th style="text-align: center">Alarm Durumu</th>
@@ -176,93 +163,98 @@
                                             <th style="text-align: center">Etiket Değeri</th>
 
                                         </tr>--%>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="col-lg-2">
+                                        <%-- <button type="button" class="btn btn-danger" data-dismiss="modal">KAPAT</button>--%>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <%--     <button type="button" class="btn btn-danger pull-right" data-dismiss="modal">KAPAT</button>--%>
+                                        <%--<button type="button" class="btn btn-success pull-right" onclick="jsBilgiGuncelle()">GÜNCELLE</button>--%>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
 
 
-                </div>
-                <div class="modal-footer">
-                    <div class="col-lg-2">
-                        <%-- <button type="button" class="btn btn-danger" data-dismiss="modal">KAPAT</button>--%>
+                    <div class="modal fade" data-backdrop="static" id="m_modal_2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabe2">Sipariş Bilgileri Güncelle</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="form-group m-form__group row">
+                                        <div class="col-lg-12">
+                                            <h6>Pm Sipariş</h6>
+                                            <select class="form-control m-input m-input--square" id="listePmSiparis"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group m-form__group row">
+                                        <div class="col-lg-12">
+                                            <h6>Etiket No</h6>
+                                            <input type="text" autocomplete="off" class="form-control m-input" name="txtepc" id="txtepc" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group m-form__group row">
+                                        <div class="col-lg-12">
+                                            <h6>Malzeme Kodu</h6>
+                                            <input type="text" autocomplete="off" class="form-control m-input" name="txtmatnr" id="txtmatnr" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group m-form__group row">
+                                        <div class="col-lg-12">
+                                            <h6>Malzeme Adı</h6>
+                                            <input type="text" autocomplete="off" class="form-control m-input" name="txtmaktx" id="txtmaktx" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group m-form__group row">
+                                        <div class="col-lg-12">
+                                            <h6>Seri No</h6>
+                                            <input type="text" autocomplete="off" class="form-control m-input" name="txtsernr" id="txtsernr" />
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="col-lg-2">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">KAPAT</button>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <button type="button" class="btn btn-success pull-right" onclick="jsSipariseBilesenEkle()">Bileşen Ekle</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-10">
-                        <%--     <button type="button" class="btn btn-danger pull-right" data-dismiss="modal">KAPAT</button>--%>
-                        <%--<button type="button" class="btn btn-success pull-right" onclick="jsBilgiGuncelle()">GÜNCELLE</button>--%>
-                    </div>
+                    <!--end::Modal-->
+
+
                 </div>
 
+                </div>
             </div>
         </div>
-    </div>
 
-
-    <div class="modal fade" data-backdrop="static" id="m_modal_2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabe2">Sipariş Bilgileri Güncelle</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <div class="form-group m-form__group row">
-                        <div class="col-lg-12">
-                            <h6>Pm Sipariş</h6>
-                            <select class="form-control m-input m-input--square" id="listePmSiparis"></select>
-                        </div>
-                    </div>
-
-                    <div class="form-group m-form__group row">
-                        <div class="col-lg-12">
-                            <h6>Etiket No</h6>
-                            <input type="text" autocomplete="off" class="form-control m-input" name="txtepc" id="txtepc" />
-                        </div>
-                    </div>
-
-                    <div class="form-group m-form__group row">
-                        <div class="col-lg-12">
-                            <h6>Malzeme Kodu</h6>
-                            <input type="text" autocomplete="off" class="form-control m-input" name="txtmatnr" id="txtmatnr" />
-                        </div>
-                    </div>
-
-                    <div class="form-group m-form__group row">
-                        <div class="col-lg-12">
-                            <h6>Malzeme Adı</h6>
-                            <input type="text" autocomplete="off" class="form-control m-input" name="txtmaktx" id="txtmaktx" />
-                        </div>
-                    </div>
-
-                    <div class="form-group m-form__group row">
-                        <div class="col-lg-12">
-                            <h6>Seri No</h6>
-                            <input type="text" autocomplete="off" class="form-control m-input" name="txtsernr" id="txtsernr" />
-                        </div>
-                    </div>
-
-
-
-                </div>
-                <div class="modal-footer">
-                    <div class="col-lg-2">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">KAPAT</button>
-                    </div>
-                    <div class="col-lg-10">
-                        <button type="button" class="btn btn-success pull-right" onclick="jsSipariseBilesenEkle()">Bileşen Ekle</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--end::Modal-->
-
-
-    </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <script src="theme/assets/vendors/custom/datatables/datatables.bundle.js"></script>
