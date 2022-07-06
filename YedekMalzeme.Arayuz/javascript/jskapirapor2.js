@@ -124,12 +124,27 @@ function fn_AlarmGoruntule(v_id) {
 
 function fn_DegerleriListele() {
 
+    var v_gelenilktarih = $('#ilktarih').val();
+    var v_gelensontarih = $('#sontarih').val();
+    var v_gelensiparisno = $('#txtaufnrfiltre').val();
+    var v_gelenmalzemekod = $('#txtmatnrfiltre').val();
+    var v_gelenmalzemeadi = $('#txtmaktxfiltre').val();
+    var v_gelengecisizni = $('#listegecis').val();
+    var v_gelenalarm = $('#istealarm').val();
+
     $.ajax({
         type: "POST",
         url: "api/FiltreliKapiListesi",
         data: JSON.stringify
             ({
                 zdeger: '1',
+                zilktarih: v_gelenilktarih,
+                zsontarih: v_gelensontarih,
+                zaufnr: v_gelensiparisno,
+                zmatnr: v_gelenmalzemekod,
+                zmaktx: v_gelenmalzemeadi,
+                zgecisizni: v_gelengecisizni,
+                zalarm: v_gelenalarm
             }),
 
         contentType: "application/json; charset=utf-8",
@@ -178,11 +193,11 @@ function fn_DegerleriListele() {
                         content += "<td>" + vYanitDizi[iSayac].zokumabaslangic + "</td>";
                         content += "<td>" + vYanitDizi[iSayac].zokumabitis + "</td>";
                         content += "<td>" + vYanitDizi[iSayac].zaufnr + "</td>";
-                        content += "<td>" + vYanitDizi[iSayac].zalarm + "</td>";
-                        content += "<td>" + vYanitDizi[iSayac].zgecisizni + "</td>";
+                        content += "<td>" + vYanitDizi[iSayac].zsernr + "</td>";                        
+                        content += "<td>" + vYanitDizi[iSayac].zmatnr + "</td>";            
                         content += "<td>" + vYanitDizi[iSayac].zmaktx + "</td>";
-                        content += "<td>" + vYanitDizi[iSayac].zmatnr + "</td>";
-                        content += "<td>" + vYanitDizi[iSayac].zsernr + "</td>";
+                        content += "<td>" + vYanitDizi[iSayac].zgecisizni + "</td>";
+                        content += "<td>" + vYanitDizi[iSayac].zalarm + "</td>";
                         content += "<td>...</td>";
                         content += "</tr>";
                     }

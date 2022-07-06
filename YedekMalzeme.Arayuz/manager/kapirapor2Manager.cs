@@ -27,7 +27,55 @@ namespace YedekMalzeme.Arayuz.manager
             try
             {
 
-                _Sql += "select * from tbl06analiz  where aktif =1 and kapireader=1";
+                _Sql += "select * from tbl06analiz  where aktif =1 and kapireader=1 ";
+
+                if ( !String.IsNullOrEmpty(v_Gelen.zilktarih) && !String.IsNullOrEmpty(v_Gelen.zsontarih))
+                {
+
+                    _Sql += "and okumabitis between '" + v_Gelen.zilktarih + "' and '" + v_Gelen.zsontarih + "' ";
+
+                }
+
+                if (!String.IsNullOrEmpty(v_Gelen.zaufnr))
+                {
+                    _Sql += "and aufnr ilike '%" + v_Gelen.zaufnr + "%' ";
+                }
+
+                
+
+                if (!String.IsNullOrEmpty(v_Gelen.zmatnr))
+                {
+                    _Sql += "and matnr ilike '%" + v_Gelen.zmatnr + "%' ";
+                }
+
+                if (!String.IsNullOrEmpty(v_Gelen.zmaktx))
+                {
+                    _Sql += "and maktx  ilike '%" + v_Gelen.zmaktx + "%' ";
+
+                }
+
+                if (!String.IsNullOrEmpty(v_Gelen.zgecisizni) )
+                {
+                    if (v_Gelen.zgecisizni != "2")
+                    {
+                        _Sql += "and gecisizni=" + v_Gelen.zgecisizni + " ";
+
+                    }
+
+                }
+
+                if (!String.IsNullOrEmpty(v_Gelen.zalarm))
+                {
+                    if (v_Gelen.zalarm != "3")
+                    {
+                        _Sql += "and alarmdurum=" + v_Gelen.zalarm + " ";
+                    }
+                    
+
+                }
+
+
+
 
                 _dTable = _myIslem._fnDataTable(_Sql);
                 _Cevap.zdizi = new List<KapiFiltreliListeleView>();

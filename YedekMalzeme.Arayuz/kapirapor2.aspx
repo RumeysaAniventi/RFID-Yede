@@ -18,7 +18,7 @@
     <div class="m-content">
         <!--begin::YeniUrunKayit-->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 p-0">
                 <!--begin::Portlet-->
                 <div class="m-portlet m-portlet--tab">
                     <div class="m-portlet__head">
@@ -37,22 +37,6 @@
                     <form class="m-form m-form--fit m-form--label-align-right">
                         <%-- filtre kısmı --%>
                         <div class="m-portlet__body">
-
-
-                            <div class="form-group m-form__group row">
-                                <div class="col-lg-4">
-                                    <h6>İlk Tarih</h6>
-                                    <%--       <input type="date" autocomplete="off" class="form-control m-input" name="listekimliktarih" id="listekimliktarih" />--%>
-                                    <input type="date" autocomplete="off" class="form-control m-input" name="ilktarih" id="ilktarih" />
-
-                                    <%--  <select class="form-control m-input m-input--square" id="listekimliktarih"></select>--%>
-                                </div>
-                                <div class="col-lg-4">
-                                    <h6>Son Tarih</h6>
-                                    <input type="date" autocomplete="off" class="form-control m-input" name="sontarih" id="sontarih" />
-                                </div>
-
-                            </div>
 
                             <div class="form-group m-form__group row">
 
@@ -74,34 +58,46 @@
 
                                 </div>
                             </div>
-
                             <div class="form-group m-form__group row">
                                 <div class="col-lg-4">
+                                    <h6>İlk Tarih</h6>
+                                    <%--       <input type="date" autocomplete="off" class="form-control m-input" name="listekimliktarih" id="listekimliktarih" />--%>
+                                    <input type="date" autocomplete="off" class="form-control m-input" name="ilktarih" id="ilktarih" />
+
+                                    <%--  <select class="form-control m-input m-input--square" id="listekimliktarih"></select>--%>
+                                </div>
+                                <div class="col-lg-4">
+                                    <h6>Son Tarih</h6>
+                                    <input type="date" autocomplete="off" class="form-control m-input" name="sontarih" id="sontarih" />
+                                </div>
+                                <div class="col-lg-2">
                                     <h6>Geçiş İzni</h6>
                                     <select class="form-control m-input m-input--square" id="listegecis">
 
-                                        <option value="0">Seçiniz</option>
-                                        <option value="1">Seçiniz</option>
-                                        <option value="2">İzinli Geçiş</option>
-                                        <option value="3">İzinsiz Geçiş</option>
+                                        <option value="2" selected="selected">Seçiniz</option>
+                                        <option value="0">İzinli Geçiş</option>
+                                        <option value="1">İzinsiz Geçiş</option>
                                     </select>
 
                                 </div>
 
-                                <div class="col-lg-4">
+                                <div class="col-lg-2">
                                     <h6>Alarm Durumu</h6>
                                     <select class="form-control m-input m-input--square" id="istealarm">
-                                        <option value="0">Seçiniz</option>
-                                        <option value="0">Seçiniz</option>
-                                        <option value="1">Alarm YOK</option>
-                                        <option value="2">Alarm VAR</option>
-                                        <option value="3">Alarm KAPATILDI</option>
+
+                                        <option value="3" selected="selected">Seçiniz</option>
+                                        <option value="0">Alarm YOK</option>
+                                        <option value="1">Alarm VAR</option>
+                                        <option value="2">Alarm KAPATILDI</option>
                                     </select>
                                 </div>
 
-                                <div class="col-lg-3">
-                                    <h6>&nbsp;</h6>
-                                    <button type="button" class="btn btn-success pull-right" onclick="jsFiltreleme()">LİSTELE</button>
+                            </div>
+
+                            <div class="form-group m-form__group row" style="padding-top: 0px;">
+
+                                <div>                                    
+                                    <button type="button" class="btn btn-success pull-right" style="align-content:center; width:120px; position: absolute; right:30px;" onclick="fn_DegerleriListele()">LİSTELE</button>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +108,7 @@
                                     <thead>
 
                                         <tr>
-                                            <th style="text-align: center; ">Id</th>
+                                            <th style="text-align: center;">Id</th>
                                             <th style="text-align: center">Etiket No</th>
                                             <th style="text-align: center">Okuma Başlangıç</th>
                                             <th style="text-align: center">Okuma Bitiş</th>
