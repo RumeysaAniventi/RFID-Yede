@@ -5,8 +5,9 @@ using System.Web;
 
 namespace YedekMalzeme.Arayuz.request
 {
-    public class FiltreliKapiListesiRequest:OrtakRequest
+    public class AlarmDurumGoruntuleRequest:OrtakRequest
     {
-        
+        public string zid { get; set; }
+
     }
 }

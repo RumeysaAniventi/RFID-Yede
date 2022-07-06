@@ -112,6 +112,7 @@
                                     <thead>
 
                                         <tr>
+                                            <th style="text-align: center; ">Id</th>
                                             <th style="text-align: center">Etiket No</th>
                                             <th style="text-align: center">Okuma Başlangıç</th>
                                             <th style="text-align: center">Okuma Bitiş</th>

@@ -9,7 +9,57 @@ $(document).ready(function () {
     fn_DegerleriListele();
 });
 
+function fn_AlarmGoruntule(v_id) {
+    
+
+    $.ajax({
+        type: "POST",
+        url: "api/AlarmDurumGoruntule",
+        data: JSON.stringify
+            ({
+                zdeger: '1',
+                zid: v_id,
+            }),
+
+        contentType: "application/json; charset=utf-8",
+
+        dataType: "json",
+
+        beforeSend: function () {
+
+
+
+        },
+        error: function (request, status, error) {
+
+            UyariMesajiVer('Sistemsel bir hata oluştu');
+        },
+        success: function (msg) {
+
+            if (msg.zSonuc == "1") {
+
+                $('#m_table_bilesen thead').html(msg._TabloBasligi);
+                $('#m_table_bilesen tbody').html(msg._TabloYazisi);
+
+            }
+            else {
+                UyariMesajiVer('Hata ' + msg.zAciklama);
+            }
+
+            
+        },
+
+        complete: function () {
+
+            $('#m_modal_1').modal('show');
+        }
+    });
+}
+
+
 function fn_DegerleriListele() {
+
+
 
     $.ajax({
         type: "POST",
@@ -59,7 +109,9 @@ function fn_DegerleriListele() {
 
 
                         content += "<tr>";
-                        content += "<td>" + vYanitDizi[iSayac].zepc + "</td>";
+
+                        content += "<td>" + vYanitDizi[iSayac].zid + "</td>";
+                        content += "<td >" + vYanitDizi[iSayac].zepc + "</td>";
                         content += "<td>" + vYanitDizi[iSayac].zokumabaslangic + "</td>";
                         content += "<td>" + vYanitDizi[iSayac].zokumabitis + "</td>";
                         content += "<td>" + vYanitDizi[iSayac].zaufnr + "</td>";
@@ -115,7 +167,7 @@ function fn_DegerleriListele() {
                               <i class="la la-ellipsis-h"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" onclick="jsAlarmGoruntule('`+ full[0] + `','` + full[3] + `','` + full[4] + `');"><i class="la la-bell-o"></i>Alarm Durumu</a>
+                                <a class="dropdown-item" href="#" onclick="fn_AlarmGoruntule('`+full[0]+`');"><i class="la la-bell-o"></i>Alarm Durumu</a>
                              
                         
                             </div>

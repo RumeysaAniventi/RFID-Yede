@@ -21,5 +21,14 @@ namespace YedekMalzeme.Arayuz.Controllers
         {
             return new kapirapor2Manager().fn_FiltreliKapiListesi(v_Gelen);
         }
+
+        [HttpPost]
+        [Route("api/AlarmDurumGoruntule")]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
+        [Authorize(Roles = "roleadmin")]
+        public AlarmDurumGoruntuleResponse fn_AlarmDurumGoruntule(AlarmDurumGoruntuleRequest v_Gelen)
+        {
+            return new kapirapor2Manager().fn_AlarmDurumGoruntule(v_Gelen);
+        }
     }
 }

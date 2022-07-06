@@ -383,6 +383,7 @@
       <DependentUpon>readerkimliklendirmeparam.aspx</DependentUpon>
     </Compile>
     <Compile Include="request\AcikPmListeleRequest.cs" />
+    <Compile Include="request\AlarmDurumGoruntuleRequest.cs" />
     <Compile Include="request\AlarmGoruntuleRequest.cs" />
     <Compile Include="request\AlarmKapatRequest.cs" />
     <Compile Include="request\BilesenGuncelleRequest.cs" />
@@ -446,6 +447,7 @@
     <Compile Include="request\YetkiGuncelleRequest.cs" />
     <Compile Include="request\YetkiSilRequest.cs" />
     <Compile Include="response\AcikPmListeleResponse.cs" />
+    <Compile Include="response\AlarmDurumGoruntuleResponse.cs" />
     <Compile Include="response\AlarmGoruntuleResponse.cs" />
     <Compile Include="response\AlarmKapatResponse.cs" />
     <Compile Include="response\BilesenMalzemeListesiResponse.cs" />
