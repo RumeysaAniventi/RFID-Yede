@@ -35,6 +35,7 @@
 
                     <!--begin::Form-->
                     <form class="m-form m-form--fit m-form--label-align-right">
+                        <%-- filtre kısmı --%>
                         <div class="m-portlet__body">
 
 
@@ -50,9 +51,6 @@
                                     <h6>Son Tarih</h6>
                                     <input type="date" autocomplete="off" class="form-control m-input" name="sontarih" id="sontarih" />
                                 </div>
-
-
-
 
                             </div>
 
@@ -100,18 +98,20 @@
                                         <option value="3">Alarm KAPATILDI</option>
                                     </select>
                                 </div>
+
                                 <div class="col-lg-3">
                                     <h6>&nbsp;</h6>
                                     <button type="button" class="btn btn-success pull-right" onclick="jsFiltreleme()">LİSTELE</button>
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-group m-form__group row">
                             <div class="col-lg-12">
-                                <table name="m_table_1" id="m_table_1" class="table table-bordered m-table m-table--border-brand m-table--head-separator-primary" style="display: block;">
+                                <table name="m_table_1" id="m_table_1" class="table table-bordered m-table m-table--border-brand m-table--head-separator-primary">
                                     <thead>
-                                        <tr>
 
+                                        <tr>
                                             <th style="text-align: center">Etiket No</th>
                                             <th style="text-align: center">Okuma Başlangıç</th>
                                             <th style="text-align: center">Okuma Bitiş</th>
@@ -122,19 +122,19 @@
                                             <th style="text-align: center">Geçiş İzni</th>
                                             <th style="text-align: center">Alarm Durumu</th>
                                             <th style="text-align: center"></th>
-
-
                                         </tr>
+
                                     </thead>
-                                    <tbody></tbody>
+                                    <tbody>
+                                    </tbody>
 
                                 </table>
                             </div>
                         </div>
+
+
+
                     </form>
-
-
-
                     <!--end::Form-->
 
 
@@ -246,14 +246,15 @@
                             </div>
                         </div>
                     </div>
+
                     <!--end::Modal-->
 
 
                 </div>
 
-                </div>
             </div>
         </div>
+    </div>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
