@@ -33,7 +33,7 @@
 
                             <div class="form-group m-form__group row">
                                 <div class="col-lg-5">
-                                  <h6>Etiket Değeri</h6>
+                                    <h6>Etiket Değeri</h6>
                                     <input type="text" autocomplete="off" class="form-control m-input" readonly="readonly" name="txtepcdegeri" id="txtepcdegeri" />
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                                     <h6>&nbsp;</h6>
                                     <%--<button type="button" class="btn btn-success btn-block" onclick="jsModalAc()">Liste</button>--%>
 
-                                     <a href="#" onclick="jsMalzemelerListele();" class="btn btn-outline-success m-btn m-btn--icon ">
+                                    <a href="#" onclick="jsMalzemelerListele();" class="btn btn-outline-success m-btn m-btn--icon ">
                                         <span>
                                             <i class="la la-search"></i>
                                             <span>Listele</span>
@@ -81,18 +81,8 @@
                                             <span>Kaydet</span>
                                         </span>
                                     </a>
-
                                 </div>
                             </div>
-
-
-                            
-
-
-
-
-
-
                         </div>
                     </form>
 
@@ -102,8 +92,6 @@
                 <!--end::Portlet-->
             </div>
         </div>
-
-
 
         <div class="modal fade" data-backdrop="static" id="m_modal_1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
             <div class="modal-dialog modal-lg" role="document">
@@ -118,6 +106,7 @@
                             <div class="col-lg-5">
                                 <h6>Malzeme Kodu</h6>
                                 < type="text" maxlength="7" autocomplete="off" class="form-control m-input" name="txtmalzemekodu" id="txtmalzemekodu" />
+                           
                             </div>
 
                             <div class="col-lg-5">
@@ -163,8 +152,7 @@
             </div>
         </div>
 
-
-         <div class="modal fade" data-backdrop="static" id="m_modal_2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal fade" data-backdrop="static" id="m_modal_2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -173,43 +161,44 @@
                     </div>
                     <div class="modal-body">
 
-                         <div class="form-group m-form__group row">
-                                <div class="col-lg-4">
-                                    <h6>Malzeme Kodu</h6>
-                                    <select class="form-control m-input m-input--square" id="listematnr" onchange="jsmalzemeAdiBul()"></select>
+                        <div class="form-group m-form__group row">
+                            <div class="col-lg-4">
+                                <h6>Malzeme Kodu</h6>
+                                <select class="form-control m-input m-input--square" id="listematnr" onchange="jsmalzemeAdiBul()"></select>
 
-                                </div>
-                            
-                             <div class="form-group m-form__group row">
-                                
-                                  <div class="col-lg-8">
+                            </div>
+
+                            <div class="form-group m-form__group row">
+
+                                <div class="col-lg-8">
                                     <h6>Malzeme Adı</h6>
-                                    <select class="form-control m-input m-input--square" id="listemaktx"  onchange="jsmalzemeKuduBul()" ></select>
+                                    <select class="form-control m-input m-input--square" id="listemaktx" onchange="jsmalzemeKuduBul()"></select>
 
                                 </div>
-                        </div>
+                            </div>
 
 
-                    </div>
-                    <div class="modal-footer">
-                        <div class="col-lg-2">
-                            <%-- <button type="button" class="btn btn-danger" data-dismiss="modal">KAPAT</button>--%>
                         </div>
-                        <div class="col-lg-10">
-                            <%--<button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>--%>
-                            <button type="button" class="btn btn-success pull-right" data-dismiss="modal" onclick="jsSecimiTamamla()">SEÇİMİ TAMAMLA</button>
+                        <div class="modal-footer">
+                            <div class="col-lg-2">
+                                <%-- <button type="button" class="btn btn-danger" data-dismiss="modal">KAPAT</button>--%>
+                            </div>
+                            <div class="col-lg-10">
+                                <%--<button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>--%>
+                                <button type="button" class="btn btn-success pull-right" data-dismiss="modal" onclick="jsSecimiTamamla()">SEÇİMİ TAMAMLA</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+
+
+
+
+
         </div>
-
-
-
-
-
-
-
     </div>
 </asp:Content>
 

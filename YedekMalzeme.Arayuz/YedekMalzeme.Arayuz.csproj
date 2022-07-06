@@ -517,6 +517,7 @@
     <Compile Include="View\AcikPmListeleView.cs" />
     <Compile Include="View\AcikSiparisListesiView.cs" />
     <Compile Include="View\FiltrelenmisKimliklendirmeView.cs" />
+    <Compile Include="View\KapiFiltreliListeleView.cs" />
     <Compile Include="View\KimliklendirmeFiltrelemeView.cs" />
     <Compile Include="View\KimliklendirmeTarihView.cs" />
     <Compile Include="View\MalzemeAdiListeleView.cs" />
@@ -1947,7 +1948,6 @@
     <Content Include="theme\vendors\clipboard\package.js" />
     <Content Include="theme\vendors\counterup\jquery.counterup.js" />
     <Content Include="theme\vendors\counterup\jquery.counterup.min.js" />
-
     <Content Include="theme\vendors\dropzone\dist\basic.css" />
     <Content Include="theme\vendors\dropzone\dist\dropzone-amd-module.js" />
     <Content Include="theme\vendors\dropzone\dist\dropzone.css" />
@@ -1963,7 +1963,6 @@
     <Content Include="theme\vendors\es6-promise-polyfill\promise.min.js" />
     <Content Include="theme\vendors\handlebars\.gitattributes" />
     <Content Include="theme\vendors\handlebars\.gitmodules" />
-
     <Content Include="theme\vendors\handlebars\dist\amd\handlebars.js" />
     <Content Include="theme\vendors\handlebars\dist\amd\handlebars.runtime.js" />
     <Content Include="theme\vendors\handlebars\dist\amd\handlebars\base.js" />
@@ -2063,7 +2062,6 @@
     <Content Include="theme\vendors\handlebars\lib\handlebars\utils.js" />
     <Content Include="theme\vendors\handlebars\lib\index.js" />
     <Content Include="theme\vendors\handlebars\lib\precompiler.js" />
-   
     <Content Include="theme\vendors\handlebars\runtime.js" />
     <Content Include="theme\vendors\inputmask\css\inputmask.css" />
     <Content Include="theme\vendors\inputmask\dist\inputmask\bindings\inputmask.binding.js" />
@@ -2395,7 +2393,6 @@
     <Content Include="theme\vendors\js\framework\components\plugins\forms\bootstrap-switch.init.js" />
     <Content Include="theme\vendors\js\framework\components\plugins\forms\bootstrap-timepicker.init.js" />
     <Content Include="theme\vendors\js\framework\components\plugins\forms\jquery-validation.init.js" />
-   
     <Content Include="theme\vendors\moment\ender.js" />
     <Content Include="theme\vendors\moment\locale\af.js" />
     <Content Include="theme\vendors\moment\locale\ar-dz.js" />
@@ -4309,7 +4306,6 @@
     <Content Include="theme\vendors\counterup\LICENSE" />
     <Content Include="theme\vendors\counterup\package.json" />
     <Content Include="theme\vendors\counterup\README.md" />
-
     <Content Include="theme\vendors\dropzone\.tagconfig" />
     <Content Include="theme\vendors\dropzone\bower.json" />
     <Content Include="theme\vendors\dropzone\component.json" />

@@ -17,9 +17,9 @@ namespace YedekMalzeme.Arayuz.Controllers
         [Route("api/FiltreliKapiListesi")]
         [System.Web.Mvc.ValidateAntiForgeryToken]
         [Authorize(Roles = "roleadmin")]
-        public FiltreliKapiListesiResponse SipariseBilesenEkle(FiltreliKapiListesiRequest v_Gelen)
+        public FiltreliKapiListesiResponse fn_FiltreliKapiListesi(FiltreliKapiListesiRequest v_Gelen)
         {
-            return new kapirapor2Manager().fn_SipariseBilesenEkle(v_Gelen);
+            return new kapirapor2Manager().fn_FiltreliKapiListesi(v_Gelen);
         }
     }
 }

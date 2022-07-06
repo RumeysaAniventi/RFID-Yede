@@ -50,7 +50,7 @@ function fn_DegerleriListele() {
 
             if (msg.zSonuc == "1") {
 
-                $('#m_table_1 tbody').html(msg.zListeYazisi);
+
 
 
             }
