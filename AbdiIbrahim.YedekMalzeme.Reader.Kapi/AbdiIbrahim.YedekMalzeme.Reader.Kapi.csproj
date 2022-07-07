@@ -39,9 +39,14 @@
     <Reference Include="DevExpress.Xpo.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Xpo.21.1.5\lib\net452\DevExpress.Xpo.v21.1.dll</HintPath>
     </Reference>
-    <Reference Include="Impinj.OctaneSdk, Version=2.0.2.240, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\AbdiIbrahim.YedekMalzeme.Reader.Kimliklendirme\References.Dll\Impinj.OctaneSdk.dll</HintPath>
+    <Reference Include="Impinj.OctaneSdk, Version=2.26.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OctaneSDK.2.26.1\lib\net461\Impinj.OctaneSdk.dll</HintPath>
+    </Reference>
+    <Reference Include="LLRP, Version=10.26.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\libltknet-sdk.10.26.1\lib\net461\LLRP.dll</HintPath>
+    </Reference>
+    <Reference Include="LLRP.Impinj, Version=10.26.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\libltknet-sdk.10.26.1\lib\net461\LLRP.Impinj.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.14.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.14\lib\net45\log4net.dll</HintPath>

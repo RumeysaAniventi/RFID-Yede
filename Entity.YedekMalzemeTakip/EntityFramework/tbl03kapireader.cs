@@ -26,6 +26,14 @@ namespace Entity.YedekMalzemeTakip.EntityFramework
             set { SetPropertyValue<int>("okumabittimi", ref _okumabittimi, value); }
         }
 
+        int _buzzer = 0;
+        [Persistent("buzzer")]
+        public int buzzer
+        {
+            get { return _buzzer; }
+            set { SetPropertyValue<int>("buzzer", ref _buzzer, value); }
+        }
+
         DateTime _okumabaslama;
         [Persistent("okumabaslama")]
         public DateTime okumabaslama
