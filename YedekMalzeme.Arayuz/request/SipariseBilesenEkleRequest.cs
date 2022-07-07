@@ -7,7 +7,7 @@ namespace YedekMalzeme.Arayuz.request
 {
     public class SipariseBilesenEkleRequest:OrtakRequest
     {
-        public string zepc { get; set; }
+        public string zid { get; set; }
         public string zaufnr { get; set; }
     }
 }

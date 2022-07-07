@@ -15,22 +15,22 @@ namespace YedekMalzeme.Arayuz.Controllers
 
         
 
-        [HttpPost]
-        [Route("api/SipariseBilesenEkle")]
-        [System.Web.Mvc.ValidateAntiForgeryToken]
-        [Authorize(Roles = "roleadmin")]
-        public SipariseBilesenEkleResponse SipariseBilesenEkle(SipariseBilesenEkleRequest v_Gelen)
-        {
-            return new kapibilgiManager().fn_SipariseBilesenEkle(v_Gelen);
-        }
-        [HttpPost]
-        [Route("api/SipariseEkle")]
-        [System.Web.Mvc.ValidateAntiForgeryToken]
-        [Authorize(Roles = "roleadmin")]
-        public SipariseEkleResponse SipariseEkle(SipariseEkleRequest v_Gelen)
-        {
-            return new kapibilgiManager().fn_SipariseEkle(v_Gelen);
-        }
+        //[HttpPost]
+        //[Route("api/SipariseBilesenEkle")]
+        //[System.Web.Mvc.ValidateAntiForgeryToken]
+        //[Authorize(Roles = "roleadmin")]
+        //public SipariseBilesenEkleResponse SipariseBilesenEkle(SipariseBilesenEkleRequest v_Gelen)
+        //{
+        //    return new kapibilgiManager().fn_SipariseBilesenEkle(v_Gelen);
+        //}
+        //[HttpPost]
+        //[Route("api/SipariseEkle")]
+        //[System.Web.Mvc.ValidateAntiForgeryToken]
+        //[Authorize(Roles = "roleadmin")]
+        //public SipariseEkleResponse SipariseEkle(SipariseEkleRequest v_Gelen)
+        //{
+        //    return new kapibilgiManager().fn_SipariseEkle(v_Gelen);
+        //}
         //[HttpPost]
         //[Route("api/AlarmKapat")]
         //[System.Web.Mvc.ValidateAntiForgeryToken]
@@ -40,7 +40,7 @@ namespace YedekMalzeme.Arayuz.Controllers
         //    return new kapibilgiManager().fn_AlarmKapat(v_Gelen);
         //}
 
-      
+
 
         [HttpPost]
         [Route("api/AlarmGoruntule")]

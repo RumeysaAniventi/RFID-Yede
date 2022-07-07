@@ -282,3 +282,112 @@ function fn_DegerleriListele() {
 
     });
 }
+
+function jsSipariseBilesenEkle() {
+
+    var vid = document.getElementById("lblID").innerText;
+    var vaufnr = $('#listePmSiparis').val();
+
+    $.ajax({
+        type: "POST",
+        url: "api/SipariseBilesenEkle",
+        data: JSON.stringify
+            ({
+                zdeger: '1',
+                zid: vid,
+                zaufnr: vaufnr
+            }),
+
+        contentType: "application/json; charset=utf-8",
+
+        dataType: "json",
+
+        beforeSend: function () {
+
+
+
+        },
+
+        error: function (request, status, error) {
+
+            UyariMesajiVer('Sistemsel bir hata oluştu');
+        },
+
+        success: function (msg) {
+
+            if (msg.zSonuc == "1") {
+
+                BasariliIslem("Sipariş bileşeni eklendi");
+            }
+            else {
+                UyariMesajiVer('HTN3 Sistemsel bir hata oluştu. Lütfen daha sonra tekrar deneyiniz');
+            }
+        },
+
+        complete: function () {
+            $('#m_modal_1').hide();
+            $('#m_modal_2').hide();
+        }
+    });
+}
+
+function fn_SipariseEkle(v_id) {
+
+    var v_gelenlistesiparis = $('#listePmSiparis')
+
+    $.ajax({
+        type: "POST",
+        url: "api/SipariseEkle",
+        data: JSON.stringify
+            ({
+                zdeger: '1',
+                zid: v_id
+            }),
+
+        contentType: "application/json; charset=utf-8",
+
+        dataType: "json",
+
+        beforeSend: function () {
+           
+           
+
+        },
+
+        error: function (request, status, error) {
+
+            UyariMesajiVer('Sistemsel bir hata oluştu');
+        },
+
+        success: function (msg) {
+
+            if (msg.zSonuc == "1") {
+
+                v_gelenlistesiparis.html(msg.zaufnrlistesi);
+
+               document.getElementById("lblID").innerHTML =msg.zid;
+                $('#txtepc').val(msg.zepc);
+                $('#txtmatnr').val(msg.zmatnr);
+                $('#txtmaktx').val(msg.zmaktx);
+                $('#txtsernr').val(msg.zsern);
+
+                $('#m_modal_2').modal({
+                    show: true,
+
+                });
+
+
+            }
+            else {
+                UyariMesajiVer('HTN3 Sistemsel bir hata oluştu. Lütfen daha sonra tekrar deneyiniz');
+            }
+        },
+
+        complete: function () {
+
+           
+
+        }
+    });
+
+}

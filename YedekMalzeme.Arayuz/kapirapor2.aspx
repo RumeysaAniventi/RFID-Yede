@@ -96,8 +96,8 @@
 
                             <div class="form-group m-form__group row" style="padding-top: 0px;">
 
-                                <div>                                    
-                                    <button type="button" class="btn btn-success pull-right" style="align-content:center; width:120px; position: absolute; right:30px;" onclick="fn_DegerleriListele()">LİSTELE</button>
+                                <div>
+                                    <button type="button" class="btn btn-success pull-right" style="align-content: center; width: 120px; position: absolute; right: 30px;" onclick="fn_DegerleriListele()">LİSTELE</button>
                                 </div>
                             </div>
                         </div>
@@ -195,6 +195,12 @@
                                 <div class="modal-body">
 
                                     <div class="form-group m-form__group row">
+                                        <div class="col-lg-12">                                           
+                                            <span id="lblID"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group m-form__group row">
                                         <div class="col-lg-12">
                                             <h6>Pm Sipariş</h6>
                                             <select class="form-control m-input m-input--square" id="listePmSiparis"></select>
@@ -245,6 +251,67 @@
                     </div>
 
                     <!--end::Modal-->
+
+                    <%--  <div class="modal fade" data-backdrop="static" id="m_modal_2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Sipariş Bilgileri Güncelle</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            
+                            <div class="form-group m-form__group row">
+                                <div class="col-lg-12">
+                                    <h6>Pm Sipariş</h6>
+                                    <select class="form-control m-input m-input--square" id="listePmSiparis"></select>
+                                </div>
+                            </div>
+
+                            <div class="form-group m-form__group row">
+                                <div class="col-lg-12">
+                                    <h6>Etiket No</h6>
+                                    <input type="text" autocomplete="off" class="form-control m-input" name="txtepc" id="txtepc" />
+                                </div>
+                            </div>
+
+                            <div class="form-group m-form__group row">
+                                <div class="col-lg-12">
+                                    <h6>Malzeme Kodu</h6>
+                                    <input type="text" autocomplete="off" class="form-control m-input" name="txtmatnr" id="txtmatnr" />
+                                </div>
+                            </div>
+
+                            <div class="form-group m-form__group row">
+                                <div class="col-lg-12">
+                                    <h6>Malzeme Adı</h6>
+                                    <input type="text" autocomplete="off" class="form-control m-input" name="txtmaktx" id="txtmaktx" />
+                                </div>
+                            </div>
+
+                            <div class="form-group m-form__group row">
+                                <div class="col-lg-12">
+                                    <h6>Seri No</h6>
+                                    <input type="text" autocomplete="off" class="form-control m-input" name="txtsernr" id="txtsernr" />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <div class="col-lg-2">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">KAPAT</button>
+                            </div>
+                            <div class="col-lg-10">
+                                <%--<button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>--%>
+                    <button type="button" class="btn btn-success pull-right" onclick="jsSipariseBilesenEkle()">Bileşen Ekle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>--%>
 
 
                 </div>

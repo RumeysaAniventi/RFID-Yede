@@ -7,6 +7,7 @@ namespace YedekMalzeme.Arayuz.response
 {
     public class SipariseEkleResponse:ResponseOrtak
     {
+        public string zid { get; set; }
         public string zaufnrlistesi { get; set; }
         public string zmatnr { get; set; }
         public string zmaktx { get; set; }

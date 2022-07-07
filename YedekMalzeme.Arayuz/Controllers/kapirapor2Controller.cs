@@ -40,5 +40,22 @@ namespace YedekMalzeme.Arayuz.Controllers
         {
             return new kapirapor2Manager().fn_AlarmKapat(v_Gelen);
         }
+
+        [HttpPost]
+        [Route("api/SipariseBilesenEkle")]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
+        [Authorize(Roles = "roleadmin")]
+        public SipariseBilesenEkleResponse SipariseBilesenEkle(SipariseBilesenEkleRequest v_Gelen)
+        {
+            return new kapirapor2Manager().fn_SipariseBilesenEkle(v_Gelen);
+        }
+        [HttpPost]
+        [Route("api/SipariseEkle")]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
+        [Authorize(Roles = "roleadmin")]
+        public SipariseEkleResponse SipariseEkle(SipariseEkleRequest v_Gelen)
+        {
+            return new kapirapor2Manager().fn_SipariseEkle(v_Gelen);
+        }
     }
 }
