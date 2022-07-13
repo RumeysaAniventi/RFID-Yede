@@ -20,7 +20,7 @@ namespace Entity.YedekMalzemeTakip.EntityFramework
         public string epc
         {
             get { return _epc; }
-            set { SetPropertyValue<string>("aufnr", ref _epc, value); }
+            set { SetPropertyValue<string>("epc", ref _epc, value); }
         }
 
 

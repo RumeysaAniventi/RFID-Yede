@@ -770,8 +770,12 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.AcikPmSiparis
 
                                 }
 
+                               
 
                             }
+
+                            
+
 
 
                             for (int verisayac1 = 0; verisayac1 < _Cevap.EtReturn.Length; verisayac1++)
@@ -844,6 +848,76 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.AcikPmSiparis
                                 item.lastupdateuser = "aniventi";
                                 item.guncellemezamani = DateTime.Now;
                                 item.Save();
+                            }
+                        }
+                        #endregion
+
+                        #region tbl06analiz ve tblzrfidorderlistreponse karşılaştırması
+                        using (Session session = XpoManager.Instance.GetNewSession())
+                        {
+                            string aufnrthis = "";
+                            int _countsap = 0;
+                            int _countiliskili = 0;
+                            //Sipariş numarası farklı olanları al.
+                            List<tblzrfidorderlistreponse> _Liste2 = session.Query<tblzrfidorderlistreponse>().Where(w => w.aktif == 1).GroupBy(x => x.aufnr).Select(y => y.First()).ToList();
+
+                            foreach (var item in _Liste2)
+                            {
+                                _countsap = session.Query<tblzrfidorderlistreponse>().Where(w => w.aufnr==item.aufnr).ToList().Count;
+                                List<tbl06analiz> _Tempanaliz = session.Query<tbl06analiz>().Where(w =>w.aktif == 1 && w.aufnr==item.aufnr).ToList();
+                                _countiliskili = _Tempanaliz.Count;
+                                aufnrthis = item.aufnr;
+
+                                if (_countsap!=_countiliskili)
+                                {
+
+                                    List<tbl07sapfark> _Tempfark = session.Query<tbl07sapfark>().Where(w => w.aktif == 1 && w.aufnr == item.aufnr).ToList();
+
+                                    if (_Tempfark.Count==0)
+                                    {
+                                        new tbl07sapfark(session)
+                                        {
+                                            aktif = 1,
+                                            createuser = "aniventi",
+                                            databasekayitzamani = DateTime.Now,
+                                            guncellemezamani = DateTime.Now,
+                                            id = Guid.NewGuid().ToString().ToUpper(),
+                                            lastupdateuser = "aniventi",
+                                            aufnr = aufnrthis,
+                                            iliskiliSayisi = _countiliskili,
+                                            toplamSayi = _countsap,
+                                            emailgonderimi = 0
+
+                                        }.Save();
+                                    }
+                                    else
+                                    {
+                                        _Tempfark.FirstOrDefault().iliskiliSayisi = _countiliskili;
+                                        _Tempfark.FirstOrDefault().toplamSayi = _countsap;
+                                        _Tempfark.FirstOrDefault().databasekayitzamani = DateTime.Now;
+                                        _Tempfark.FirstOrDefault().guncellemezamani = DateTime.Now;
+                                        _Tempfark.FirstOrDefault().emailgonderimi = 0;
+                                        _Tempfark.FirstOrDefault().Save();
+
+                                    }
+                                    
+                                }
+                                else
+                                {
+                                    List<tbl07sapfark> _Tempfark = session.Query<tbl07sapfark>().Where(w => w.aktif == 1 && w.aufnr == item.aufnr).ToList();
+
+                                    if (_Tempfark.Count!=0)
+                                    {
+                                        _Tempfark.FirstOrDefault().iliskiliSayisi = _countiliskili;
+                                        _Tempfark.FirstOrDefault().toplamSayi = _countsap;
+                                        _Tempfark.FirstOrDefault().databasekayitzamani = DateTime.Now;
+                                        _Tempfark.FirstOrDefault().guncellemezamani = DateTime.Now;
+                                        _Tempfark.FirstOrDefault().emailgonderimi = 1;
+                                        _Tempfark.FirstOrDefault().aktif = 0;
+                                        _Tempfark.FirstOrDefault().Save();
+                                    }
+                                }
+                                
                             }
                         }
                         #endregion
