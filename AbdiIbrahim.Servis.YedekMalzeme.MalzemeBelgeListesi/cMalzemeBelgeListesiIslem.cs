@@ -196,8 +196,8 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
                                         databasekayitzamani = DateTime.Now,
                                         guncellemezamani = DateTime.Now,
                                         id = Guid.NewGuid().ToString().ToUpper(),
-                                        createuser = "aniventi",
-                                        lastupdateuser = "aniventi",
+                                        createuser = "service",
+                                        lastupdateuser = "service",
                                         aufnr = _gelenaufnr,
                                         budat = _gelenbudat,
                                         bwart = _gelenbwart,
@@ -215,8 +215,12 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
                                         mjahr = _gelenmjahr,
                                         menge = _gelenmenge,
                                         
+                                        
 
                                     }.Save();
+
+                                    
+
 
 
                                 }
@@ -231,12 +235,12 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
                                             {
                                                 aktif = _Temp.aktif,
                                                 databasekayitzamani = _Temp.databasekayitzamani,
-                                                createuser = "aniventi",
+                                                createuser = "service",
                                                 guncellemezamani = DateTime.Now,
                                                 degisenalan = "aufnr",
                                                 aufnr = _Temp.aufnr,
                                                 id = Guid.NewGuid().ToString().ToUpper(),
-                                                lastupdateuser = "aniventi",
+                                                lastupdateuser = "service",
                                                 lgort = _Temp.lgort,
                                                 maktx = _Temp.maktx,
                                                 matnr = _Temp.matnr,
@@ -260,7 +264,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
 
 
                                         _Temp.aufnr = _gelenaufnr;
-                                        _Temp.lastupdateuser = "aniventi";
+                                        _Temp.lastupdateuser = "service";
                                         _Temp.guncellemezamani = DateTime.Now;
                                         _Temp.Save();
                                     }
@@ -273,12 +277,12 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
                                             {
                                                 aktif = _Temp.aktif,
                                                 databasekayitzamani = _Temp.databasekayitzamani,
-                                                createuser = "aniventi",
+                                                createuser = "service",
                                                 guncellemezamani = DateTime.Now,
                                                 degisenalan = "matnr",
                                                 aufnr = _Temp.aufnr,
                                                 id = Guid.NewGuid().ToString().ToUpper(),
-                                                lastupdateuser = "aniventi",
+                                                lastupdateuser = "service",
                                                 lgort = _Temp.lgort,
                                                 maktx = _Temp.maktx,
                                                 matnr = _Temp.matnr,
@@ -300,7 +304,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
                                             _LogAlindimi = true;
                                         }
                                         _Temp.matnr = _gelenmatnr;
-                                        _Temp.lastupdateuser = "aniventi";
+                                        _Temp.lastupdateuser = "service";
                                         _Temp.guncellemezamani = DateTime.Now;
                                         _Temp.Save();
                                     }
@@ -313,12 +317,12 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
                                             {
                                                 aktif = _Temp.aktif,
                                                 databasekayitzamani = _Temp.databasekayitzamani,
-                                                createuser = "aniventi",
+                                                createuser = "service",
                                                 guncellemezamani = DateTime.Now,
                                                 degisenalan = "sernr",
                                                 aufnr = _Temp.aufnr,
                                                 id = Guid.NewGuid().ToString().ToUpper(),
-                                                lastupdateuser = "aniventi",
+                                                lastupdateuser = "service",
                                                 lgort = _Temp.lgort,
                                                 maktx = _Temp.maktx,
                                                 matnr = _Temp.matnr,
@@ -341,7 +345,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
                                         }
 
                                         _Temp.sernr = _gelensernr;
-                                        _Temp.lastupdateuser = "aniventi";
+                                        _Temp.lastupdateuser = "service";
                                         _Temp.guncellemezamani = DateTime.Now;
                                         _Temp.Save();
                                     }
@@ -354,12 +358,12 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
                                             {
                                                 aktif = _Temp.aktif,
                                                 databasekayitzamani = _Temp.databasekayitzamani,
-                                                createuser = "aniventi",
+                                                createuser = "service",
                                                 guncellemezamani = DateTime.Now,
                                                 degisenalan = "meins",
                                                 aufnr = _Temp.aufnr,
                                                 id = Guid.NewGuid().ToString().ToUpper(),
-                                                lastupdateuser = "aniventi",
+                                                lastupdateuser = "service",
                                                 lgort = _Temp.lgort,
                                                 maktx = _Temp.maktx,
                                                 matnr = _Temp.matnr,
@@ -381,7 +385,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
                                             _LogAlindimi = true;
                                         }
                                         _Temp.meins = _gelenmeins;
-                                        _Temp.lastupdateuser = "aniventi";
+                                        _Temp.lastupdateuser = "service";
                                         _Temp.guncellemezamani = DateTime.Now;
                                         _Temp.Save();
                                     }
@@ -394,12 +398,12 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
                                             {
                                                 aktif = _Temp.aktif,
                                                 databasekayitzamani = _Temp.databasekayitzamani,
-                                                createuser = "aniventi",
+                                                createuser = "service",
                                                 guncellemezamani = DateTime.Now,
                                                 degisenalan = "menge",
                                                 aufnr = _Temp.aufnr,
                                                 id = Guid.NewGuid().ToString().ToUpper(),
-                                                lastupdateuser = "aniventi",
+                                                lastupdateuser = "service",
                                                 lgort = _Temp.lgort,
                                                 maktx = _Temp.maktx,
                                                 matnr = _Temp.matnr,
@@ -421,7 +425,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
                                             _LogAlindimi = true;
                                         }
                                         _Temp.menge = _gelenmenge;
-                                        _Temp.lastupdateuser = "aniventi";
+                                        _Temp.lastupdateuser = "service";
                                         _Temp.guncellemezamani = DateTime.Now;
                                         _Temp.Save();
                                     }
@@ -434,12 +438,12 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
                                             {
                                                 aktif = _Temp.aktif,
                                                 databasekayitzamani = _Temp.databasekayitzamani,
-                                                createuser = "aniventi",
+                                                createuser = "service",
                                                 guncellemezamani = DateTime.Now,
                                                 degisenalan = "vornr",
                                                 aufnr = _Temp.aufnr,
                                                 id = Guid.NewGuid().ToString().ToUpper(),
-                                                lastupdateuser = "aniventi",
+                                                lastupdateuser = "service",
                                                 lgort = _Temp.lgort,
                                                 maktx = _Temp.maktx,
                                                 matnr = _Temp.matnr,
@@ -461,7 +465,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
                                             _LogAlindimi = true;
                                         }
                                         _Temp.vornr = _gelenvornr;
-                                        _Temp.lastupdateuser = "aniventi";
+                                        _Temp.lastupdateuser = "service";
                                         _Temp.guncellemezamani = DateTime.Now;
                                         _Temp.Save();
                                     }
@@ -502,11 +506,11 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
                                     new tblmalzemebelgelistesireturn(session)
                                     {
                                         aktif = 1,
-                                        createuser = "aniventi,",
+                                        createuser = "service",
                                         databasekayitzamani = DateTime.Now,
                                         guncellemezamani = DateTime.Now,
                                         id = Guid.NewGuid().ToString().ToUpper(),
-                                        lastupdateuser = "aniventi,",
+                                        lastupdateuser = "service",
                                         field = _gelenfield,
                                         logmsgno = _gelenlogmsgno,
                                         logno = _gelenlogno,
@@ -541,7 +545,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
 
                             foreach (var item in _Liste)
                             {
-                                item.lastupdateuser = "aniventi";
+                                item.lastupdateuser = "service";
                                 item.guncellemezamani = DateTime.Now;
                                 item.Save();
                             }

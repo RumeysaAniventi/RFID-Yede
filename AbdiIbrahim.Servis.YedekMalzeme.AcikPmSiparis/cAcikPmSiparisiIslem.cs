@@ -892,6 +892,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.AcikPmSiparis
                                     }
                                     else
                                     {
+
                                         _Tempfark.FirstOrDefault().iliskiliSayisi = _countiliskili;
                                         _Tempfark.FirstOrDefault().toplamSayi = _countsap;
                                         _Tempfark.FirstOrDefault().databasekayitzamani = DateTime.Now;
