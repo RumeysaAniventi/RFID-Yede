@@ -546,7 +546,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
 
                                     }.Save();
 
-                                    tbl06analiz _guncelanaliz = session.Query<tbl06analiz>().FirstOrDefault(g => g.aktif == 1 && g.matnr.Equals(_gelenmatnr) && g.maktx.Equals(_gelenmaktx) && g.sernr.Equals(_gelensernr));
+                                    tbl06analiz _guncelanaliz = session.Query<tbl06analiz>().FirstOrDefault(g => g.aktif == 1 && g.aufnr.Equals(_gelenaufnr) &&g.matnr.Equals(_gelenmatnr) && g.maktx.Equals(_gelenmaktx) && g.sernr.Equals(_gelensernr));
 
                                     if (_guncelanaliz != null)
                                     {
