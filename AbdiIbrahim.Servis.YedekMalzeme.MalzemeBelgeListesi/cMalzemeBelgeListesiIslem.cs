@@ -89,6 +89,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
                     }
                     catch (Exception ex)
                     {
+                        Thread.Sleep(TimeSpan.FromMinutes(_BeklemeSuresi));
 
                         _LogDosyasi.Error("Parametre Değerleri Çekilmedi= " + ex.ToString());
 
@@ -555,6 +556,16 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
                                         _guncelanaliz.lastupdateuser = "service";
                                         _guncelanaliz.guncellemezamani = DateTime.Now;
                                         _guncelanaliz.Save();
+
+                                        tblkimliklendirme _kimlikiptal = session.Query<tblkimliklendirme>().FirstOrDefault(k => k.aktif == 1 && k.matnr.Equals(_gelenmatnr) && k.maktx.Equals(_gelenmaktx) && k.sernr.Equals(_gelensernr));
+
+                                        if (_kimlikiptal !=null)
+                                        {
+                                            _kimlikiptal.aktif = 0;
+                                            _kimlikiptal.guncellemezamani = DateTime.Now;
+                                            _kimlikiptal.lastupdateuser = "service";
+                                            _kimlikiptal.Save();
+                                        }
                                     }
 
 
@@ -785,6 +796,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
             }
             catch (Exception ex)
             {
+                Thread.Sleep(TimeSpan.FromMinutes(_BeklemeSuresi));
 
                 _LogDosyasi.Error(ex.ToString());
             }

@@ -80,24 +80,49 @@ namespace YedekMalzeme.Arayuz.manager
                         return _Cevap;
                     }
 
-                    tblkimliklendirme _KimlikTemp = session.Query<tblkimliklendirme>().FirstOrDefault(w => w.aktif == 1 && w.gelenepc.Equals(v_gelen.zepc));
+                    tbl06analiz _KimlikTemp = session.Query<tbl06analiz>().FirstOrDefault(k =>k.aktif==1 && k.epc.Equals(v_gelen.zepc));
                     if (_KimlikTemp != null)
                     {
-                        _Cevap = new KimlikKimliklendirResponse();
-                        _Cevap.zSonuc = -1;
-                        _Cevap.zAciklama = "Bu etiket daha önceden kimliklendirilmiş";
-
-                        return _Cevap;
+                        if ( _KimlikTemp.tuketim == 0)
+                        {
+                            _Cevap = new KimlikKimliklendirResponse();
+                            _Cevap.zSonuc = -1;
+                            _Cevap.zAciklama = "Bu etiket zaten kimliklendirilmiş bir ürün";
+                        }
+                       
                     }
 
-                    _KimlikTemp = session.Query<tblkimliklendirme>().FirstOrDefault(w => w.aktif == 1 && w.sernr.Equals(v_gelen.zsernr));
-                    if (_KimlikTemp != null)
+
+                    //tblkimliklendirme _KimlikTemp = session.Query<tblkimliklendirme>().FirstOrDefault(w => w.aktif == 1 && w.gelenepc.Equals(v_gelen.zepc));
+                    //if (_KimlikTemp != null)
+                    //{
+                    //    _Cevap = new KimlikKimliklendirResponse();
+                    //    _Cevap.zSonuc = -1;
+                    //    _Cevap.zAciklama = "Bu etiket daha önceden kimliklendirilmiş";
+
+                    //    return _Cevap;
+                    //}
+
+                    tblkimliklendirme _KimlikTemp2 = session.Query<tblkimliklendirme>().FirstOrDefault(w => w.aktif == 1 && w.maktx.Equals(v_gelen.zmaktx)&& w.matnr.Equals(v_gelen.zmatnr) && w.sernr.Equals(v_gelen.zsernr));
+                    if (_KimlikTemp2 != null)
                     {
                         _Cevap = new KimlikKimliklendirResponse();
                         _Cevap.zSonuc = -1;
                         _Cevap.zAciklama = "Bu seri numarası daha önceden kimliklendirilmiş";
 
                         return _Cevap;
+                    }
+
+                    tbl06analiz _tuketilmismalzeme = session.Query<tbl06analiz>().FirstOrDefault(t => t.aktif == 1  && t.sernr.Equals(v_gelen.zsernr) && t.matnr.Equals(v_gelen.zmatnr) && t.maktx.Equals(v_gelen.zmaktx));
+
+                    if (_tuketilmismalzeme !=null)
+                    {
+                        if (_tuketilmismalzeme.tuketim==1)
+                        {
+                            _Cevap = new KimlikKimliklendirResponse();
+                            _Cevap.zSonuc = -1;
+                            _Cevap.zAciklama = "Bu seri numaralı ürün tüketilmiştir. Yeniden kimliklendiremezsiniz";
+                        }
                     }
 
                     new tblkimliklendirme(session)

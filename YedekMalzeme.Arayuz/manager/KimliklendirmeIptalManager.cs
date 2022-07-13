@@ -951,6 +951,17 @@ namespace YedekMalzeme.Arayuz.manager
 
 
                 }
+                    tbl06analiz _tuketimkontrol = session.Query<tbl06analiz>().FirstOrDefault(t => t.aktif == 1 && t.epc.Equals(v_gelen.zepc) && t.matnr.Equals(v_gelen.zmatnr) && t.maktx.Equals(v_gelen.zmaktx) && t.sernr.Equals(v_gelen.zsernr));
+                    if (_tuketimkontrol !=null)
+                    {
+                        if (_tuketimkontrol.tuketim==1)
+                        {
+                            _cevap.zSonuc = -1;
+                            _cevap.zAciklama = "Tüketilmiş bir ürünün kimliğini kaldıramazsınız";
+
+                            return _cevap;
+                        }
+                    }
 
                     tblkimliklendirme _tempkimliklendirme = session.Query<tblkimliklendirme>().FirstOrDefault(b => b.aktif == 1 && b.gelenepc.Equals(v_gelen.zepc) && b.matnr.Equals(v_gelen.zmatnr) && b.sernr.Equals(v_gelen.zsernr) && b.maktx.Equals(v_gelen.zmaktx));
                     if (_tempkimliklendirme != null)
