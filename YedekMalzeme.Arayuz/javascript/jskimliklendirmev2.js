@@ -6,7 +6,7 @@
 function jsSecimiTamamla() {
 
     var v_secilimatnr = $('#listematnr').val();
-    var v_secilimaktx= $('#listemaktx').val();
+    var v_secilimaktx = $('#listemaktx').val();
 
     $.ajax({
         type: "POST",
@@ -37,7 +37,7 @@ function jsSecimiTamamla() {
         success: function (msg) {
 
             if (msg.zSonuc == "1") {
-                
+
                 $('#txtkod').val(msg.zmatnr);
                 $('#txtad').val(msg.zmaktx);
             }
@@ -157,7 +157,7 @@ function jsMalzemelerListele() {
 
     var v_mazlemeadi = $('#listemaktx');
     var v_mazlemekodu = $('#listematnr');
-    
+
 
     $.ajax({
         type: "POST",
@@ -221,7 +221,7 @@ function fn_MalzemeAdiListele() {
         data: JSON.stringify
             ({
                 zdeger: '1',
-               
+
             }),
 
         contentType: "application/json; charset=utf-8",
@@ -244,7 +244,7 @@ function fn_MalzemeAdiListele() {
             if (msg.zSonuc == "1") {
 
                 v_gelenlistesiparis.html(msg.zaufnrlistesi);
-                
+
 
                 $('#m_modal_2').modal({
                     show: true,
@@ -562,7 +562,7 @@ function jsModalAc1() {
 
         beforeSend: function () {
 
-                      
+
             fn_MalzemeAdiListele();
 
         },
@@ -576,7 +576,7 @@ function jsModalAc1() {
 
             if (msg.zSonuc == "1") {
 
-                
+
 
                 $('#m_modal_2').modal({
                     show: true,
@@ -598,7 +598,7 @@ function jsModalAc1() {
     });
 
 
-    
+
 }
 
 function jsModalAc() {
@@ -641,7 +641,7 @@ function jsMalzemeListesiAra() {
 
         dataType: "json",
 
-        beforeSend: function () {
+        befored: function () {
 
             if ($.fn.dataTable.isDataTable('#m_table_1')) {
                 table = $('#m_table_1').DataTable();

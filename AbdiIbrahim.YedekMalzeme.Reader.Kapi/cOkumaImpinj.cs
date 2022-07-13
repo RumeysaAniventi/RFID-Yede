@@ -121,15 +121,15 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kapi
                                     List<tbl03kapireader> _ItemDizi = session.Query<tbl03kapireader>().ToList();
 
                                     tblreaderkapiparam _param = session.Query<tblreaderkapiparam>().FirstOrDefault(p => p.aktif == 1);
-                                    
+
 
                                     foreach (var _Item in _ItemDizi)
                                     {
-                                       
+
 
                                         if (DateTime.Now.Subtract(_Item.okumabitis).TotalSeconds >= 15)
                                         {
-                                          
+
                                             //okuma bitti
                                             _Item.okumabittimi = 1;
                                             _Item.Save();
