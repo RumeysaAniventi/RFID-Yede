@@ -166,8 +166,6 @@ namespace YedekMalzeme.Arayuz.manager
             return _Cevap;
         }
 
-
-
         internal AlarmDurumGoruntuleResponse fn_AlarmDurumGoruntule(AlarmDurumGoruntuleRequest v_Gelen)
         {
             AlarmDurumGoruntuleResponse _Cevap = new AlarmDurumGoruntuleResponse();

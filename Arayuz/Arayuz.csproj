@@ -467,6 +467,9 @@
     <Content Include="theme\assets\vendors\custom\datatables\datatables.bundle.min.js" />
     <Content Include="theme\assets\vendors\custom\datatables\datatables.bundle.rtl.css" />
     <Content Include="theme\assets\vendors\custom\datatables\datatables.bundle.rtl.min.css" />
+    <Content Include="theme\assets\vendors\custom\datatables\jquery-3.5.1.js" />
+    <Content Include="theme\assets\vendors\custom\datatables\jquery.dataTables.min.css" />
+    <Content Include="theme\assets\vendors\custom\datatables\jquery.dataTables.min.js" />
     <Content Include="theme\assets\vendors\custom\flot\flot.bundle.js" />
     <Content Include="theme\assets\vendors\custom\flot\flot.bundle.min.js" />
     <Content Include="theme\assets\vendors\custom\fullcalendar\fullcalendar.bundle.css" />

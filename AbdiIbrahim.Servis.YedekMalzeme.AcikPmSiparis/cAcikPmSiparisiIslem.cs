@@ -863,7 +863,8 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.AcikPmSiparis
 
                             foreach (var item in _Liste2)
                             {
-                                _countsap = session.Query<tblzrfidorderlistreponse>().Where(w => w.aufnr==item.aufnr).ToList().Count;
+
+                                _countsap = session.Query<tblzrfidorderlistreponse>().Where(w => w.aktif==1 && w.aufnr==item.aufnr).ToList().Count;
                                 List<tbl06analiz> _Tempanaliz = session.Query<tbl06analiz>().Where(w =>w.aktif == 1 && w.aufnr==item.aufnr).ToList();
                                 _countiliskili = _Tempanaliz.Count;
                                 aufnrthis = item.aufnr;
