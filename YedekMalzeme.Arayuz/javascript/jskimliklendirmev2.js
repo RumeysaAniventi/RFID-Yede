@@ -40,6 +40,9 @@ function jsSecimiTamamla() {
 
                 $('#txtkod').val(msg.zmatnr);
                 $('#txtad').val(msg.zmaktx);
+
+                js_SeriNoListele(msg.zmatnr)
+
             }
             else {
                 UyariMesajiVer('HTN3 Sistemsel bir hata oluştu. Lütfen daha sonra tekrar deneyiniz');
