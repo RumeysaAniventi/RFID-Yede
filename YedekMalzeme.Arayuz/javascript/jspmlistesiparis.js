@@ -58,7 +58,8 @@ function fn_BilesenEkle(v_Durum)
                             zmatnr: v_zmatnr,
                             zmaktx: v_zmaktx,
                             zsernr: v_zsernr,
-                            zaufnr: v_zaufnr
+                            zaufnr: v_zaufnr,
+                           zeklesil: v_zeklecikar
                         }),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",

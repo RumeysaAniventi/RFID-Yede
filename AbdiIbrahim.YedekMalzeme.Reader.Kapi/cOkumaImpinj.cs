@@ -90,13 +90,15 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kapi
             //string _ReaderId = ConfigurationSettings.AppSettings["ReaderIpAdresi"].ToString().Trim();
 
             int _Sayac = 0;
-
+            string kapiip = "";
+            _LogDosyasi.Info("Servis Başladı");
             #endregion
 
             while (true)
             {
                 try
                 {
+                    
                     Thread.Sleep(TimeSpan.FromSeconds(2));
 
                     _Sayac = _Sayac + 1;
@@ -109,7 +111,7 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kapi
                     {
                         try
                         {
-                            //_LogDosyasi.Error(item.Key);
+                           // _LogDosyasi.Error(item.Key);
 
                             using (Session session = XpoManager.Instance.GetNewSession())
                             {
@@ -122,11 +124,16 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kapi
 
                                     tblreaderkapiparam _param = session.Query<tblreaderkapiparam>().FirstOrDefault(p => p.aktif == 1);
 
+                                    
+                                    if (kapiip !=_param.kapiip)
+                                    {
+
+                                        _LogDosyasi.Info("Kapı İp ="+_param.kapiip);
+                                        kapiip = _param.kapiip;
+                                    }
 
                                     foreach (var _Item in _ItemDizi)
                                     {
-
-
                                         if (DateTime.Now.Subtract(_Item.okumabitis).TotalSeconds >= 15)
                                         {
 
@@ -147,113 +154,81 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kapi
 
 
                                 tbl03kapireader _Temp = session.Query<tbl03kapireader>().FirstOrDefault(w => w.gelenepc.Equals(item.Key) && w.okumabittimi == 0);
-
-                                //okumabitmediyse okuma bitis zamanı guncellendi
+                                
                                 if (_Temp != null)
                                 {
+                                    _Temp.guncellemezamani = DateTime.Now;
                                     _Temp.okumabitis = item.Value._SonOkumaZamani;
+                                    _Temp.lastupdateuser = "windows.service";
                                     _Temp.Save();
+
+                                    _LogDosyasi.Error(_Temp.gelenepc);
+                                }
+
+                                else
+                                {
+                                    new tbl03kapireader(session)
+                                    {
+                                        aktif = 1,
+                                        okumabittimi = 0,
+                                        okumabitis = item.Value._SonOkumaZamani,
+                                        createuser = "windows.service",
+                                        databasekayitzamani = DateTime.Now,
+                                        okumabaslama = item.Value._SonOkumaZamani,
+                                        gelenepc = item.Key,
+                                        guncellemezamani = DateTime.Now,
+                                        id = Guid.NewGuid().ToString().ToUpper(),
+                                        lastupdateuser = "windows.service",
+                                        aktarim=0,
+                                        buzzer=0,
+                                    }.Save();
+                                }
+
+                                tbl06analiz _guncelanaliz = session.Query<tbl06analiz>().FirstOrDefault(g => g.aktif ==1 && g.epc.Equals(item.Key));
+                                if (_guncelanaliz !=null)
+                                {
+
+                                    _guncelanaliz.kapireader = 1;
+                                    _guncelanaliz.okumabaslangic = _Temp.okumabaslama;
+                                    _guncelanaliz.okumabitis = _Temp.okumabitis;
+                                    _guncelanaliz.lastupdateuser = "windows.service";
+                                    _guncelanaliz.guncellemezamani = DateTime.Now;
+                                    _guncelanaliz.Save();
                                 }
                                 else
                                 {
-
-                                    tbl01eklecikararsiv _alarmKontrol = session.Query<tbl01eklecikararsiv>().FirstOrDefault(w => w.aktif == 1 && w.gelenepc.Equals(_Temp.gelenepc));
-
-                                    //eğer bileşen ekle çıkarda varsa izinli 
-                                    if (_alarmKontrol != null)
+                                    new tbl06analiz(session)
                                     {
-                                        //okuduysa
-                                        tbl03kapireader tbl03 = session.Query<tbl03kapireader>().FirstOrDefault(t => t.aktif == 1 && t.gelenepc.Equals(_alarmKontrol.gelenepc));
+                                        aktif = 1,
+                                        alarmdurum = 1,
+                                        alarmkapatan = " ",
+                                        alarmkapatmaaciklama = "",
+                                        id = Guid.NewGuid().ToString().ToUpper(),
+                                        createuser = "windows.service",
+                                        lastupdateuser = "windows.service",
+                                        databasekayitzamani = DateTime.Now,
+                                        guncellemezamani = DateTime.Now,
+                                        epc = item.Key,
+                                        sernr = "yok",
+                                        aufnr = "ilişkisiz",
+                                        matnr = "yok",
+                                        maktx = "yok",
+                                        iliskilendiren = "yok",
+                                        iliskiiptaleden = "yok",
+                                        iliskiyeri = 0,
+                                        kimliklendiren = "yok",
+                                        kimlikiptaleden = "yok",
+                                        tuketim = 0,
+                                        gecisizni = 0,
+                                        okumabaslangic = Convert.ToDateTime(DateTime.MaxValue.ToString("yyyy-MM-dd HH:mm:ss.fffffffK")),
+                                        okumabitis = Convert.ToDateTime(DateTime.MaxValue.ToString("yyyy-MM-dd HH:mm:ss.fffffffK")),
+                                        alarmkapatmatarih = Convert.ToDateTime(DateTime.MaxValue.ToString("yyyy-MM-dd HH:mm:ss.fffffffK")),
+                                        kapireader = 1,
 
-                                        if (tbl03 != null)
-                                        {
-
-                                            tbl03.okumabittimi = _Temp.okumabittimi;
-                                            tbl03.okumabitis = _Temp.okumabitis;
-                                            tbl03.guncellemezamani = DateTime.Now;
-                                            tbl03.lastupdateuser = "windows.service";
-                                            tbl03.Save();
-                                        }
-
-                                        //hiç okunmadıysa
-                                        new tbl03kapireader(session)
-                                        {
-                                            aktif = 1,
-                                            okumabittimi = 0,
-                                            okumabitis = item.Value._SonOkumaZamani,
-                                            okumabaslama = item.Value._SonOkumaZamani,
-                                            createuser = "windows.service",
-                                            databasekayitzamani = DateTime.Now,
-                                            gelenepc = item.Key,
-                                            guncellemezamani = DateTime.Now,
-                                            id = Guid.NewGuid().ToString().ToUpper(),
-                                            lastupdateuser = "windows.service",
-
-                                        }.Save();
-
-                                    }
-                                    else
-                                    {
-                                        tbl03kapireader tbl03 = session.Query<tbl03kapireader>().FirstOrDefault(t => t.aktif == 1 && t.gelenepc.Equals(_alarmKontrol.gelenepc));
-
-                                        if (tbl03 != null)
-                                        {
-
-                                            tbl03.okumabittimi = _Temp.okumabittimi;
-                                            tbl03.okumabitis = _Temp.okumabitis;
-                                            tbl03.guncellemezamani = DateTime.Now;
-                                            tbl03.lastupdateuser = "windows.service";
-                                            tbl03.Save();
-                                        }
-                                        else
-                                        {
-
-                                            new tbl03kapireader(session)
-                                            {
-                                                aktif = 1,
-                                                okumabittimi = 0,
-                                                okumabitis = item.Value._SonOkumaZamani,
-                                                okumabaslama = item.Value._SonOkumaZamani,
-                                                createuser = "windows.service",
-                                                databasekayitzamani = DateTime.Now,
-                                                gelenepc = item.Key,
-                                                guncellemezamani = DateTime.Now,
-                                                id = Guid.NewGuid().ToString().ToUpper(),
-                                                lastupdateuser = "windows.service"
-
-                                            }.Save();
-                                        }
-
-
-                                    }
-
+                                    }.Save();
                                 }
 
-                                //if (_Temp != null)
-                                //{
-                                //    _Temp.guncellemezamani = DateTime.Now;
-                                //    _Temp.okumabitis = item.Value._SonOkumaZamani;                                    
-                                //    _Temp.lastupdateuser = "kimliklendirme";
-                                //    _Temp.Save();
-                                //}
-
-                                //else
-                                //{
-                                //    new tbl03kapireader(session)
-                                //    {
-                                //        aktif = 1,
-                                //        okumabittimi=0,
-                                //        okumabitis= item.Value._SonOkumaZamani,
-                                //        createuser = "windows.service",
-                                //        databasekayitzamani = DateTime.Now,
-                                //        okumabaslama = item.Value._SonOkumaZamani,
-                                //        gelenepc = item.Key,                                        
-                                //        guncellemezamani = DateTime.Now,
-                                //        id = Guid.NewGuid().ToString().ToUpper(),
-                                //        lastupdateuser = "windows.service"
-                                //    }.Save();
-                                //}
-
+                                
 
                             }
 

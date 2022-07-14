@@ -117,7 +117,7 @@
 
                                             <tr>--%>
 
-                                        <th style="text-align: center">Etiket No</th>
+                                        <th style="display:none ">Etiket No</th>
                                         <th style="text-align: center">Okuma Başlangıç</th>
                                         <th style="text-align: center">Okuma Bitiş</th>
                                         <th style="text-align: center">Sipariş No</th>
