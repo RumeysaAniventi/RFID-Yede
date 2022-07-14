@@ -179,7 +179,7 @@ function js_MalzemeEkleCikar(v_aufnr)
 
             }
             else {
-                UyariMesajiVer('Standın üzerinde malzeme olduğundan emin olunuz !!!');
+                UyariMesajiVer('Standın üzerinde malzeme olduğundan ve bu malzemeinin kimlikli olduğundan emin olunuz !!!');
             }
         },
 
