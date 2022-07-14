@@ -339,6 +339,7 @@
                                                 <li class="m-menu__item " aria-haspopup="true"><a href="kapibilgi.aspx" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Kapı Çıkış Bilgileri</span></a></li>
                                                 <li class="m-menu__item " aria-haspopup="true"><a href="kullaniciYetkilendirme1.aspx" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Kullanıcı Raporları</span></a></li>
                                                  <li class="m-menu__item " aria-haspopup="true"><a href="kapirapor2.aspx" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">yeni kapı raporları</span></a></li>
+                                                <li class="m-menu__item " aria-haspopup="true"><a href="raporfark.aspx" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">SAP ve RFID Farkları</span></a></li>
                                                 
 
                                             </ul>

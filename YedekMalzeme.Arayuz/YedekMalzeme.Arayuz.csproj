@@ -210,6 +210,7 @@
     <Compile Include="Controllers\pmsiparisparametreController.cs" />
     <Compile Include="Controllers\RdrKapiParametreController.cs" />
     <Compile Include="Controllers\RdrKimliklendirmeParametreController.cs" />
+    <Compile Include="Controllers\RfidFarkListesiController.cs" />
     <Compile Include="Controllers\StokeListesiParametreController.cs" />
     <Compile Include="cVeriTabaniIslem.cs" />
     <Compile Include="Default.aspx.cs">
@@ -350,6 +351,7 @@
     <Compile Include="manager\pmsiparisparametreManager.cs" />
     <Compile Include="manager\RdrKapiParametreManager.cs" />
     <Compile Include="manager\RdrKimliklendirmeParametreManager.cs" />
+    <Compile Include="manager\rfidFarkManager.cs" />
     <Compile Include="manager\StokeListesiParametreManager.cs" />
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
@@ -368,6 +370,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="raporfark.aspx.cs">
+      <DependentUpon>raporfark.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="raporfark.aspx.designer.cs">
+      <DependentUpon>raporfark.aspx</DependentUpon>
+    </Compile>
     <Compile Include="readerkapiparam.aspx.cs">
       <DependentUpon>readerkapiparam.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -434,6 +443,7 @@
     <Compile Include="request\RdrKimliklendirmeParametreDegerRequest.cs" />
     <Compile Include="request\RdrKimliklendirmeParametreKayitRequest.cs" />
     <Compile Include="request\RdrKimliklendirmeParametreListesiRequest.cs" />
+    <Compile Include="request\RfidFarkListesiRequest.cs" />
     <Compile Include="request\SecimiTamamlaRequest.cs" />
     <Compile Include="request\SifreYenilemeRequest.cs" />
     <Compile Include="request\SiparisBilesenDegistirRequest.cs" />
@@ -497,6 +507,7 @@
     <Compile Include="response\RdrKimliklendirmeParametreKayitResponse.cs" />
     <Compile Include="response\RdrKimliklendirmeParametreListesiResponse.cs" />
     <Compile Include="response\ResponseOrtak.cs" />
+    <Compile Include="response\RfidFarkListesiResponse.cs" />
     <Compile Include="response\SecimiTamamlaResponse.cs" />
     <Compile Include="response\SifreYenilemeResponse.cs" />
     <Compile Include="response\SiparisBilesenDegistirResponse.cs" />
@@ -524,6 +535,7 @@
     <Compile Include="View\KimliklendirmeTarihView.cs" />
     <Compile Include="View\MalzemeAdiListeleView.cs" />
     <Compile Include="View\MalzemeKoduListeleView.cs" />
+    <Compile Include="View\RfidFarkListeleView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Anasayfa.aspx" />
@@ -564,6 +576,7 @@
     <Content Include="javascript\jsMalzemeSecimi.js" />
     <Content Include="javascript\jspmlistesiparis.js" />
     <Content Include="javascript\jspmsiparisparametre.js" />
+    <Content Include="javascript\jsraporfarkjs.js" />
     <Content Include="javascript\jsreaderkapiparam.js" />
     <Content Include="javascript\jsreaderkimliklendirmeparam.js" />
     <Content Include="javascript\jsRumMalzemeSecim.js" />
@@ -587,6 +600,7 @@
     <Content Include="MalzemeListesiParam.aspx" />
     <Content Include="pmlistesiparis.aspx" />
     <Content Include="pmsiparisparametre.aspx" />
+    <Content Include="raporfark.aspx" />
     <Content Include="readerkapiparam.aspx" />
     <Content Include="readerkimliklendirmeparam.aspx" />
     <Content Include="resimler\0.png" />
@@ -948,6 +962,9 @@
     <Content Include="theme\assets\vendors\custom\datatables\datatables.bundle.min.js" />
     <Content Include="theme\assets\vendors\custom\datatables\datatables.bundle.rtl.css" />
     <Content Include="theme\assets\vendors\custom\datatables\datatables.bundle.rtl.min.css" />
+    <Content Include="theme\assets\vendors\custom\datatables\jquery-3.5.1.js" />
+    <Content Include="theme\assets\vendors\custom\datatables\jquery.dataTables.min.css" />
+    <Content Include="theme\assets\vendors\custom\datatables\jquery.dataTables.min.js" />
     <Content Include="theme\assets\vendors\custom\flot\flot.bundle.js" />
     <Content Include="theme\assets\vendors\custom\flot\flot.bundle.min.js" />
     <Content Include="theme\assets\vendors\custom\fullcalendar\fullcalendar.bundle.css" />
