@@ -29,6 +29,8 @@ namespace YedekMalzeme.Arayuz.manager
 
             #endregion
 
+            
+
             if (v_gelen.zepc.Length != 24)
             {
                 _Cevap = new KimlikKimliklendirResponse();
@@ -60,6 +62,16 @@ namespace YedekMalzeme.Arayuz.manager
             {
                 using (Session session = XpoManager.Instance.GetNewSession())
                 {
+                    tblkimliklendirme _KontrolEpc = session.Query<tblkimliklendirme>().FirstOrDefault(k => k.aktif == 1 && k.gelenepc.Equals(v_gelen.zepc));
+                    if (_KontrolEpc != null)
+                    {
+                        _Cevap = new KimlikKimliklendirResponse();
+                        _Cevap.zSonuc = -1;
+                        _Cevap.zAciklama = "Bu etiket değeri zaten kimliklendirilmiştir.";
+
+                        return _Cevap;
+                    }
+
                     tblmalzemelistesiresponse _Temp = session.Query<tblmalzemelistesiresponse>().FirstOrDefault(w => w.aktif == 1 && w.matnr.Equals(v_gelen.zmatnr));
                     if (_Temp == null)
                     {
@@ -140,6 +152,8 @@ namespace YedekMalzeme.Arayuz.manager
                         matnr = v_gelen.zmatnr
                     }.Save();
 
+                   
+
                     new tbl06analiz(session)
                     {
                         id = Guid.NewGuid().ToString().ToUpper(),
@@ -160,13 +174,14 @@ namespace YedekMalzeme.Arayuz.manager
                         kimlikiptaleden = "yok",
                         tuketim = 0,
                         gecisizni = 0,
-                        okumabaslangic = DateTime.MinValue,
-                        okumabitis = DateTime.MaxValue,
-                        alarmdurum = 0,
-                        alarmkapatmatarih = DateTime.MinValue,
+                        okumabaslangic = Convert.ToDateTime(DateTime.MaxValue.ToString("yyyy-MM-dd HH:mm:ss.fffffffK")),
+                        okumabitis = Convert.ToDateTime(DateTime.MaxValue.ToString("yyyy-MM-dd HH:mm:ss.fffffffK")),
+                        alarmdurum = 1,
+                        alarmkapatmatarih = Convert.ToDateTime(DateTime.MaxValue.ToString("yyyy-MM-dd HH:mm:ss.fffffffK")),
                         alarmkapatmaaciklama = "",
                         alarmkapatan = "yok",
                         kapireader=0,
+                        
                         
 
                     }.Save();
