@@ -856,7 +856,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.AcikPmSiparis
                         using (Session session = XpoManager.Instance.GetNewSession())
                         {
                             string aufnrthis = "";
-                            int _countsap = 0;
+                            decimal _countsap = 0;
                             int _countiliskili = 0;
                             //Sipariş numarası farklı olanları al.
                             List<tblzrfidorderlistreponse> _Liste2 = session.Query<tblzrfidorderlistreponse>().Where(w => w.aktif == 1).GroupBy(x => x.aufnr).Select(y => y.First()).ToList();
@@ -864,7 +864,9 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.AcikPmSiparis
                             foreach (var item in _Liste2)
                             {
 
-                                _countsap = session.Query<tblzrfidorderlistreponse>().Where(w => w.aktif==1 && w.aufnr==item.aufnr).ToList().Count;
+                                //_countsap = session.Query<tblzrfidorderlistreponse>().Where(w => w.aktif==1 && w.aufnr==item.aufnr).ToList().Count;
+                                _countsap= session.Query<tblzrfidorderlistreponse>().Where(w => w.aktif == 1 && w.aufnr == item.aufnr).ToList().Sum(x=>Convert.ToDecimal(x.bdmng));
+                               
                                 List<tbl06analiz> _Tempanaliz = session.Query<tbl06analiz>().Where(w =>w.aktif == 1 && w.aufnr==item.aufnr).ToList();
                                 _countiliskili = _Tempanaliz.Count;
                                 aufnrthis = item.aufnr;
@@ -886,7 +888,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.AcikPmSiparis
                                             lastupdateuser = "aniventi",
                                             aufnr = aufnrthis,
                                             iliskiliSayisi = _countiliskili,
-                                            toplamSayi = _countsap,
+                                            toplamSayi = Convert.ToInt32(_countsap),
                                             emailgonderimi = 0
 
                                         }.Save();
@@ -895,7 +897,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.AcikPmSiparis
                                     {
 
                                         _Tempfark.FirstOrDefault().iliskiliSayisi = _countiliskili;
-                                        _Tempfark.FirstOrDefault().toplamSayi = _countsap;
+                                        _Tempfark.FirstOrDefault().toplamSayi = Convert.ToInt32(_countsap);
                                         _Tempfark.FirstOrDefault().databasekayitzamani = DateTime.Now;
                                         _Tempfark.FirstOrDefault().guncellemezamani = DateTime.Now;
                                         _Tempfark.FirstOrDefault().emailgonderimi = 0;
@@ -911,7 +913,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.AcikPmSiparis
                                     if (_Tempfark.Count!=0)
                                     {
                                         _Tempfark.FirstOrDefault().iliskiliSayisi = _countiliskili;
-                                        _Tempfark.FirstOrDefault().toplamSayi = _countsap;
+                                        _Tempfark.FirstOrDefault().toplamSayi = Convert.ToInt32(_countsap);
                                         _Tempfark.FirstOrDefault().databasekayitzamani = DateTime.Now;
                                         _Tempfark.FirstOrDefault().guncellemezamani = DateTime.Now;
                                         _Tempfark.FirstOrDefault().emailgonderimi = 1;
