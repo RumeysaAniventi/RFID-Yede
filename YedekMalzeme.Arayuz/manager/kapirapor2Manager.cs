@@ -216,12 +216,14 @@ namespace YedekMalzeme.Arayuz.manager
                     {
                         _TabloBasligi += "<th style ='text-align: center'> Alarmı Kapatan </ th >";
                         _TabloYazisi += "<td style='text-align:center;'>" + _guncelanaliz.alarmkapatan + "</td>";
+                        _TabloBasligi += "<th style ='text-align: center'> Kapatma Açıklaması </ th >";
+                        _TabloYazisi += "<td style='text-align:center;'>" + _guncelanaliz.alarmkapatmaaciklama + "</td>";
                         _TabloBasligi += "<th style ='text-align: center'> Alarmı Kapatma Tarihi </ th >";
                         _TabloYazisi += "<td style='text-align:center;'>" + _guncelanaliz.alarmkapatmatarih + "</td>";
 
                     }
 
-                    if (_guncelanaliz.aufnr == "İlişkisiz")
+                    if (_guncelanaliz.aufnr == "ilişkisiz" && _guncelanaliz.sernr!= "yok")
                     {
 
                         _TabloBasligi += "<th style ='text-align: center'> Siparişe Ekle </ th >";

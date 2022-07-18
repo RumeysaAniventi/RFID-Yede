@@ -108,7 +108,7 @@
                                     <thead>
 
                                         <tr>
-                                            <th style="text-align: center;">Id</th>
+                                            <th style="text-align: center; display: none">Id</th>
                                             <th style="text-align: center">Etiket No</th>
                                             <th style="text-align: center">Okuma Başlangıç</th>
                                             <th style="text-align: center">Okuma Bitiş</th>
@@ -196,7 +196,7 @@
 
                                     <div class="form-group m-form__group row">
                                         <div class="col-lg-12">
-                                            <span id="lblID"></span>
+                                            <span id="lblID" style="display:none"></span>
                                         </div>
                                     </div>
 

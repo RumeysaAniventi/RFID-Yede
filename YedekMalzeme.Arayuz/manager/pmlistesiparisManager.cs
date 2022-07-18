@@ -1203,17 +1203,7 @@ namespace YedekMalzeme.Arayuz.manager
                         fn_BilesenGuncelle(v_Giden);
 
 
-                        tbl06analiz _analizguncelle = session.Query<tbl06analiz>().FirstOrDefault(a => a.aktif == 1 && a.epc.Equals(v_Gelen.zepc) && a.maktx.Equals(v_Gelen.zmaktx) && a.matnr.Equals(v_Gelen.zmatnr));
-
-                        _analizguncelle.aufnr = v_Gelen.zaufnr;
-                        _analizguncelle.iliskilendiren = HttpContext.Current.Session["KullaniciAdi"].ToString();
-                        _analizguncelle.iliskiyeri = 2;
-                        _analizguncelle.gecisizni = 1;
-                        _analizguncelle.alarmdurum = 0;
-                        _analizguncelle.lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString();
-                        _analizguncelle.guncellemezamani = DateTime.Now;
-                        _analizguncelle.Save();
-
+                      
 
 
 

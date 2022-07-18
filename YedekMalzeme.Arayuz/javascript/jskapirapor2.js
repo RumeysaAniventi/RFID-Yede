@@ -46,12 +46,27 @@ function fn_AlarmKapat(v_id) {
                 //$('#m_table_bilesen thead').html(msg.ztablobasligi);
                 //$('#m_table_bilesen tbody').html(msg.ztabloyazisi);
 
-                BasariliIslem('Alarm Kapatıldı');
-                $('#m_modal_5').modal({
-                    show: true,
-                    keyboard: false,
-                    backdrop: 'static'
-                });
+                //BasariliIslem('Alarm Kapatıldı');
+                //$('#m_modal_5').modal({
+                //    show: true,
+                //    keyboard: false,
+                //    backdrop: 'static'
+                //});
+                if (msg.zSonuc == "1") {
+                    swal({
+                        buttons: {
+                            confirm: "TAMAM"
+                        },
+                        title: "İşlem Tamamlandı",
+                        html: true,
+                        text: "Alarm Kapatıldı",
+                        icon: "success",
+                        dangerMode: false
+                    })
+                        .then((willDelete) => {
+                            window.location.href = 'kapirapor2.aspx';
+                        });
+                }
             }
             else {
                 UyariMesajiVer('Alarm Kapatılamadı.  ' + msg.zAciklama);
@@ -61,13 +76,14 @@ function fn_AlarmKapat(v_id) {
         complete: function () {
 
 
-            $('#m_modal_5').modal({
-                show: true,
-                keyboard: false,
-                backdrop: 'static'
-            });
+            $('#m_modal_1').modal('hidden');
 
-            fn_DegerleriListele();
+            //$('#m_modal_2').modal('hidden');
+
+           
+
+            window.location.href = 'kapirapor2.aspx';
+            //fn_DegerleriListele();
 
 
         }
@@ -188,7 +204,7 @@ function fn_DegerleriListele() {
 
                         content += "<tr>";
 
-                        content += "<td>" + vYanitDizi[iSayac].zid + "</td>";
+                        content += "<td style='display: none'>" + vYanitDizi[iSayac].zid + "</td>";
                         content += "<td >" + vYanitDizi[iSayac].zepc + "</td>";
                         content += "<td>" + vYanitDizi[iSayac].zokumabaslangic + "</td>";
                         content += "<td>" + vYanitDizi[iSayac].zokumabitis + "</td>";
@@ -314,10 +330,20 @@ function jsSipariseBilesenEkle() {
         },
 
         success: function (msg) {
-
             if (msg.zSonuc == "1") {
-
-                BasariliIslem("Sipariş bileşeni eklendi");
+                swal({
+                    buttons: {
+                        confirm: "TAMAM"
+                    },
+                    title: "İşlem Tamamlandı",
+                    html: true,
+                    text: "Sipariş bileşeni olarak eklendi",
+                    icon: "success",
+                    dangerMode: false
+                })
+                    .then((willDelete) => {
+                        window.location.href = 'kapirapor2.aspx';
+                    });
             }
             else {
                 UyariMesajiVer('HTN3 Sistemsel bir hata oluştu. Lütfen daha sonra tekrar deneyiniz');
