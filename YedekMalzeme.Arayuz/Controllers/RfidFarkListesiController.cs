@@ -17,7 +17,7 @@ namespace YedekMalzeme.Arayuz.Controllers
         [Route("api/RfidFarklistesi")]
         [System.Web.Mvc.ValidateAntiForgeryToken]
         [Authorize(Roles = "roleadmin")]
-        public RfidFarkListesiResponse fn_FiltreliKapiListesi(RfidFarkListesiRequest v_Gelen)
+        public RfidFarkListesiResponse fn_RfidFarkListesi(RfidFarkListesiRequest v_Gelen)
         {
             return new rfidFarkManager().fn_RfidFarkListesi(v_Gelen);
         }

@@ -3,6 +3,27 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <style id="jsbin-css">
+        @media (min-width: 768px) {
+            .modal-xl {
+                width: 90%;
+                max-width: 1200px;
+            }
+
+            .m-badge {
+                border-radius: 10px !important;
+            }
+        }
+
+        
+        .vertical {
+            border-left: 6px solid black;
+           
+            position:center;
+            left: 50%;
+        }
+    
+    </style>
 
     <div class="m-content">
         <!--begin::YeniUrunKayit-->
@@ -23,7 +44,7 @@
                     </div>
                     <form class="m-form m-form--fit m-form--label-align-right">
                         <%-- filtre kısmı --%>
-                        <%--<div class="m-portlet__body">
+                        <%--              <div class="m-portlet__body">
 
                             <div class="form-group m-form__group row">
 
@@ -81,39 +102,103 @@
                             <div class="form-group m-form__group row" style="padding-top: 0px;">
 
                                 <div>
-                                    <button type="button" class="btn btn-success pull-right" style="align-content: center; width: 120px; position: absolute; right: 30px;" onclick="fn_DegerleriListele()">LİSTELE</button>
+                                    <button type="button" class="btn btn-success pull-right" style="align-content: center;  width: 120px; position: absolute; right: 30px;" onclick="fn_DegerleriListele()">LİSTELE</button>
                                 </div>
                             </div>
                         </div>--%>
                         <%-- filtre bitişi --%>
 
-                        <div class="form-group m-form__group row">
+                        <div class="form-group m-form__group row" style="margin:auto;">
                             <div class="col-lg-12">
                                 <table name="m_table_1" id="m_table_1" class="table table-bordered m-table m-table--border-brand m-table--head-separator-primary">
                                     <thead>
 
                                         <tr>
-                                            <th style="text-align: center;">Id</th>                                            
-                                            <th style="text-align: center">Kimlikli Sipariş Sayısı</th>
-                                            <th style="text-align: center">Toplam Sipariş Sayısı</th>                                            
-                                            <th style="text-align: center"></th>
+                                            <th class="col-lg-4" style="text-align: center; display: none;">Id</th>
+                                            <th style="text-align: center;">Sipariş No</th>
+                                            <th class="col-lg-3" style="text-align: center">Kimlikli Sipariş Sayısı</th>
+                                            <th class="col-lg-3" style="text-align: center">Toplam Sipariş Sayısı</th>
+                                            <%--<th style="text-align: center">email</th>--%>
+                                            <th class="col-lg-2" style="text-align: center"></th>
                                         </tr>
 
                                     </thead>
                                     <tbody>
                                     </tbody>
-
                                 </table>
                             </div>
                         </div>
-
-
 
                     </form>
 
                 </div>
 
             </div>
+            <%-- rfid sap modal --%>
+
+            <div class="modal fade" data-backdrop="static" id="m_modal_3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabex">Bileşenler</h5>
+                            <img src="resimler/close.png" data-dismiss="modal" class="close" />
+
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="form-group m-form__group row">
+                                
+                                <div class="col-lg-5">
+                                    <h5 class="modal-title" id="exampleModalLabex">RFID</h5>
+                                    <table name="m_table_bilesen_rfid" id="m_table_bilesen_rfid" class="table table-bordered m-table m-table--border-brand m-table--head-separator-primary">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align: center">Kullanıcı</th>
+                                                <th style="text-align: center">Malzeme Kodu</th>
+                                                <th style="text-align: center">Malzeme Adı</th>
+                                                <th style="text-align: center">Seri Numarası</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+
+
+                                </div>
+                                <div class="vl vertical mx-5"></div>
+                                <div class="col-lg-6">
+                                    <h5 class="modal-title" id="exampleModalLabex">Toplam</h5>
+                                    <table name="m_table_bilesen_rfid" id="m_table_bilesen_sap" class="table table-bordered m-table m-table--border-brand m-table--head-separator-primary">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align: center">Kullanıcı</th>
+                                                <th style="text-align: center">Malzeme Kodu</th>
+                                                <th style="text-align: center">Malzeme Adı</th>
+                                                <th style="text-align: center">Seri Numarası</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <%--<div class="col-lg-2">
+                                <button type="button" class="btn btn-success" onclick="js_SarfEt()">SARF ET</button>
+                            </div>
+                            <div class="col-lg-10">
+                                <button type="button" class="btn btn-danger pull-right" data-dismiss="modal">KAPAT</button>
+                                <button type="button" class="btn btn-success pull-right" onclick="jsbilgiguncelle()">güncelle</button>
+                            </div>--%>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 

@@ -24,7 +24,7 @@ namespace YedekMalzeme.Arayuz.manager
             try
             {
 
-                _Sql += "select * from tbl07analiz";
+                _Sql += "select * from tbl07sapfark";
 
                 //if (!String.IsNullOrEmpty(v_Gelen.zilktarih) && !String.IsNullOrEmpty(v_Gelen.zsontarih))
                 //{

@@ -576,6 +576,7 @@
     <Content Include="javascript\jsMalzemeSecimi.js" />
     <Content Include="javascript\jspmlistesiparis.js" />
     <Content Include="javascript\jspmsiparisparametre.js" />
+    <Content Include="javascript\jsraporfark.js" />
     <Content Include="javascript\jsraporfarkjs.js" />
     <Content Include="javascript\jsreaderkapiparam.js" />
     <Content Include="javascript\jsreaderkimliklendirmeparam.js" />
