@@ -76,9 +76,6 @@ namespace YedekMalzeme.Arayuz.manager
 
                 }
 
-
-
-
                 _dTable = _myIslem._fnDataTable(_Sql);
                 _Cevap.zdizi = new List<KapiFiltreliListeleView>();
 
