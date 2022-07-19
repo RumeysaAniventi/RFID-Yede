@@ -13,6 +13,7 @@
         .dataTables_filter {
             display: none;
         }
+      
     </style>
 
     <div class="m-content">
@@ -34,81 +35,89 @@
                     </div>
 
                     <!--begin::Form-->
-              <form class="m-form m-form--fit m-form--label-align-right">
+                    <form class="m-form m-form--fit m-form--label-align-right">
                         <%-- filtre kısmı --%>
                         <div class="m-portlet__body">
 
                             <div class="form-group m-form__group row">
 
-                               <div class="col-lg-4">
+                                <div class="col-lg-4">
                                     <h6>Malzeme Adı</h6>
                                     <input type="text" autocomplete="off" class="form-control m-input" name="txtmaktxfiltre" id="txtmaktxfiltre" />
 
                                 </div>
-                                         
-                                <div class="col-lg-2">
-                                    <h6>Geçiş İzni</h6>
-                                    <select class="form-control m-input m-input--square" id="listegecis">
 
-                                        <option value="2" selected="selected">Seçiniz</option>
-                                        <option value="0">İzinsiz Geçiş</option>
-                                        <option value="1">İzinli Geçiş</option>
-                                    </select>
+                                <div class="col-lg-4 " style="display: flex">
+
+
+                                    <div class="col-lg-6">
+                                        <h6>Geçiş İzni</h6>
+                                        <select class="form-control m-input m-input--square" id="listegecis">
+
+                                            <option value="2" selected="selected">Seçiniz</option>
+                                            <option value="0">İzinsiz Geçiş</option>
+                                            <option value="1">İzinli Geçiş</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h6>Alarm Durumu</h6>
+                                        <select class="form-control m-input m-input--square" id="istealarm">
+
+                                            <option value="3" selected="selected">Seçiniz</option>
+                                            <option value="0">Alarm YOK</option>
+                                            <option value="1">Alarm VAR</option>
+                                            <option value="2">Alarm KAPATILDI</option>
+                                        </select>
+                                    </div>
+
 
                                 </div>
 
-                                <div class="col-lg-2">
-                                    <h6>Alarm Durumu</h6>
-                                    <select class="form-control m-input m-input--square" id="istealarm">
+                                <div class="col-lg-4" style="display: flex">
 
-                                        <option value="3" selected="selected">Seçiniz</option>
-                                        <option value="0">Alarm YOK</option>
-                                        <option value="1">Alarm VAR</option>
-                                        <option value="2">Alarm KAPATILDI</option>
-                                    </select>
-                                </div>
+                                    <div class="col-lg-6">
+                                        <h6>İlk Tarih</h6>
+                                        <input type="date" autocomplete="off" class="form-control m-input" name="ilktarih" id="ilktarih" />
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h6>Son Tarih</h6>
+                                        <input type="date" autocomplete="off" class="form-control m-input" name="sontarih" id="sontarih" />
 
-                                 <div class="col-lg-4">
-                                    <h6>İlk Tarih</h6>
-                                    <%--       <input type="date" autocomplete="off" class="form-control m-input" name="listekimliktarih" id="listekimliktarih" />--%>
-                                    <input type="date" autocomplete="off" class="form-control m-input" name="ilktarih" id="ilktarih" />
+                                    </div>
 
-                                    <%--  <select class="form-control m-input m-input--square" id="listekimliktarih"></select>--%>
                                 </div>
 
 
-                            
                             </div>
 
-                             <div class="form-group m-form__group row">
+                            <div class="form-group m-form__group row">
 
-                                    <div class="col-lg-4">
+                                <div class="col-lg-4">
                                     <h6>Malzeme Kodu</h6>
                                     <input type="text" autocomplete="off" class="form-control m-input" name="txtmatnrfiltre" id="txtmatnrfiltre" />
 
                                 </div>
 
-                                 
-                                     <div class="col-lg-4">
+
+                                <div class="col-lg-4">
                                     <h6>Sipariş Numarası</h6>
                                     <input type="text" autocomplete="off" class="form-control m-input" name="txtaufnrfiltre" id="txtaufnrfiltre" />
 
                                 </div>
 
-                                    <div class="col-lg-4">
-                                    <h6>Son Tarih</h6>
-                                    <input type="date" autocomplete="off" class="form-control m-input" name="sontarih" id="sontarih" />
+                                <div class="col-lg-4">
+
+                                    <div class="col-lg-12">
+                                        <h6>&nbsp</h6>
+                                        <button type="button" class="btn btn-success" style="display: flex; width: 100%; text-align:center" onclick="fn_DegerleriListele()">LİSTELE</button>
+                                    </div>
+
                                 </div>
 
 
-                                  </div>
-
-                            <div class="form-group m-form__group row" style="padding-top: 0px; ">
-                                <div class="col-lg-12" >
-                                    <h6>&nbsp</h6>
-                                     <button type="button" class="btn pull-right btn-primary" style="align-content: center; width:370px " onclick="fn_DegerleriListele()">           LİSTELE              </button>
-                                </div>
                             </div>
+
+
                         </div>
 
                         <div class="form-group m-form__group row">
@@ -205,7 +214,7 @@
 
                                     <div class="form-group m-form__group row">
                                         <div class="col-lg-12">
-                                            <span id="lblID" style="display:none"></span>
+                                            <span id="lblID" style="display: none"></span>
                                         </div>
                                     </div>
 
