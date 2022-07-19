@@ -1104,7 +1104,7 @@ namespace YedekMalzeme.Arayuz.manager
                         _guncelleanliz.alarmdurum = 2;
                         _guncelleanliz.alarmkapatan = HttpContext.Current.Session["KullaniciAdi"].ToString();
                         _guncelleanliz.alarmkapatmatarih = DateTime.Now;
-                        _guncelleanliz.alarmkapatmaaciklama = "Geçmişe dönüük siparişle ilişkilendirildi.";
+                        _guncelleanliz.alarmkapatmaaciklama = "Geçmişe dönük siparişle ilişkilendirildi.";
                         _guncelleanliz.lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString();
                         _guncelleanliz.guncellemezamani = DateTime.Now;
                         #endregion

@@ -194,6 +194,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ElTerminaliController.cs" />
     <Compile Include="Controllers\kapibilgiController.cs" />
     <Compile Include="Controllers\kapirapor2Controller.cs" />
     <Compile Include="Controllers\kimliklendirmeController.cs" />
@@ -335,6 +336,7 @@
     <Compile Include="MalzemeListesiParam.aspx.designer.cs">
       <DependentUpon>MalzemeListesiParam.aspx</DependentUpon>
     </Compile>
+    <Compile Include="manager\elTerminaliManager.cs" />
     <Compile Include="manager\kapibilgiManager.cs" />
     <Compile Include="manager\kapirapor2Manager.cs" />
     <Compile Include="manager\KimliklendirmeIptalManager.cs" />
@@ -397,6 +399,7 @@
     <Compile Include="request\AlarmKapatRequest.cs" />
     <Compile Include="request\BilesenGuncelleRequest.cs" />
     <Compile Include="request\BilesenMalzemeListesiRequest.cs" />
+    <Compile Include="request\ElTerminaliRequest.cs" />
     <Compile Include="request\EpcKimlikBilgileriRequest.cs" />
     <Compile Include="request\FiltrelenmisKimlikMalzemeListeleRequest.cs" />
     <Compile Include="request\FiltreliKapiListesiRequest.cs" />
@@ -461,6 +464,7 @@
     <Compile Include="response\AlarmGoruntuleResponse.cs" />
     <Compile Include="response\AlarmKapatResponse.cs" />
     <Compile Include="response\BilesenMalzemeListesiResponse.cs" />
+    <Compile Include="response\ElTerminaliResponse.cs" />
     <Compile Include="response\EpcKimlikBilgileriResponse.cs" />
     <Compile Include="response\FiltrelenmisKimlikMalzemeListeleResponse.cs" />
     <Compile Include="response\FiltreliKapiListesiResponse.cs" />
