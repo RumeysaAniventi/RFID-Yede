@@ -152,8 +152,17 @@ namespace YedekMalzeme.Arayuz.manager
                         matnr = v_gelen.zmatnr
                     }.Save();
 
-                   
+                    tbl06analiz _analizKontrol = session.Query<tbl06analiz>().FirstOrDefault(a => a.aktif == 1 && a.epc.Equals(v_gelen.zepc));
+                    if (_analizKontrol != null)
+                    {
 
+                        _analizKontrol.aktif = 0;
+                        _analizKontrol.lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString();
+                        _analizKontrol.guncellemezamani = DateTime.Now;
+                        _analizKontrol.Save();
+
+                    }
+                  
                     new tbl06analiz(session)
                     {
                         id = Guid.NewGuid().ToString().ToUpper(),
@@ -180,15 +189,15 @@ namespace YedekMalzeme.Arayuz.manager
                         alarmkapatmatarih = Convert.ToDateTime(DateTime.MaxValue.ToString("yyyy-MM-dd HH:mm:ss.fffffffK")),
                         alarmkapatmaaciklama = "",
                         alarmkapatan = "yok",
-                        kapireader=0,
-                        
-                        
+                        kapireader = 0,
+
+
 
                     }.Save();
 
 
 
-                   // new tbl04arsivkimliklendirmeiptal(session)().s
+                    // new tbl04arsivkimliklendirmeiptal(session)().s
 
                     _Cevap = new KimlikKimliklendirResponse();
                     _Cevap.zSonuc = 1;

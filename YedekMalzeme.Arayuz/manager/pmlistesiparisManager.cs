@@ -1011,7 +1011,7 @@ namespace YedekMalzeme.Arayuz.manager
                             using (Session session = XpoManager.Instance.GetNewSession())
                             {
                                 List<tbl01eklecikararsiv> _arsivtemp = session.Query<tbl01eklecikararsiv>().Where(w => w.aktif == 1 && w.sernr.Equals(v_Gelen.zsernr)).ToList();
-                                if (_arsivtemp==null)
+                                if (_arsivtemp!=null)
                                 {
                                     _Param.Posnr = "";
                                     _Param.Rsnum = "";

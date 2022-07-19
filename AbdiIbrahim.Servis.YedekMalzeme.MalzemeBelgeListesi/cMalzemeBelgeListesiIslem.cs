@@ -566,6 +566,16 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeBelgeListesi
                                             _kimlikiptal.lastupdateuser = "service";
                                             _kimlikiptal.Save();
                                         }
+
+                                        tbl01eklecikararsiv _ArsivIptal = session.Query<tbl01eklecikararsiv>().FirstOrDefault(w => w.aktif == 1 &&w.aufnr.Equals(_gelenaufnr) && w.matnr.Equals(_gelenmatnr) &&w.maktx.Equals(_gelenmaktx) && w.sernr.Equals(_gelensernr));
+
+                                        if (_ArsivIptal !=null)
+                                        {
+                                            _ArsivIptal.aktif = 0;
+                                            _ArsivIptal.guncellemezamani = DateTime.Now;
+                                            _ArsivIptal.lastupdateuser = "service";
+                                            _ArsivIptal.Save();
+                                        }
                                     }
 
 
