@@ -97,7 +97,7 @@
                             <div class="form-group m-form__group row" style="padding-top: 0px;">
 
                                 <div>
-                                    <button type="button" class="btn btn-success pull-right" style="align-content: center; width: 120px; position: absolute; right: 30px;" onclick="fn_DegerleriListele()">LİSTELE</button>
+                                    <button type="button" class="btn btn-success pull-right" style="align-content: center; width: 200px; position: absolute; right: 30px;" onclick="fn_DegerleriListele()">LİSTELE</button>
                                 </div>
                             </div>
                         </div>
