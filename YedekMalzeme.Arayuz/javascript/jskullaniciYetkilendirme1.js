@@ -384,7 +384,7 @@ function fn_DegerleriListele1() {
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="#" onclick="JsGuncelleModalAc('`+full[0]+ `');"><i class="la la-edit"></i>Kullanıcı Güncelle</a>
                                 <a class="dropdown-item" href="#" onclick="jsYetkiSil('`+full[0]+ `');"><i class="la la-edit"></i>Kullanıcı Sil</a>
-                                <a class="dropdown-item" href="#" onclick="jsSifreYenileme('`+full[0]+ `');"><i class="la la-edit"></i>Şifre Yenile</a>
+                                <a class="dropdown-item" href="#" onclick="jsSifreYenileme('`+full[0]+ `');"><i class="la la-edit"></i>Şifre Resetle</a>
                                
                             </div>
                         </span>

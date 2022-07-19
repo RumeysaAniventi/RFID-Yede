@@ -34,42 +34,18 @@
                     </div>
 
                     <!--begin::Form-->
-                    <form class="m-form m-form--fit m-form--label-align-right">
+              <form class="m-form m-form--fit m-form--label-align-right">
                         <%-- filtre kısmı --%>
                         <div class="m-portlet__body">
 
                             <div class="form-group m-form__group row">
 
-                                <div class="col-lg-4">
-                                    <h6>Sipariş Numarası</h6>
-                                    <input type="text" autocomplete="off" class="form-control m-input" name="txtaufnrfiltre" id="txtaufnrfiltre" />
-
-                                </div>
-
-                                <div class="col-lg-4">
-                                    <h6>Malzeme Kodu</h6>
-                                    <input type="text" autocomplete="off" class="form-control m-input" name="txtmatnrfiltre" id="txtmatnrfiltre" />
-
-                                </div>
-
-                                <div class="col-lg-4">
+                               <div class="col-lg-4">
                                     <h6>Malzeme Adı</h6>
                                     <input type="text" autocomplete="off" class="form-control m-input" name="txtmaktxfiltre" id="txtmaktxfiltre" />
 
                                 </div>
-                            </div>
-                            <div class="form-group m-form__group row">
-                                <div class="col-lg-4">
-                                    <h6>İlk Tarih</h6>
-                                    <%--       <input type="date" autocomplete="off" class="form-control m-input" name="listekimliktarih" id="listekimliktarih" />--%>
-                                    <input type="date" autocomplete="off" class="form-control m-input" name="ilktarih" id="ilktarih" />
-
-                                    <%--  <select class="form-control m-input m-input--square" id="listekimliktarih"></select>--%>
-                                </div>
-                                <div class="col-lg-4">
-                                    <h6>Son Tarih</h6>
-                                    <input type="date" autocomplete="off" class="form-control m-input" name="sontarih" id="sontarih" />
-                                </div>
+                                         
                                 <div class="col-lg-2">
                                     <h6>Geçiş İzni</h6>
                                     <select class="form-control m-input m-input--square" id="listegecis">
@@ -92,12 +68,45 @@
                                     </select>
                                 </div>
 
+                                 <div class="col-lg-4">
+                                    <h6>İlk Tarih</h6>
+                                    <%--       <input type="date" autocomplete="off" class="form-control m-input" name="listekimliktarih" id="listekimliktarih" />--%>
+                                    <input type="date" autocomplete="off" class="form-control m-input" name="ilktarih" id="ilktarih" />
+
+                                    <%--  <select class="form-control m-input m-input--square" id="listekimliktarih"></select>--%>
+                                </div>
+
+
+                            
                             </div>
 
-                            <div class="form-group m-form__group row" style="padding-top: 0px;">
+                             <div class="form-group m-form__group row">
 
-                                <div>
-                                    <button type="button" class="btn btn-success pull-right" style="align-content: center; width: 120px; position: absolute; right: 30px;" onclick="fn_DegerleriListele()">LİSTELE</button>
+                                    <div class="col-lg-4">
+                                    <h6>Malzeme Kodu</h6>
+                                    <input type="text" autocomplete="off" class="form-control m-input" name="txtmatnrfiltre" id="txtmatnrfiltre" />
+
+                                </div>
+
+                                 
+                                     <div class="col-lg-4">
+                                    <h6>Sipariş Numarası</h6>
+                                    <input type="text" autocomplete="off" class="form-control m-input" name="txtaufnrfiltre" id="txtaufnrfiltre" />
+
+                                </div>
+
+                                    <div class="col-lg-4">
+                                    <h6>Son Tarih</h6>
+                                    <input type="date" autocomplete="off" class="form-control m-input" name="sontarih" id="sontarih" />
+                                </div>
+
+
+                                  </div>
+
+                            <div class="form-group m-form__group row" style="padding-top: 0px; ">
+                                <div class="col-lg-12" >
+                                    <h6>&nbsp</h6>
+                                     <button type="button" class="btn pull-right btn-primary" style="align-content: center; width:370px " onclick="fn_DegerleriListele()">           LİSTELE              </button>
                                 </div>
                             </div>
                         </div>

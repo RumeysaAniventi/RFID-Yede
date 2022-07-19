@@ -162,23 +162,25 @@
                     <div class="modal-body">
 
                         <div class="form-group m-form__group row">
-                            <div class="col-lg-4">
+
+                            <div class="col-lg-6">
                                 <h6>Malzeme Kodu</h6>
                                 <select class="form-control m-input m-input--square" id="listematnr" onchange="jsmalzemeAdiBul()"></select>
 
                             </div>
 
-                            <div class="form-group m-form__group row">
-
-                                <div class="col-lg-8">
+                            <div class="col-lg-6">
                                     <h6>Malzeme Adı</h6>
                                     <select class="form-control m-input m-input--square" id="listemaktx" onchange="jsmalzemeKuduBul()"></select>
 
                                 </div>
-                            </div>
+
+                        
 
 
                         </div>
+
+
                         <div class="modal-footer">
                             <div class="col-lg-2">
                                 <%-- <button type="button" class="btn btn-danger" data-dismiss="modal">KAPAT</button>--%>
