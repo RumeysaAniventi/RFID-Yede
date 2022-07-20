@@ -461,6 +461,7 @@
     <Compile Include="request\StokeListesiParametreKayitRequest.cs" />
     <Compile Include="request\StokeListesiParametreListesiRequest.cs" />
     <Compile Include="request\StokSayRequest.cs" />
+    <Compile Include="request\TuketimListeleRequest.cs" />
     <Compile Include="request\YetkiGuncelleModalAcRequest.cs" />
     <Compile Include="request\YetkiGuncelleRequest.cs" />
     <Compile Include="request\YetkiSilRequest.cs" />
@@ -529,6 +530,7 @@
     <Compile Include="response\StokeListesiParametreKayitResponse.cs" />
     <Compile Include="response\StokeListesiParametreListesiResponse.cs" />
     <Compile Include="response\StokSayResponse.cs" />
+    <Compile Include="response\TuketimListeleResponse.cs" />
     <Compile Include="response\YetkiGuncelleModalAcResponse.cs" />
     <Compile Include="response\YetkiGuncelleResponse.cs" />
     <Compile Include="response\YetkiSilResponse.cs" />
@@ -557,6 +559,7 @@
     <Compile Include="View\MalzemeAdiListeleView.cs" />
     <Compile Include="View\MalzemeKoduListeleView.cs" />
     <Compile Include="View\RfidFarkListeleView.cs" />
+    <Compile Include="View\TuketimListeleView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Anasayfa.aspx" />

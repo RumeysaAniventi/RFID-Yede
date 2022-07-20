@@ -67,7 +67,7 @@
 
                                             <div class="m-pricing-table-1__btn">
                                                 <h6>&nbsp</h6>
-                                                <button type="button" class="btn m-btn--pill  btn-focus m-btn--wide m-btn--uppercase m-btn--bolder m-btn--sm">Listele</button>
+                                                <button type="button" class="btn m-btn--pill  btn-focus m-btn--wide m-btn--uppercase m-btn--bolder m-btn--sm" onclick="fn_TuketimListele()">Listele</button>
                                             </div>
                                         </div>
 

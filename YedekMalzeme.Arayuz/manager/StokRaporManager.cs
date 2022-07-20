@@ -50,6 +50,42 @@ namespace YedekMalzeme.Arayuz.manager
             return _Cevap;
         }
 
+        internal TuketimListeleResponse fn_TuketimListele(TuketimListeleRequest v_Gelen)
+        {
+            TuketimListeleResponse _Cevap = new TuketimListeleResponse();
+            try
+            {
+                using (Session session =XpoManager.Instance.GetNewSession())
+                {
+                    List<tbl06analiz> tuketim = session.Query<tbl06analiz>().Where(d => d.aktif == 1 && d.tuketim == 1).ToList();
+
+
+                    _Cevap.zdizi = new List<TuketimListeleView>();
+
+                    foreach (var item in tuketim)
+                    {
+                        _Cevap.zdizi.Add(new TuketimListeleView
+                        {
+                            zaufnr = item.aufnr,
+                            zsernr = item.sernr,
+                            zmaktx = item.maktx,
+                            zmatnr = item.matnr
+                        });
+                    }
+                    _Cevap.zAciklama = "";
+                    _Cevap.zSonuc = 1;
+                }
+            }
+            catch (Exception)
+            {
+
+                _Cevap.zdizi = new List<TuketimListeleView>();
+                _Cevap.zAciklama = "";
+                _Cevap.zSonuc = -1;
+            }
+            return _Cevap;
+        }
+
         internal KoltukDepoListeleResponse fn_KoltukDepoListele(KoltukDepoListeleRequest v_Gelen)
         {
             KoltukDepoListeleResponse _Cevap = new KoltukDepoListeleResponse();

@@ -10,6 +10,64 @@ $(document).ready(function () {
     fn_StokSay();
 });
 
+function fn_TuketimListele() {
+    $.ajax({
+        type: "POST",
+        url: "api/TuketimListele",
+        data: JSON.stringify
+            ({
+                zdeger: '1'
+            }),
+
+        contentType: "application/json; charset=utf-8",
+
+        dataType: "json",
+
+        beforeSend: function () {
+
+            
+        },
+        error: function (request, status, error) {
+
+            UyariMesajiVer('Sistemsel bir hata oluştu');
+        },
+        success: function (msg) {
+
+            if (msg.zSonuc == "1") {
+
+                var vYanitDizi = msg.zdizi;
+                var content = '';
+
+                if (vYanitDizi.length) {
+
+                    for (var iSayac = 0; iSayac < vYanitDizi.length; iSayac++) {
+
+
+                        content += "<tr>";
+                        content += "<td>" + vYanitDizi[iSayac].zaufnr + "</td>";
+                        content += "<td>" + vYanitDizi[iSayac].zsernr + "</td>";
+                        content += "<td>" + vYanitDizi[iSayac].zmatnr + "</td>";
+                        content += "<td>" + vYanitDizi[iSayac].zmaktx + "</td>";
+                        content += "</tr>";
+                    }
+
+                    $('#m_table_tuketim tbody').html(content);
+
+
+                }
+
+            }
+            else {
+                UyariMesajiVer('Sistemsel bir hata oluştu. Lütfen daha sonra tekrar deneyiniz');
+            }
+        },
+
+        complete: function () {
+            $('#m_modal_tuketim').modal('show');
+
+        }
+    });
+}
 function fn_KoltukDepoListele() {
     $.ajax({
         type: "POST",
