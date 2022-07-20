@@ -20,7 +20,7 @@ namespace YedekMalzeme.Arayuz
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            fn_LoginOl();
+            fn_LoginOl(new loginUser());
             //fn_LoginOl();
         }
 
@@ -65,8 +65,15 @@ namespace YedekMalzeme.Arayuz
             return strIP;
         }
         
-        private void fn_LoginOl()
+
+        public class loginUser
         {
+            public string _KullaniciAdi { get; set; }
+            public string _Sifre { get; set; }
+        }
+        public void fn_LoginOl(loginUser loginUser)
+        {
+
             #region Değişkenler
             string _KullaniciAdi = "";
             string _Sifre = "";
@@ -75,19 +82,19 @@ namespace YedekMalzeme.Arayuz
             int _Sonuc = 0;
             #endregion
 
-            lblSonuc.Text = "  ";
-            _KullaniciAdi = txtUserName.Text.Trim();
-            _Sifre = txtPassword.Text.Trim();
+            //lblSonuc.Text = "  ";
+            _KullaniciAdi = loginUser._KullaniciAdi == null ? txtUserName.Text.Trim() : loginUser._KullaniciAdi ;
+            _Sifre = loginUser._Sifre == null ? txtPassword.Text.Trim() : loginUser._Sifre;
 
             if (string.IsNullOrEmpty(_KullaniciAdi) || string.IsNullOrWhiteSpace(_KullaniciAdi) || _KullaniciAdi == "")
             {
-                lblSonuc.Text = "Lütfen kullanıcı adı ve/veya şifre alanını doldurunuz";
+               // lblSonuc.Text = "Lütfen kullanıcı adı ve/veya şifre alanını doldurunuz";
                 return;
             }
 
             if (string.IsNullOrEmpty(_Sifre) || string.IsNullOrWhiteSpace(_Sifre) || _Sifre == "")
             {
-                lblSonuc.Text = "Lütfen kullanıcı adı ve/veya şifre alanını doldurunuz";
+               // lblSonuc.Text = "Lütfen kullanıcı adı ve/veya şifre alanını doldurunuz";
                 return;
             }
 
@@ -114,7 +121,7 @@ namespace YedekMalzeme.Arayuz
                             zsonuc = 0
                         }.Save();
 
-                        lblSonuc.Text = "Hatalı kullanıcı adı veya şifre";
+                       // lblSonuc.Text = "Hatalı kullanıcı adı veya şifre";
                         return;
 
                     }
@@ -171,7 +178,7 @@ namespace YedekMalzeme.Arayuz
             }
             catch (Exception ex)
             {
-                lblSonuc.Text = "Sistemsel br hata oluştu. Lütfen daha sonra tekrar deneyiniz";
+                //lblSonuc.Text = "Sistemsel br hata oluştu. Lütfen daha sonra tekrar deneyiniz";
             }
         }
     }

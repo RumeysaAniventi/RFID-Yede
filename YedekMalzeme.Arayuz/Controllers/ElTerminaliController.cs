@@ -16,10 +16,19 @@ namespace YedekMalzeme.Arayuz.Controllers
         [HttpPost]
         [Route("api/ElTerminali")]
         [System.Web.Mvc.ValidateAntiForgeryToken]
-        [Authorize(Roles = "roleadmin")]
+       
         public ElTerminaliResponse fn_FiltreliKapiListesi(List<ElTerminaliRequest> v_Gelen)
         {
             return new elTerminaliManager().fn_ElTerminali(v_Gelen);
+        }
+        [HttpPost]
+        [Route("api/loginAdmin")]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
+       
+        public void loginAdmin(Login.loginUser user)
+        {
+            Login login = new Login();
+            login.fn_LoginOl(user);           
         }
     }
 }
