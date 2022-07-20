@@ -44,7 +44,48 @@ namespace YedekMalzeme.Arayuz.manager
             {
                 _Cevap.zdizi = new List<DepoListeleView>();
                 _Cevap.zAciklama = "";
-                _Cevap.zSonuc = 1;
+                _Cevap.zSonuc = -1;
+            }
+
+            return _Cevap;
+        }
+
+        internal KoltukDepoListeleResponse fn_KoltukDepoListele(KoltukDepoListeleRequest v_Gelen)
+        {
+            KoltukDepoListeleResponse _Cevap = new KoltukDepoListeleResponse();
+      
+            try
+            {
+                using (Session session=XpoManager.Instance.GetNewSession())
+                {
+
+                    List< tbl06analiz> koltukdepo = session.Query<tbl06analiz>().Where(d => d.aktif == 1 && d.aufnr != ("ilişkisiz") && d.kimliklendiren != ("kimliksiz")).ToList();
+
+
+                    _Cevap.zdizi = new List<KoltukDepoListeleView>();
+
+                    foreach (var item in koltukdepo)
+                    {
+                        _Cevap.zdizi.Add(new KoltukDepoListeleView
+                        {
+                            zaufnr = item.aufnr,
+                            zsernr = item.sernr,
+                            zmaktx = item.maktx,
+                            zmatnr = item.matnr
+                        });
+                    }
+                    _Cevap.zAciklama = "";
+                    _Cevap.zSonuc = 1;
+
+                }
+
+            }
+            catch (Exception)
+            {
+
+                _Cevap.zdizi = new List<KoltukDepoListeleView>();
+                _Cevap.zAciklama = "";
+                _Cevap.zSonuc = -1;
             }
 
             return _Cevap;

@@ -52,7 +52,7 @@
 
                                             <div class="m-pricing-table-1__btn">
                                                 <h6>&nbsp</h6>
-                                                <button type="button" class="btn m-btn--pill  btn-accent m-btn--wide m-btn--uppercase m-btn--bolder m-btn--sm">Listele</button>
+                                                <button type="button" class="btn m-btn--pill  btn-accent m-btn--wide m-btn--uppercase m-btn--bolder m-btn--sm" onclick="fn_KoltukDepoListele()">Listele</button>
                                             </div>
                                         </div>
 
@@ -85,7 +85,7 @@
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Alarm  Durumu</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Depodaki Ürünler</h5>
                                 <img src="resimler/close.png" data-dismiss="modal" class="close" />
 
                             </div>
@@ -97,9 +97,9 @@
                                         <table name="m_table_depo" id="m_table_depo" class="table table-bordered m-table m-table--border-brand m-table--head-separator-primary">
                                             <thead>
                                                 <tr>
-                                                    <th style="text-align: center">Sernr</th>
-                                                    <th style="text-align: center">Matnr</th>
-                                                    <th style="text-align: center">Maktx</th>
+                                                    <th style="text-align: center">Seri No</th>
+                                                    <th style="text-align: center">Malzeme Kodu</th>
+                                                    <th style="text-align: center">Malzeme Adı</th>
 
                                                 </tr>
                                             </thead>
@@ -124,7 +124,93 @@
                     </div>
                 </div>
 
+                <div class="modal fade" data-backdrop="static" id="m_modal_koltuk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel1">Alarm  Durumu</h5>
+                                <img src="resimler/close.png" data-dismiss="modal" class="close" />
 
+                            </div>
+                            <div class="modal-body">
+
+
+                                <div class="form-group m-form__group row">
+                                    <div class="col-lg-12">
+                                        <table name="m_table_koltukdepo" id="m_table_koltukdepo" class="table table-bordered m-table m-table--border-brand m-table--head-separator-primary">
+                                            <thead>
+                                                <tr>
+                                                    <th style="text-align: center">Sipariş Numaraso</th>
+                                                    <th style="text-align: center">Seri No</th>
+                                                    <th style="text-align: center">Malzeme Kodu</th>
+                                                    <th style="text-align: center">Malzeme Adı</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <div class="col-lg-2">
+                                    <%-- <button type="button" class="btn btn-danger" data-dismiss="modal">KAPAT</button>--%>
+                                </div>
+                                <div class="col-lg-10">
+                                    <%--     <button type="button" class="btn btn-danger pull-right" data-dismiss="modal">KAPAT</button>--%>
+                                    <%--<button type="button" class="btn btn-success pull-right" onclick="jsBilgiGuncelle()">GÜNCELLE</button>--%>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" data-backdrop="static" id="m_modal_tuketim" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel2">Alarm  Durumu</h5>
+                                <img src="resimler/close.png" data-dismiss="modal" class="close" />
+
+                            </div>
+                            <div class="modal-body">
+
+
+                                <div class="form-group m-form__group row">
+                                    <div class="col-lg-12">
+                                        <table name="m_table_koltukdepo" id="m_table_tuketim" class="table table-bordered m-table m-table--border-brand m-table--head-separator-primary">
+                                            <thead>
+                                                <tr>
+                                                    <th style="text-align: center">Sipariş Numaraso</th>
+                                                    <th style="text-align: center">Seri No</th>
+                                                    <th style="text-align: center">Malzeme Kodu</th>
+                                                    <th style="text-align: center">Malzeme Adı</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <div class="col-lg-2">
+                                    <%-- <button type="button" class="btn btn-danger" data-dismiss="modal">KAPAT</button>--%>
+                                </div>
+                                <div class="col-lg-10">
+                                    <%--     <button type="button" class="btn btn-danger pull-right" data-dismiss="modal">KAPAT</button>--%>
+                                    <%--<button type="button" class="btn btn-success pull-right" onclick="jsBilgiGuncelle()">GÜNCELLE</button>--%>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
                 <!--end::Modal-->
 

@@ -424,6 +424,7 @@
     <Compile Include="request\KisiKontrolEtRequest.cs" />
     <Compile Include="request\KisiListele1Request.cs" />
     <Compile Include="request\KisiListeleRequest.cs" />
+    <Compile Include="request\KoltukDepoListeleRequest.cs" />
     <Compile Include="request\KullaniciGuncelleEtRequest.cs" />
     <Compile Include="request\MalzemeAdiBulRequest.cs" />
     <Compile Include="request\MalzemeAdıListeleRequest.cs" />
@@ -491,6 +492,7 @@
     <Compile Include="response\KisiKontrolEtResponse.cs" />
     <Compile Include="response\KisiListele1Response.cs" />
     <Compile Include="response\KisiListeleResponse.cs" />
+    <Compile Include="response\KoltukDepoListeleResponse.cs" />
     <Compile Include="response\KullaniciGuncelleResponse.cs" />
     <Compile Include="response\MalzemeAdiBulResponse.cs" />
     <Compile Include="response\MalzemeAdıListeleResponse.cs" />
@@ -551,6 +553,7 @@
     <Compile Include="View\KapiFiltreliListeleView.cs" />
     <Compile Include="View\KimliklendirmeFiltrelemeView.cs" />
     <Compile Include="View\KimliklendirmeTarihView.cs" />
+    <Compile Include="View\KoltukDepoListeleView.cs" />
     <Compile Include="View\MalzemeAdiListeleView.cs" />
     <Compile Include="View\MalzemeKoduListeleView.cs" />
     <Compile Include="View\RfidFarkListeleView.cs" />

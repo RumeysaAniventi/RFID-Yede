@@ -31,6 +31,15 @@ namespace YedekMalzeme.Arayuz.Controllers
             return new StokRaporManager().fn_StokSay(v_Gelen);
         }
 
+        
+        [HttpPost]
+        [Route("api/KoltukDepoListele")]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
+        [Authorize(Roles = "roleadmin")]
+        public KoltukDepoListeleResponse fn_KoltukDepoListele(KoltukDepoListeleRequest v_Gelen)
+        {
+            return new StokRaporManager().fn_KoltukDepoListele(v_Gelen);
+        }
 
     }
 }

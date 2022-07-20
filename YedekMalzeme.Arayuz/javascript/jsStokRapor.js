@@ -10,6 +10,64 @@ $(document).ready(function () {
     fn_StokSay();
 });
 
+function fn_KoltukDepoListele() {
+    $.ajax({
+        type: "POST",
+        url: "api/KoltukDepoListele",
+        data: JSON.stringify
+            ({
+                zdeger: '1'
+            }),
+
+        contentType: "application/json; charset=utf-8",
+
+        dataType: "json",
+
+        beforeSend: function () {
+
+          
+        },
+        error: function (request, status, error) {
+
+            UyariMesajiVer('Sistemsel bir hata oluştu');
+        },
+        success: function (msg) {
+
+            if (msg.zSonuc == "1") {
+
+                var vYanitDizi = msg.zdizi;
+                var content = '';
+
+                if (vYanitDizi.length) {
+
+                    for (var iSayac = 0; iSayac < vYanitDizi.length; iSayac++) {
+
+
+                        content += "<tr>";
+                        content += "<td>" + vYanitDizi[iSayac].zaufnr + "</td>";
+                        content += "<td>" + vYanitDizi[iSayac].zsernr + "</td>";
+                        content += "<td>" + vYanitDizi[iSayac].zmatnr + "</td>";
+                        content += "<td>" + vYanitDizi[iSayac].zmaktx + "</td>";
+                        content += "</tr>";
+                    }
+
+                    $('#m_table_koltukdepo tbody').html(content);
+
+
+                }
+
+            }
+            else {
+                UyariMesajiVer('Sistemsel bir hata oluştu. Lütfen daha sonra tekrar deneyiniz');
+            }
+        },
+
+        complete: function () {
+            $('#m_modal_koltuk').modal('show');
+
+        }
+    });
+}
 
 function fn_DepoListele() {
 
@@ -98,19 +156,7 @@ function fn_StokSay() {
 
         beforeSend: function () {
 
-            swal({
-                buttons: {
-                    confirm: "TAMAM"
-                },
-                title: "UYARI",
-                html: true,
-                text: "Bu İşlem Uzun Sürebilir",
-                icon: "info",
-                dangerMode: false
-            })
-            //.then((willDelete) => {
-            //    window.location.href = 'kapirapor2.aspx';
-            //});
+           
         },
         error: function (request, status, error) {
 
@@ -121,9 +167,9 @@ function fn_StokSay() {
             if (msg.zSonuc == "1") {
 
 
-                $('#depoCount').val(msg.zdepo);
-                $('#koltukdepoCount').val(msg.zkoltukdepo);
-                $('#tüketimCount').val(msg.ztuketim);
+                $('#depoCount').text(msg.zdepo);
+                $('#koltukdepoCount').text(msg.zkoltukdepo);
+                $('#tüketimCount').text(msg.ztuketim);
 
             }
             else {
