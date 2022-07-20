@@ -9,7 +9,8 @@ namespace YedekMalzeme.Arayuz.response
     {
 
         public string zid { get; set; }
-        public string zepc { get; set; }        
+        public string zepc { get; set; }
+        public string zsernr { get; set; }
         public string zaufnr { get; set; }
         public string zmatnr { get; set; }
         public string zmaktx { get; set; }
