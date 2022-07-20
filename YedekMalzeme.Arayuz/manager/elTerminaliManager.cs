@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using YedekMalzeme.Arayuz.request;
 using YedekMalzeme.Arayuz.response;
+using YedekMalzeme.Arayuz.View;
 
 namespace YedekMalzeme.Arayuz.manager
 {
@@ -21,7 +22,7 @@ namespace YedekMalzeme.Arayuz.manager
 
                 using (Session session = XpoManager.Instance.GetNewSession())
                 {
-
+                    elTerminaliResponse.zdizi = new List<ElTerminaliView>();
 
                     foreach (var item in v_Gelen)
                     {
@@ -31,16 +32,15 @@ namespace YedekMalzeme.Arayuz.manager
                         if (_analizList == null)
                         {
                             //kimliksiz
-                            elTerminaliResponse.zepc = item.zepc;
-                            elTerminaliResponse.zsernr = "";
-                            elTerminaliResponse.zaufnr = "";
-                            elTerminaliResponse.zmatnr = "";
-                            elTerminaliResponse.zmaktx = "";
-                            elTerminaliResponse.zdurumMesaj = "Kimliksiz ürün!";
-                            elTerminaliResponse.zAciklama = "";
-                            elTerminaliResponse.zSonuc = 1;
-
-
+                            elTerminaliResponse.zdizi.Add(new ElTerminaliView
+                            {
+                                zepc = item.zepc,
+                                zsernr = "",
+                                zaufnr = "",
+                                zmatnr = "",
+                                zmaktx = "",
+                                zdurumMesaj = "Kimliksiz ürün!",
+                            });
 
                         }
                         else
@@ -50,45 +50,91 @@ namespace YedekMalzeme.Arayuz.manager
 
                             if (_analizListStok != null)
                             {
-                                elTerminaliResponse.zepc = item.zepc;
-                                elTerminaliResponse.zsernr = _analizListStok.sernr;
-                                elTerminaliResponse.zaufnr = "";
-                                elTerminaliResponse.zmatnr = _analizListStok.matnr;
-                                elTerminaliResponse.zmaktx = _analizListStok.maktx;
-                                elTerminaliResponse.zdurumMesaj = "Stok ürünü";
-                                elTerminaliResponse.zAciklama = "";
-                                elTerminaliResponse.zSonuc = 1;
+
+                                elTerminaliResponse.zdizi.Add(new ElTerminaliView
+                                {
+                                    zid = _analizListStok.id,
+                                    zepc = item.zepc,
+                                    zsernr = _analizListStok.sernr,
+                                    zaufnr = "",
+                                    zmatnr = _analizListStok.matnr,
+                                    zmaktx = _analizListStok.maktx,
+                                    zdurumMesaj = "Stok ürünü",
+
+                                });
+
                             }
+                            tbl06analiz _analiz = session.Query<tbl06analiz>().Where(p => p.epc == item.zepc && p.aktif == 1 ).FirstOrDefault();
+
+                            if (_analiz != null)
+                            {
+                                if (_analiz.tuketim == 1)
+                                {
+                                    elTerminaliResponse.zdizi.Add(new ElTerminaliView
+                                    {
+                                        zepc = item.zepc,
+                                        zsernr = _analiz.sernr,
+                                        zaufnr = _analiz.aufnr,
+                                        zmatnr = _analiz.matnr,
+                                        zmaktx = _analiz.maktx,
+                                        zdurumMesaj = "Bu ürün tüketilmiştir!",
+
+                                    });
+                                }
+                                else if(_analiz.tuketim == 0 && _analiz.iliskilendiren != "ilişkisiz")
+                                {
+                                    elTerminaliResponse.zdizi.Add(new ElTerminaliView
+                                    {
+                                        zid = _analiz.id,
+                                        zepc = item.zepc,
+                                        zsernr = _analiz.sernr,
+                                        zaufnr = _analiz.aufnr,
+                                        zmatnr = _analiz.matnr,
+                                        zmaktx = _analiz.maktx,
+                                        zdurumMesaj = "İlişkili ürün(koltuk depo ürünü)!",
+
+                                    });
+                                }
+
+                            }
+
+
 
                             //ilişkili iliskilendiren != 'iliskisiz'
-                            tbl06analiz _analizListIliskili = session.Query<tbl06analiz>().Where(p => p.epc == item.zepc && p.aktif == 1 && p.tuketim == 0 && p.iliskilendiren != "ilişkisiz").FirstOrDefault();
+                            //tbl06analiz _analizListIliskili = session.Query<tbl06analiz>().Where(p => p.epc == item.zepc && p.aktif == 1 && p.tuketim == 0 && p.iliskilendiren != "ilişkisiz").FirstOrDefault();
 
-                            if (_analizListIliskili != null)
-                            {
-                                elTerminaliResponse.zepc = item.zepc;
-                                elTerminaliResponse.zsernr = _analizListIliskili.sernr;
-                                elTerminaliResponse.zaufnr =_analizListIliskili.aufnr;
+                            //if (_analizListIliskili != null)
+                            //{
 
-                                elTerminaliResponse.zmatnr = _analizListIliskili.matnr;
-                                elTerminaliResponse.zmaktx = _analizListIliskili.maktx;
-                                elTerminaliResponse.zdurumMesaj = "İlişkili ürün(koltuk depo ürünü)!";
-                                elTerminaliResponse.zAciklama = "";
-                                elTerminaliResponse.zSonuc = 1;
-                            }
+                            //    elTerminaliResponse.zdizi.Add(new ElTerminaliView
+                            //    {
+                            //        zid= _analizListIliskili.id,
+                            //        zepc = item.zepc,
+                            //        zsernr = _analizListIliskili.sernr,
+                            //        zaufnr = _analizListIliskili.aufnr,
+                            //        zmatnr = _analizListIliskili.matnr,
+                            //        zmaktx = _analizListIliskili.maktx,
+                            //        zdurumMesaj = "İlişkili ürün(koltuk depo ürünü)!",
 
-                            tbl06analiz _analizListTuketilen = session.Query<tbl06analiz>().Where(p => p.epc == item.zepc && p.aktif == 1 && p.tuketim == 1).FirstOrDefault();
+                            //    });
+                            //}
 
-                            if (_analizListIliskili != null)
-                            {
-                                elTerminaliResponse.zepc = item.zepc;
-                                elTerminaliResponse.zsernr = _analizListTuketilen.sernr;
-                                elTerminaliResponse.zaufnr = _analizListTuketilen.aufnr;
-                                elTerminaliResponse.zmatnr = _analizListTuketilen.matnr;
-                                elTerminaliResponse.zmaktx = _analizListTuketilen.maktx;
-                                elTerminaliResponse.zdurumMesaj = "Bu ürün tüketilmiştir!";
-                                elTerminaliResponse.zAciklama = "";
-                                elTerminaliResponse.zSonuc = 1;
-                            }
+                            //tbl06analiz _analizListTuketilen = session.Query<tbl06analiz>().Where(p => p.epc == item.zepc && p.aktif == 1 && p.tuketim == 1).FirstOrDefault();
+
+                            //if (_analizListIliskili != null)
+                            //{
+                            //    elTerminaliResponse.zdizi.Add(new ElTerminaliView
+                            //    {
+                            //        zepc = item.zepc,
+                            //        zsernr = _analizListTuketilen.sernr,
+                            //        zaufnr = _analizListTuketilen.aufnr,
+                            //        zmatnr = _analizListTuketilen.matnr,
+                            //        zmaktx = _analizListTuketilen.maktx,
+                            //        zdurumMesaj = "Bu ürün tüketilmiştir!",
+
+                            //    });
+                            //    ;
+                            //}
 
 
                         }
@@ -96,10 +142,16 @@ namespace YedekMalzeme.Arayuz.manager
 
                     }
 
+                    elTerminaliResponse.zAciklama = "";
+                    elTerminaliResponse.zSonuc = 1;
+
                 }
             }
             catch
             {
+                elTerminaliResponse.zdizi = new List<ElTerminaliView>();
+                elTerminaliResponse.zAciklama = "";
+                elTerminaliResponse.zSonuc = -1;
 
             }
 

@@ -551,6 +551,7 @@
     <Compile Include="View\AcikPmListeleView.cs" />
     <Compile Include="View\AcikSiparisListesiView.cs" />
     <Compile Include="View\DepoListeleView.cs" />
+    <Compile Include="View\ElTerminaliView.cs" />
     <Compile Include="View\FiltrelenmisKimliklendirmeView.cs" />
     <Compile Include="View\KapiFiltreliListeleView.cs" />
     <Compile Include="View\KimliklendirmeFiltrelemeView.cs" />

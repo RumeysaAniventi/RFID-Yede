@@ -15,6 +15,7 @@ namespace YedekMalzeme.Arayuz.Controllers
 
         [HttpPost]
         [Route("api/ElTerminali")]
+
         [System.Web.Mvc.ValidateAntiForgeryToken]
        
         public ElTerminaliResponse fn_FiltreliKapiListesi(List<ElTerminaliRequest> v_Gelen)
