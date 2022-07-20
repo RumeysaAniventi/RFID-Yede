@@ -213,6 +213,7 @@
     <Compile Include="Controllers\RdrKimliklendirmeParametreController.cs" />
     <Compile Include="Controllers\RfidFarkListesiController.cs" />
     <Compile Include="Controllers\StokeListesiParametreController.cs" />
+    <Compile Include="Controllers\StokRaporController.cs" />
     <Compile Include="cVeriTabaniIslem.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -355,6 +356,7 @@
     <Compile Include="manager\RdrKimliklendirmeParametreManager.cs" />
     <Compile Include="manager\rfidFarkManager.cs" />
     <Compile Include="manager\StokeListesiParametreManager.cs" />
+    <Compile Include="manager\StokRaporManager.cs" />
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -399,6 +401,7 @@
     <Compile Include="request\AlarmKapatRequest.cs" />
     <Compile Include="request\BilesenGuncelleRequest.cs" />
     <Compile Include="request\BilesenMalzemeListesiRequest.cs" />
+    <Compile Include="request\DepoListeleRequest.cs" />
     <Compile Include="request\ElTerminaliRequest.cs" />
     <Compile Include="request\EpcKimlikBilgileriRequest.cs" />
     <Compile Include="request\FiltrelenmisKimlikMalzemeListeleRequest.cs" />
@@ -456,6 +459,7 @@
     <Compile Include="request\StokeListesiParametreDegerRequest.cs" />
     <Compile Include="request\StokeListesiParametreKayitRequest.cs" />
     <Compile Include="request\StokeListesiParametreListesiRequest.cs" />
+    <Compile Include="request\StokSayRequest.cs" />
     <Compile Include="request\YetkiGuncelleModalAcRequest.cs" />
     <Compile Include="request\YetkiGuncelleRequest.cs" />
     <Compile Include="request\YetkiSilRequest.cs" />
@@ -464,6 +468,7 @@
     <Compile Include="response\AlarmGoruntuleResponse.cs" />
     <Compile Include="response\AlarmKapatResponse.cs" />
     <Compile Include="response\BilesenMalzemeListesiResponse.cs" />
+    <Compile Include="response\DepoListeleResponse.cs" />
     <Compile Include="response\ElTerminaliResponse.cs" />
     <Compile Include="response\EpcKimlikBilgileriResponse.cs" />
     <Compile Include="response\FiltrelenmisKimlikMalzemeListeleResponse.cs" />
@@ -521,6 +526,7 @@
     <Compile Include="response\StokeListesiParametreDegerResponse.cs" />
     <Compile Include="response\StokeListesiParametreKayitResponse.cs" />
     <Compile Include="response\StokeListesiParametreListesiResponse.cs" />
+    <Compile Include="response\StokSayResponse.cs" />
     <Compile Include="response\YetkiGuncelleModalAcResponse.cs" />
     <Compile Include="response\YetkiGuncelleResponse.cs" />
     <Compile Include="response\YetkiSilResponse.cs" />
@@ -531,8 +537,16 @@
     <Compile Include="stokeparametre.aspx.designer.cs">
       <DependentUpon>stokeparametre.aspx</DependentUpon>
     </Compile>
+    <Compile Include="StokRapor.aspx.cs">
+      <DependentUpon>StokRapor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StokRapor.aspx.designer.cs">
+      <DependentUpon>StokRapor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\AcikPmListeleView.cs" />
     <Compile Include="View\AcikSiparisListesiView.cs" />
+    <Compile Include="View\DepoListeleView.cs" />
     <Compile Include="View\FiltrelenmisKimliklendirmeView.cs" />
     <Compile Include="View\KapiFiltreliListeleView.cs" />
     <Compile Include="View\KimliklendirmeFiltrelemeView.cs" />
@@ -588,6 +602,7 @@
     <Content Include="javascript\jsSiparisBilesenDegistirme.js" />
     <Content Include="javascript\jsStokeListesiParametre.js" />
     <Content Include="javascript\jsstokeparametre.js" />
+    <Content Include="javascript\jsStokRapor.js" />
     <Content Include="javascript\kapibilgijs.js" />
     <Content Include="javascript\sweetalert.min.js" />
     <Content Include="kapibilgi.aspx" />
@@ -613,6 +628,7 @@
     <Content Include="resimler\ajax-loader.gif" />
     <Content Include="resimler\close.png" />
     <Content Include="stokeparametre.aspx" />
+    <Content Include="StokRapor.aspx" />
     <Content Include="theme\assets\app\js\dashboard.js" />
     <Content Include="theme\assets\app\js\dashboard.min.js" />
     <Content Include="theme\assets\app\js\layout-builder.js" />

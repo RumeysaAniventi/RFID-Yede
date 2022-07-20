@@ -216,7 +216,7 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kapi
                                         iliskilendiren = "yok",
                                         iliskiiptaleden = "yok",
                                         iliskiyeri = 0,
-                                        kimliklendiren = "yok",
+                                        kimliklendiren = "kimliksiz",
                                         kimlikiptaleden = "yok",
                                         tuketim = 0,
                                         gecisizni = 0,
