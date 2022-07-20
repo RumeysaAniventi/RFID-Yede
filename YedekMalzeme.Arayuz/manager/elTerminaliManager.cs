@@ -17,6 +17,7 @@ namespace YedekMalzeme.Arayuz.manager
         {
             ElTerminaliResponse elTerminaliResponse = new ElTerminaliResponse();
 
+           
             try
             {
 

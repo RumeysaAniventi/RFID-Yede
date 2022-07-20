@@ -169,8 +169,11 @@ namespace YedekMalzeme.Arayuz
                         {
                             cookie.Expires = ticket.Expiration;
                         }
+                        if (cookie !=null)
+                        {
 
-                        Response.Cookies.Add(cookie);
+                            Response.Cookies.Add(cookie);
+                        }
 
                         Response.Redirect("Anasayfa.aspx");
                     }
