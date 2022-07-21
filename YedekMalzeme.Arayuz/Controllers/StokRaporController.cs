@@ -16,6 +16,8 @@ namespace YedekMalzeme.Arayuz.Controllers
         [Route("api/DepoListele")]
         [System.Web.Mvc.ValidateAntiForgeryToken]
         [Authorize(Roles = "roleadmin")]
+
+       
         public DepoListeleResponse fn_DepoListele(DepoListeleRequest v_Gelen)
         {
             return new StokRaporManager().fn_DepoListele(v_Gelen);

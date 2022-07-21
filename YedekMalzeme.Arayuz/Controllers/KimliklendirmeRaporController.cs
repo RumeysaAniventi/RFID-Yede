@@ -16,8 +16,8 @@ namespace YedekMalzeme.Arayuz.Controllers
 
         [HttpPost]
         [Route("api/FiltrelenmisKimlikMalzemeListele")]
-        [System.Web.Mvc.ValidateAntiForgeryToken]
         [Authorize(Roles = "roleadmin")]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
         public FiltrelenmisKimlikMalzemeListeleResponse FiltrelenmisKimlikMalzemeListele(FiltrelenmisKimlikMalzemeListeleRequest v_Gelen)
         {
             return new kimliklendirmeRaporManager().fn_FiltrelenmisKimlikMalzemeListele(v_Gelen);
@@ -25,8 +25,8 @@ namespace YedekMalzeme.Arayuz.Controllers
 
         [HttpPost]
         [Route("api/KimlikRaporFiltreleme")]
-        [System.Web.Mvc.ValidateAntiForgeryToken]
         [Authorize(Roles = "roleadmin")]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
         public KimlikRaporFiltrelemeResponse KimlikRaporFiltreleme(KimlikRaporFiltrelemeRequest v_Gelen)
         {
             return new kimliklendirmeRaporManager().fn_KimlikRaporFiltreleme(v_Gelen);
@@ -35,8 +35,9 @@ namespace YedekMalzeme.Arayuz.Controllers
 
         [HttpPost]
         [Route("api/KimlikTarihListele")]
-        [System.Web.Mvc.ValidateAntiForgeryToken]
+
         [Authorize(Roles = "roleadmin")]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
         public KimlikTarihListeleResponse KimlikTarihListele(KimlikTarihListeleRequest v_Gelen)
         {
             return new kimliklendirmeRaporManager().fn_KimlikTarihListele(v_Gelen);
@@ -46,8 +47,8 @@ namespace YedekMalzeme.Arayuz.Controllers
 
         [HttpPost]
         [Route("api/KimliklendirmeRaporListele")]
-        [System.Web.Mvc.ValidateAntiForgeryToken]
         [Authorize(Roles = "roleadmin")]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
         public KimliklendirmeRaporListeleResponse KimliklendirmeRaporListele(KimliklendirmeRaporListeleRequest v_Gelen)
         {
             return new kimliklendirmeRaporManager().fn_KimliklendirmeRaporListele(v_Gelen);

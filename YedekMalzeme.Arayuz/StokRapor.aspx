@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    
 
 
     <div class="m-content">
@@ -31,9 +32,10 @@
                                             <div class="m-pricing-table-1__visual">
                                                 <div class="m-pricing-table-1__hexagon1"></div>
                                                 <div class="m-pricing-table-1__hexagon2"></div>
-                                                <span class="m-pricing-table-1__icon m--font-primary" id="DepoUrunSayisi"><i class="fa flaticon-home-1"></i></span>
+                                                <span class="m-pricing-table-1__icon m--font-primary"><i class="fa flaticon-home-1"></i></span>
                                             </div>
-                                            <span class="m-pricing-table-1__price" id="depoCount"></span>
+
+                                            <span class="m-pricing-table-1__price" id="depoCount" style="margin-bottom: 0px; font-size: 3rem;"></span>
                                             <h2 class="m-pricing-table-1__subtitle">Depodaki Ürün</h2>
 
                                             <div class="m-pricing-table-1__btn">
@@ -47,11 +49,11 @@
                                                 <div class="m-pricing-table-1__hexagon2"></div>
                                                 <span class="m-pricing-table-1__icon m--font-accent"><i class="fa flaticon-clock-2"></i></span>
                                             </div>
-                                            <span class="m-pricing-table-1__price" id="koltukdepoCount"></span>
+
+                                            <span class="m-pricing-table-1__price" id="koltukdepoCount" style="margin-top:290px;"></span>
                                             <h2 class="m-pricing-table-1__subtitle">Koltuk Depoda Ürün</h2>
 
                                             <div class="m-pricing-table-1__btn">
-                                                <h6>&nbsp</h6>
                                                 <button type="button" class="btn m-btn--pill  btn-accent m-btn--wide m-btn--uppercase m-btn--bolder m-btn--sm" onclick="fn_KoltukDepoListele()">Listele</button>
                                             </div>
                                         </div>
@@ -62,11 +64,10 @@
                                                 <div class="m-pricing-table-1__hexagon2"></div>
                                                 <span class="m-pricing-table-1__icon m--font-focus"><i class="fa flaticon-rocket"></i></span>
                                             </div>
-                                            <span class="m-pricing-table-1__price" id="tüketimCount"></span>
+                                            <span class="m-pricing-table-1__price" id="tüketimCount" style="margin-top:290px";></span>
                                             <h2 class="m-pricing-table-1__subtitle">Tüketilen Ürün</h2>
 
                                             <div class="m-pricing-table-1__btn">
-                                                <h6>&nbsp</h6>
                                                 <button type="button" class="btn m-btn--pill  btn-focus m-btn--wide m-btn--uppercase m-btn--bolder m-btn--sm" onclick="fn_TuketimListele()">Listele</button>
                                             </div>
                                         </div>

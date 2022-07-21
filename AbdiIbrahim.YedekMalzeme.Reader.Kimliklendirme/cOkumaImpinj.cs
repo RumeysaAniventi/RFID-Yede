@@ -18,7 +18,8 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kimliklendirme
         static ImpinjReader reader = new ImpinjReader();
 
         static ILog _LogDosyasi = LogManager.GetLogger(typeof(cOkumaImpinj));
-
+        
+        string exHistory = "";
 
         internal class TagDataView
         {
@@ -222,9 +223,6 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kimliklendirme
                         //}
                     }
                 }
-                
-
-
                 // Console.WriteLine(settings.Antennas.Length+"");
 
 
@@ -281,7 +279,14 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kimliklendirme
             }
             catch (Exception ex)
             {
-                _LogDosyasi.Error(ex.ToString());
+                if (exHistory != ex.ToString())
+                {
+
+                    exHistory = ex.ToString();
+
+                    _LogDosyasi.Error(ex.ToString());
+                }
+
 
                 Thread.Sleep(TimeSpan.FromSeconds(15));
 
@@ -313,10 +318,9 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kimliklendirme
 
                     try
                     {
-                        _LogDosyasi.Info("log1");
                         foreach (var item in _OkumaListesi.Where(w => DateTime.Now.Subtract(w._Zaman).TotalSeconds >= 5).ToList())
                         {
-                            _LogDosyasi.Info("log2");
+                           
                             _OkumaListesi.Remove(item);
                         }
                     }
@@ -330,6 +334,7 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kimliklendirme
             }
             catch (Exception ex)
             {
+
                 _LogDosyasi.Info(ex.ToString());
             }
         }
@@ -365,7 +370,7 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kimliklendirme
                 {
                     tblreaderkimliklendirmeparam _readerparam = session.Query<tblreaderkimliklendirmeparam>().SingleOrDefault(a => a.aktif == 1);
                     READER_HOSTNAME = _readerparam.readerip;
-                    _LogDosyasi.Info("log3");
+                   
                 }
 
 

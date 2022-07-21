@@ -13,11 +13,15 @@ namespace YedekMalzeme.Arayuz.Controllers
     public class ElTerminaliController : ApiController
     {
 
+        // [System.Web.Mvc.AuthorizeAttribute(Roles = "roleadmin,Kullanici")]
+        //[System.Web.Http.Authorize(Roles = "roleadmin")]
+
         [HttpPost]
         [Route("api/ElTerminali")]
-        [Authorize(Roles = "roleadmin,Kullanici")]
+        //  [Authorize(Roles = "roleadmin,Kullanici")]
+        [System.Web.Mvc.AuthorizeAttribute(Roles = "roleadmin")]
         [System.Web.Mvc.ValidateAntiForgeryToken]
-       
+
         public ElTerminaliResponse fn_FiltreliKapiListesi(List<ElTerminaliRequest> v_Gelen)
         {
             return new elTerminaliManager().fn_ElTerminali(v_Gelen);

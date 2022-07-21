@@ -136,8 +136,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeListesi
                             {
 
                                 string _gelenMatnr = _Cevap.EtMaterialList[_veriSayac].Matnr;
-
-                                    string _gelenMeins = _Cevap.EtMaterialList[_veriSayac].Meins;
+                                string _gelenMeins = _Cevap.EtMaterialList[_veriSayac].Meins;
                                 string _gelenMaktx = _Cevap.EtMaterialList[_veriSayac].Maktx;
                                 string _gelenMtart = _Cevap.EtMaterialList[_veriSayac].Mtart;
                                 string _gelenMtbez = _Cevap.EtMaterialList[_veriSayac].Mtbez;
@@ -152,8 +151,8 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeListesi
 
                                         aktif = 1,
                                         databasekayitzamani = DateTime.Now,
-                                        createuser = "aniventi",
-                                        lastupdateuser = "aniventi",
+                                        createuser = "servis",
+                                        lastupdateuser = "servis",
                                         guncellemezamani = DateTime.Now,
                                         id = Guid.NewGuid().ToString(),
                                         maktx = _gelenMaktx,
@@ -194,7 +193,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeListesi
                                         }
 
                                         _Temp.maktx = _gelenMaktx;
-                                        _Temp.lastupdateuser = "aniventi";
+                                        _Temp.lastupdateuser = "servis";
                                         _Temp.guncellemezamani = DateTime.Now;
                                         _Temp.Save();
                                     }
@@ -222,7 +221,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeListesi
                                         }
 
                                         _Temp.meins = _gelenMeins;
-                                        _Temp.lastupdateuser = "aniventi";
+                                        _Temp.lastupdateuser = "servis";
                                         _Temp.guncellemezamani = DateTime.Now;
                                         _Temp.Save();
                                     }
@@ -250,7 +249,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeListesi
                                         }
 
                                         _Temp.mtart = _gelenMtart;
-                                        _Temp.lastupdateuser = "aniventi";
+                                        _Temp.lastupdateuser = "servis";
                                         _Temp.guncellemezamani = DateTime.Now;
                                         _Temp.Save();
                                     }
@@ -278,12 +277,12 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeListesi
                                         }
 
                                         _Temp.mtbez = _gelenMtbez;
-                                        _Temp.lastupdateuser = "aniventi";
+                                        _Temp.lastupdateuser = "servis";
                                         _Temp.guncellemezamani = DateTime.Now;
                                         _Temp.Save();
                                     }
 
-                                    
+
 
 
                                 }
@@ -317,11 +316,11 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeListesi
                                     new tblmalzemelistesireturn(session)
                                     {
                                         aktif = 1,
-                                        createuser = "aniventi,",
+                                        createuser = "servis,",
                                         databasekayitzamani = DateTime.Now,
                                         guncellemezamani = DateTime.Now,
                                         id = Guid.NewGuid().ToString().ToUpper(),
-                                        lastupdateuser = "aniventi,",
+                                        lastupdateuser = "servis,",
                                         field = _gelenfield,
                                         logmsgno = _gelenlogmsgno,
                                         logno = _gelenlogno,
@@ -354,7 +353,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeListesi
 
                             foreach (var item in _Temp)
                             {
-                                item.lastupdateuser = "aniventi";
+                                item.lastupdateuser = "servis";
                                 item.guncellemezamani = DateTime.Now;
                                 item.Save();
                             }
