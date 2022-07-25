@@ -30,11 +30,11 @@ namespace YedekMalzeme.Arayuz.manager
                         {
                             aktif = 1,
 
-                            createuser = "Admin",
+                            createuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
                             databasekayitzamani = DateTime.Now,
                             guncellemezamani = DateTime.Now,
                             id = Guid.NewGuid().ToString().ToUpper(),
-                            lastupdateuser = "Admin",
+                            lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
                             kapiepc = v_Gelen.zRfidId,
                             kapiip = v_Gelen.zReaderIp,
                             kapiokumagucu = v_Gelen.zReaderPower
@@ -48,11 +48,31 @@ namespace YedekMalzeme.Arayuz.manager
                         _Temp.kapiip = v_Gelen.zReaderIp;
                         _Temp.kapiokumagucu = v_Gelen.zReaderPower;
                         _Temp.guncellemezamani = DateTime.Now;
-                        _Temp.lastupdateuser = "Admin";
+                        _Temp.lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString();
                         _Temp.Save();
+
+                        new tbl08log(session)
+                        {
+                            aktif = 1,
+                            databasekayitzamani = DateTime.Now,
+                            guncellemezamani = DateTime.Now,
+                            id = Guid.NewGuid().ToString().ToUpper(),
+                            aufnr = "",
+                            createuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            epc = "",
+                            islemturu = " Parametreler kapiepc: " + v_Gelen.zRfidId + " kapiip:" + v_Gelen.zReaderIp + " kapiokumagucu :" + v_Gelen.zReaderPower+ " olarak guncellendi",
+                            islemyapan = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            maktx = "",
+                            matnr = "",
+                            satirid = _Temp.id,
+                            sernr = "",
+                            tabloadi = "tblreaderkapiparam"
+                        }.Save();
+
                     }
 
-                   
+
                     _Cevap.zSonuc = 1;
                     _Cevap.zAciklama = "İşlem Başarılı";
                 }

@@ -50,6 +50,26 @@ namespace YedekMalzeme.Arayuz.manager
                         _Temp.guncellemezamani = DateTime.Now;
                         _Temp.lastupdateuser = "Admin";
                         _Temp.Save();
+
+                        new tbl08log(session)
+                        {
+                            aktif = 1,
+                            databasekayitzamani = DateTime.Now,
+                            guncellemezamani = DateTime.Now,
+                            id = Guid.NewGuid().ToString().ToUpper(),
+                            aufnr = "",
+                            createuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            epc = "",
+                            islemturu = " Parametreler readerepc: " + v_Gelen.zRfidId + " readerip:" + v_Gelen.zReaderIp + " readerokumagucu :" + v_Gelen.zReaderPower + " olarak guncellendi",
+                            islemyapan = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            maktx = "",
+                            matnr = "",
+                            satirid = _Temp.id,
+                            sernr = "",
+                            tabloadi = "tblreaderkimliklendirmeparam"
+                        }.Save();
+
                     }
 
                     _Cevap = new RdrKimliklendirmeParametreKayitResponse();

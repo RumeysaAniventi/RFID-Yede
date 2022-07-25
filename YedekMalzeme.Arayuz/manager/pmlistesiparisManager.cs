@@ -924,6 +924,26 @@ namespace YedekMalzeme.Arayuz.manager
                         _guncelanalz.lastupdateuser= HttpContext.Current.Session["KullaniciAdi"].ToString();
                         _guncelanalz.guncellemezamani = DateTime.Now;
                         _guncelanalz.Save();
+
+                        new tbl08log(session)
+                        {
+                            aktif = 1,
+                            databasekayitzamani = DateTime.Now,
+                            guncellemezamani = DateTime.Now,
+                            id = Guid.NewGuid().ToString().ToUpper(),
+                            aufnr = v_Gelen.zaufnr,
+                            createuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            epc = v_Gelen.zepc,
+                            islemturu = "Siparişe Bileşen Ekleme",
+                            islemyapan = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            maktx = v_Gelen.zmaktx,
+                            matnr = v_Gelen.zmatnr,
+                            satirid = _guncelanalz.id,
+                            sernr = v_Gelen.zsernr,
+                            tabloadi = "tbl06analiz"
+                        }.Save();
+
                     }
                     else
                     {
@@ -936,6 +956,25 @@ namespace YedekMalzeme.Arayuz.manager
                         _guncelanalz.lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString();
                         _guncelanalz.guncellemezamani = DateTime.Now;
                         _guncelanalz.Save();
+
+                        new tbl08log(session)
+                        {
+                            aktif = 1,
+                            databasekayitzamani = DateTime.Now,
+                            guncellemezamani = DateTime.Now,
+                            id = Guid.NewGuid().ToString().ToUpper(),
+                            aufnr = v_Gelen.zaufnr,
+                            createuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            epc = v_Gelen.zepc,
+                            islemturu = "Siparişe Bileşen Çıkarma",
+                            islemyapan = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            maktx = v_Gelen.zmaktx,
+                            matnr = v_Gelen.zmatnr,
+                            satirid = _guncelanalz.id,
+                            sernr = v_Gelen.zsernr,
+                            tabloadi = "tbl06analiz"
+                        }.Save();
                     }
                     _Takip.Save();
 

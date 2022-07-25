@@ -981,6 +981,29 @@ namespace YedekMalzeme.Arayuz.manager
                             sernr = _tempkimliklendirme.sernr
                         }.Save();
 
+                        tblkimliklendirme _log = session.Query<tblkimliklendirme>().FirstOrDefault(l => l.aktif == 1 && l.gelenepc.Equals(v_gelen.zepc) && l.matnr.Equals(v_gelen.zmatnr) && l.maktx.Equals(v_gelen.zmaktx));
+
+
+                        new tbl08log(session)
+                        {
+                            aktif = 1,
+                            id = Guid.NewGuid().ToString().ToUpper(),
+                            createuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            databasekayitzamani = DateTime.Now,
+                            guncellemezamani = DateTime.Now,
+                            aufnr = "ilişkisiz",
+                            epc = v_gelen.zepc,
+                            islemturu = "Kimliklendirmeiptal",
+                            islemyapan = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            matnr = v_gelen.zmatnr,
+                            maktx = v_gelen.zmaktx,
+                            satirid = _log.id,
+                            sernr = v_gelen.zsernr,
+                            tabloadi = "tblkimliklendirme"
+
+                        }.Save();
+
                         tbl06analiz _analizguncelle = session.Query<tbl06analiz>().FirstOrDefault(a => a.aktif == 1 && a.epc.Equals(v_gelen.zepc) && a.matnr.Equals(v_gelen.zmatnr) && a.maktx.Equals(v_gelen.zmaktx));
 
                         _analizguncelle.kimlikiptaleden = HttpContext.Current.Session["KullaniciAdi"].ToString();

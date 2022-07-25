@@ -195,6 +195,28 @@ namespace YedekMalzeme.Arayuz.manager
 
                     }.Save();
 
+                    tblkimliklendirme _log = session.Query<tblkimliklendirme>().FirstOrDefault(l => l.aktif == 1 && l.gelenepc.Equals(v_gelen.zepc) && l.matnr.Equals(v_gelen.zmatnr) && l.maktx.Equals(v_gelen.zmaktx));
+
+
+                    new tbl08log(session)
+                    {
+                        aktif = 1,
+                        id = Guid.NewGuid().ToString().ToUpper(),
+                        createuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                        lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                        databasekayitzamani = DateTime.Now,
+                        guncellemezamani = DateTime.Now,
+                        aufnr = "ilişkisiz",
+                        epc = v_gelen.zepc,
+                        islemturu = "Kimliklendirme",
+                        islemyapan = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                        matnr = v_gelen.zmatnr,
+                        maktx = v_gelen.zmaktx,
+                        satirid = _log.id,
+                        sernr = v_gelen.zsernr,
+                        tabloadi = "tblkimliklendirme"
+
+                    }.Save();
 
 
                     // new tbl04arsivkimliklendirmeiptal(session)().s

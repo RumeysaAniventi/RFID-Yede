@@ -154,6 +154,7 @@
     <Compile Include="EntityFramework\tbl05kullanici.cs" />
     <Compile Include="EntityFramework\tbl06analiz.cs" />
     <Compile Include="EntityFramework\tbl07sapfark.cs" />
+    <Compile Include="EntityFramework\tbl08log.cs" />
     <Compile Include="EntityFramework\tblarayuzkullanici.cs" />
     <Compile Include="EntityFramework\tblarsivmalzemebelgelistesiresponse.cs" />
     <Compile Include="EntityFramework\tblarsivmalzemelistesiresponse.cs" />

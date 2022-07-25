@@ -91,12 +91,12 @@ namespace YedekMalzeme.Arayuz.manager
                             aufnr = v_gelen.z_Aufnr,
                             budathigh = v_gelen.z_BudatHigh,
                             budatlow = v_gelen.z_BodatLow,
-                            createuser = "Admin",
+                            createuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
                             databasekayitzamani = DateTime.Now,
                             guncellemezamani = DateTime.Now,
                             id = Guid.NewGuid().ToString().ToUpper(),
                             iwerk = v_gelen.z_Iwerk,
-                            lastupdateuser = "Admin"
+                            lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
 
                         }.Save();
                     }
@@ -106,10 +106,31 @@ namespace YedekMalzeme.Arayuz.manager
                         _Param.budathigh = v_gelen.z_BudatHigh;
                         _Param.budatlow = v_gelen.z_BodatLow;
                         _Param.iwerk = v_gelen.z_Iwerk;
-                        _Param.lastupdateuser = "Admin";
+                        _Param.lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString();
                         _Param.guncellemezamani = DateTime.Now;
 
                         _Param.Save();
+
+                        new tbl08log(session)
+                        {
+                            aktif = 1,
+                            databasekayitzamani = DateTime.Now,
+                            guncellemezamani = DateTime.Now,
+                            id = Guid.NewGuid().ToString().ToUpper(),
+                            aufnr = "",
+                            createuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            epc = "",
+                            islemturu = " Parametreler werks: " + v_gelen.z_Iwerk + " aufnr:" + v_gelen.z_Aufnr + " budathigh :" + v_gelen.z_BudatHigh + "budatlow: " + v_gelen.z_BodatLow +  "olarak guncellendi",
+                            islemyapan = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            maktx = "",
+                            matnr = "",
+                            satirid = _Param.id,
+                            sernr = "",
+                            tabloadi = "tblmalzemebelgelistesiparam"
+                        }.Save();
+
+
                     }
                     _Cevap.zAciklama = "";
                     _Cevap.zSonuc = 1;

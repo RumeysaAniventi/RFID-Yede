@@ -46,6 +46,24 @@ namespace YedekMalzeme.Arayuz.manager
                         _Temp.guncellemezamani = DateTime.Now;
                         _Temp.lastupdateuser = "Admin";
 
+                        new tbl08log(session)
+                        {
+                            aktif = 1,
+                            databasekayitzamani = DateTime.Now,
+                            guncellemezamani = DateTime.Now,
+                            id = Guid.NewGuid().ToString().ToUpper(),
+                            aufnr = "",
+                            createuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            epc = "",
+                            islemturu = " Parametreler lgort: " + v_Gelen.zlgort + " mtart:" + v_Gelen.zmtart + " werks :" + v_Gelen.ziwerk + " olarak guncellendi",
+                            islemyapan = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            maktx = "",
+                            matnr = "",
+                            satirid = _Temp.id,
+                            sernr = "",
+                            tabloadi = "tblmalzemestoklistesiparam"
+                        }.Save();
 
                         _Temp.Save();
 

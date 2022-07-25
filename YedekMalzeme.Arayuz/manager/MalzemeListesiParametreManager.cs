@@ -25,8 +25,8 @@ namespace YedekMalzeme.Arayuz.manager
                         new tblmalzemelistesiparam(session)
                         {
                             aktif = 1,
-                            createuser = "aniventi",
-                            lastupdateuser = "aniventi",
+                            createuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
                             databasekayitzamani = DateTime.Now,
                             guncellemezamani = DateTime.Now,
                             id = Guid.NewGuid().ToString().ToUpper(),
@@ -39,10 +39,30 @@ namespace YedekMalzeme.Arayuz.manager
                     {
                         _Param.werks = v_Gelen.zIwerk;
                         _Param.mtart = v_Gelen.zMtart;
-                        _Param.lastupdateuser = "aniventi";
+                        _Param.lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString();
                         _Param.guncellemezamani = DateTime.Now;
 
                         _Param.Save();
+
+                        new tbl08log(session)
+                        {
+                            aktif = 1,
+                            databasekayitzamani = DateTime.Now,
+                            guncellemezamani = DateTime.Now,
+                            id = Guid.NewGuid().ToString().ToUpper(),
+                            aufnr = "",
+                            createuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            epc = "",
+                            islemturu = " Parametreler werks: " + v_Gelen.zIwerk + " mtart:" + v_Gelen.zMtart + " olarak guncellendi",
+                            islemyapan = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            maktx = "",
+                            matnr = "",
+                            satirid = _Param.id,
+                            sernr = "",
+                            tabloadi = "tblmalzemelistesiparam"
+                        }.Save();
+
                     }
 
                 }

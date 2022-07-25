@@ -3,6 +3,7 @@ using Entity.YedekMalzemeTakip.EntityFramework;
 using Entity.YedekMalzemeTakip.Important;
 using System;
 using System.Linq;
+using System.Web;
 using YedekMalzeme.Arayuz.request;
 using YedekMalzeme.Arayuz.response;
 
@@ -29,14 +30,14 @@ namespace YedekMalzeme.Arayuz.manager
                         {
                             aktif = 1,
                             aufnr = v_Gelen.zaufnr,
-                            createuser = "Admin",
+                            createuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
                             databasekayitzamani = DateTime.Now,
                             erdathigh = v_Gelen.zerdathigh,
                             erdatlow = v_Gelen.zerdatlow,
                             guncellemezamani = DateTime.Now,
                             id = Guid.NewGuid().ToString().ToUpper(),
                             iwerk = v_Gelen.ziwerk,
-                            lastupdateuser = "Admin"
+                            lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
 
                         }.Save();
                        
@@ -48,7 +49,28 @@ namespace YedekMalzeme.Arayuz.manager
                         _Temp.erdatlow = v_Gelen.zerdatlow;
                         _Temp.guncellemezamani = DateTime.Now;
                         _Temp.iwerk = v_Gelen.ziwerk;
-                        _Temp.lastupdateuser = "Admin";
+                        _Temp.lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString();
+
+
+                        new tbl08log(session)
+                        {
+                            aktif = 1,
+                            databasekayitzamani = DateTime.Now,
+                            guncellemezamani = DateTime.Now,
+                            id = Guid.NewGuid().ToString().ToUpper(),
+                            aufnr ="",
+                            createuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            lastupdateuser = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            epc = "",
+                            islemturu = "Parametreler erdathigh: " +v_Gelen.zerdathigh+ " erdatlow:"+v_Gelen.zerdatlow + " iwerk :"+ v_Gelen.ziwerk+ " aufnr "+ v_Gelen.zaufnr+" olarak guncellendi",
+                            islemyapan = HttpContext.Current.Session["KullaniciAdi"].ToString(),
+                            maktx = "",
+                            matnr = "",
+                            satirid = _Temp.id,
+                            sernr = "",
+                            tabloadi = "tblzrfidorderlistparam"
+                        }.Save();
+
 
                         _Temp.Save();
                     }
