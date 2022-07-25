@@ -13,6 +13,7 @@ using YedekMalzeme.Arayuz.request;
 using YedekMalzeme.Arayuz.response;
 using YedekMalzeme.Arayuz.View;
 
+
 namespace YedekMalzeme.Arayuz.manager
 {
     public class kimliklendirmeRaporManager
@@ -198,7 +199,7 @@ namespace YedekMalzeme.Arayuz.manager
                             " count(tblkimliklendirme.matnr) as kimliklimalzemesayisi " +
                             " from tblmalzemelistesiresponse " +
                             " inner join tblkimliklendirme  on tblmalzemelistesiresponse.matnr=tblkimliklendirme.matnr " +
-                            " where tblkimliklendirme.aktif=1 and";
+                            " where tblkimliklendirme.aktif=1 and tblmalzemelistesiresponse.aktif=1 and";
                             
 
                     if (v_Gelen.zkimliklendiren!="")
@@ -266,6 +267,9 @@ namespace YedekMalzeme.Arayuz.manager
 
                 _dTable = _myIslem._fnDataTable(_Komut);
 
+                using (Session session = XpoManager.Instance.GetNewSession())
+                {
+                    
                     _Cevap = new KimlikRaporFiltrelemeResponse();
                     _Cevap.zSonuc = 1;
                     _Cevap.zDizi = new List<KimliklendirmeFiltrelemeView>();
@@ -281,7 +285,7 @@ namespace YedekMalzeme.Arayuz.manager
 
                         });
                     }
-                
+                }
             }
             catch (Exception ex)
             {

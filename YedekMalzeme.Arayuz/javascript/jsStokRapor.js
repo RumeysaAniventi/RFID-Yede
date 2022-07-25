@@ -143,16 +143,16 @@ function fn_DepoListele() {
 
         beforeSend: function () {
 
-            swal({
-                buttons: {
-                    confirm: "TAMAM"
-                },
-                title: "UYARI",
-                html: true,
-                text: "Bu İşlem Uzun Sürebilir",
-                icon: "info",
-                dangerMode: false
-            })
+            //swal({
+            //    buttons: {
+            //        confirm: "TAMAM"
+            //    },
+            //    title: "UYARI",
+            //    html: true,
+            //    text: "Bu İşlem Uzun Sürebilir",
+            //    icon: "info",
+            //    dangerMode: false
+            //})
                 //.then((willDelete) => {
                 //    window.location.href = 'kapirapor2.aspx';
                 //});
