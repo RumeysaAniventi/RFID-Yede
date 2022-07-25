@@ -206,9 +206,8 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabe2">Sipariş Bilgileri Güncelle</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
+                                    <img src="resimler/close.png" data-dismiss="modal" class="close"/>
+                                   
                                 </div>
                                 <div class="modal-body">
 

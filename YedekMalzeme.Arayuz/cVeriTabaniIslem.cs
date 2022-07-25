@@ -30,6 +30,7 @@ namespace YedekMalzeme.Arayuz
 
             // "Server=localhost;User ID=postgres;password=Ankara123;Database=Artieles";
             _Sonuc = "Server=" + ConfigurationManager.AppSettings["BaglantiSunucuIp"] +
+               
             ";User ID=" + ConfigurationManager.AppSettings["BaglantiKullaniciAdi"] +
             ";password=" + password +
             ";Database=" + ConfigurationManager.AppSettings["BaglantiDatabase"].ToString() + "";
