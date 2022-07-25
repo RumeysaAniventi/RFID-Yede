@@ -212,8 +212,29 @@ function fn_DegerleriListele() {
                         content += "<td>" + vYanitDizi[iSayac].zsernr + "</td>";                        
                         content += "<td>" + vYanitDizi[iSayac].zmatnr + "</td>";            
                         content += "<td>" + vYanitDizi[iSayac].zmaktx + "</td>";
-                        content += "<td>" + vYanitDizi[iSayac].zgecisizni + "</td>";
-                        content += "<td>" + vYanitDizi[iSayac].zalarm + "</td>";
+
+                       
+                        if (vYanitDizi[iSayac].zgecisizni == 1)
+                        {
+                           // content += "<td>" + vYanitDizi[iSayac].zgecisizni + "</td>";
+                            content += "<td style='text - align: right'> <img src='resimler/1.png'  title='Resim' > izinli </td> ";
+                        }
+                        else if (vYanitDizi[iSayac].zgecisizni == 0)
+                        {
+                            content +=  "<td style='text - align: right'> <img src='resimler/0.png'  title='Resim' > izinsiz </td> ";
+                        }
+
+                        if (vYanitDizi[iSayac].zalarm == 0) {
+                            content +=  "<td> <span class='m-badge  m-badge--success m-badge--wide'>ALARM YOK</span></td>";
+                        }
+                        else if (vYanitDizi[iSayac].zalarm == 1) {
+
+                            content +=  "<td> <span class='m-badge  m-badge--danger m-badge--wide'>ALARM VAR</span></td>";
+                        }
+                        else if (vYanitDizi[iSayac].zalarm == 2) {
+                            content += "<td> <span class='m-badge  m-badge--metal  m-badge--wide'>ALARM KAPALI</span></td>";
+
+                        }
                         content += "<td>...</td>";
                         content += "</tr>";
                     }
