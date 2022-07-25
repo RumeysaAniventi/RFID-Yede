@@ -158,7 +158,7 @@ namespace YedekMalzeme.Arayuz
                         }
 
 
-
+                        Session["Yetki"] = _Yetki;
 
                         FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, _KullaniciAdi, DateTime.Now, DateTime.Now.AddMinutes(75), false, _Yetki, FormsAuthentication.FormsCookiePath);
 

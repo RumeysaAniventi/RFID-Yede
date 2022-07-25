@@ -33,6 +33,8 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeStokListesi
             {
                 while (true)
                 {
+                    #region BeklemeSuresi
+
                     try
                     {
                         ConfigurationManager.RefreshSection("appSettings");
@@ -44,6 +46,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeStokListesi
                         _LogDosyasi.Error("Bekleme Süresi Değeri Çekilemedi =" + ex.ToString());
                     }
 
+                    #endregion
 
                     #region Paramatreleri Çek
 
@@ -135,9 +138,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeStokListesi
 
                         _RequestStoke.EtMaterialstock = _DiziParamzrfidStrMaterialStock;
 
-
-
-                        #region
+                        #region 
                         ZrfidStrSerialNumber _Eleman = new ZrfidStrSerialNumber();
                         _Eleman.Aciklama = "";
                         _Eleman.BLager = "";
@@ -153,8 +154,6 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeStokListesi
                         _RequestStoke.EtSerialnumber = _DizimSerial;
                         #endregion
 
-
-
                         ZrfidMaterialStockListResponse _Cevap = _Client.ZrfidMaterialStockList(_RequestStoke);
 
 
@@ -167,6 +166,16 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeStokListesi
                             foreach (var item in _Liste)
                             {
                                 item.aktif = 0;
+                                item.guncellemezamani = DateTime.Now;
+                                item.Save();
+                            }
+
+                            List<tblmalzemeserialstoklistesi> _Liste2 = session.Query<tblmalzemeserialstoklistesi>().Where(w => w.aktif == 1).ToList();
+
+                            foreach (var item in _Liste2)
+                            {
+                                item.aktif = 0;
+                                item.guncellemezamani = DateTime.Now;
                                 item.Save();
                             }
                         }
@@ -177,6 +186,8 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeStokListesi
                         {
                             for (int _veriSayac = 0; _veriSayac < _Cevap.EtMaterialstock.Length; _veriSayac++)
                             {
+                                #region GelenDegerler
+
                                 string _gelenMatnr = _Cevap.EtMaterialstock[_veriSayac].Matnr;
                                 string _gelenLgort = _Cevap.EtMaterialstock[_veriSayac].Lgort;
                                 string _gelenMaktx = _Cevap.EtMaterialstock[_veriSayac].Maktx;
@@ -187,11 +198,14 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeStokListesi
                                 string _gelenLabst = _Cevap.EtMaterialstock[_veriSayac].Labst + "";
                                 string _gelenSpeme = _Cevap.EtMaterialstock[_veriSayac].Speme + "";
                                 string _gelenLgpbe = _Cevap.EtMaterialstock[_veriSayac].Lgpbe + "";
+                                #endregion
+
 
                                 tblmalzemestoklistesiresponse _Temp = session.Query<tblmalzemestoklistesiresponse>().FirstOrDefault(w => w.matnr.Equals(_gelenMatnr));
 
                                 if (_Temp != null)
                                 {
+                                    _Temp.guncellemezamani = DateTime.Now;
                                     _Temp.aktif = 1;
                                     _Temp.Save();
                                 }
@@ -205,17 +219,18 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeStokListesi
                                         lgpbe = _gelenLgpbe,
                                         speme = _gelenSpeme,
                                         aktif = 1,
-                                        createuser = "aniventi",
+                                        createuser = "servis",
                                         databasekayitzamani = DateTime.Now,
                                         guncellemezamani = DateTime.Now,
                                         id = Guid.NewGuid().ToString().ToUpper(),
-                                        lastupdateuser = "aniventi",
+                                        lastupdateuser = "servis",
                                         maktx = _gelenMaktx,
                                         matnr = _gelenMatnr,
                                         meins = _gelenMeins,
                                         mtart = _gelenMtart,
                                         mtbez = _gelenMtbez,
                                         werks = _gelenWerks
+                                        
                                     }.Save();
                                 }
 
@@ -249,11 +264,11 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeStokListesi
                                     new tblmalzemestoklistesireturn(session)
                                     {
                                         aktif = 1,
-                                        createuser = "aniventi,",
+                                        createuser = "servis,",
                                         databasekayitzamani = DateTime.Now,
                                         guncellemezamani = DateTime.Now,
                                         id = Guid.NewGuid().ToString().ToUpper(),
-                                        lastupdateuser = "aniventi,",
+                                        lastupdateuser = "servis,",
                                         field = _gelenfield,
                                         logmsgno = _gelenlogmsgno,
                                         logno = _gelenlogno,
@@ -275,21 +290,24 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeStokListesi
 
                             }
 
+                          
                         }
 
 
 
                         #region Pasif kayıtların son güncellenme zamanını tut
+
                         using (Session session = XpoManager.Instance.GetNewSession())
                         {
                             List<tblmalzemestoklistesiresponse> _Liste = session.Query<tblmalzemestoklistesiresponse>().Where(w => w.aktif == 0).ToList();
 
                             foreach (var item in _Liste)
                             {
-                                item.lastupdateuser = "aniventi";
+                                item.lastupdateuser = "servis";
                                 item.guncellemezamani = DateTime.Now;
                                 item.Save();
                             }
+
                         }
                         #endregion
 
@@ -326,6 +344,7 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeStokListesi
                                 if (_Temp != null)
                                 {
                                     _Temp.aktif = 1;
+                                    _Temp.guncellemezamani = DateTime.Now;
                                     _Temp.Save();
                                 }
 
@@ -335,11 +354,11 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeStokListesi
                                     {
 
                                         aktif = 1,
-                                        createuser = "aniventi",
+                                        createuser = "servis",
                                         databasekayitzamani = DateTime.Now,
                                         guncellemezamani = DateTime.Now,
                                         id = Guid.NewGuid().ToString().ToUpper(),
-                                        lastupdateuser = "aniventi",
+                                        lastupdateuser = "servis",
                                         maktx = _gelenMaktx,
                                         matnr = _gelenMatnr,
                                         aciklama = _Aciklama,
@@ -351,18 +370,18 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeStokListesi
 
                             }
 
-                            
+
                         }
                         #endregion
 
-                        #region Pasif kayıtların son güncellenme zamanını tut
+                        #region Pasif kayıtların son güncellenme zamanını tut   
                         using (Session session = XpoManager.Instance.GetNewSession())
                         {
                             List<tblmalzemeserialstoklistesi> _Liste = session.Query<tblmalzemeserialstoklistesi>().Where(w => w.aktif == 0).ToList();
 
                             foreach (var item in _Liste)
                             {
-                                item.lastupdateuser = "aniventi";
+                                item.lastupdateuser = "servis";
                                 item.guncellemezamani = DateTime.Now;
                                 item.Save();
                             }
@@ -372,12 +391,11 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeStokListesi
                         #endregion
 
                         _Client.Close();
-                        _LogDosyasi.Error("MalzemeStokListesiIslemleri bitti");
+                        _LogDosyasi.Error("StokListesiIslemleri bitti");
                     }
                     catch (Exception ex)
                     {
-
-                        _LogDosyasi.Error(ex.ToString());
+                        _LogDosyasi.Error("Hata"+ex.ToString());
                     }
 
                     Thread.Sleep(TimeSpan.FromMinutes(_BeklemeSuresi));

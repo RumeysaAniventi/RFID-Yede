@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Npgsql;
+using DevExpress.Xpo;
+using Entity.YedekMalzemeTakip.Important;
 
 namespace YedekMalzeme.Arayuz
 {
@@ -14,7 +16,16 @@ namespace YedekMalzeme.Arayuz
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            using (Session session = XpoManager.Instance.GetNewSession())
+            {
+                string _yetki = HttpContext.Current.Session["Yetki"].ToString();
+                if (_yetki == "Kullanici")
+                {
+                    Response.Redirect("login.aspx");
+                }
+
+
+            }
         }
 
   

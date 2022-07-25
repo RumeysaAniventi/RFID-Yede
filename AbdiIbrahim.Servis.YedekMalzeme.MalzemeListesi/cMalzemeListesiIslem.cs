@@ -338,8 +338,6 @@ namespace AbdiIbrahim.Servis.YedekMalzeme.MalzemeListesi
                                     }.Save();
                                 }
 
-
-
                             }
 
                         }

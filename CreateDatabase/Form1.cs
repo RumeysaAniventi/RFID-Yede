@@ -4,6 +4,7 @@ using Entity.YedekMalzemeTakip.EntityFramework;
 using Entity.YedekMalzemeTakip.Important;
 using Entity.YedekMalzemeTakip.Md5;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Windows.Forms;
@@ -464,14 +465,15 @@ namespace CreateDatabase
 
                 ZrfidStrMaterialStock _ParamzrfidStrMaterialStock = new ZrfidStrMaterialStock();
 
-                _ParamzrfidStrMaterialStock.Lgort = "1910";
+                _ParamzrfidStrMaterialStock.Lgort = "";
                 _ParamzrfidStrMaterialStock.Lgpbe = "";
                 _ParamzrfidStrMaterialStock.Maktx = "";
                 _ParamzrfidStrMaterialStock.Matnr = "";
                 _ParamzrfidStrMaterialStock.Meins = "";
-                _ParamzrfidStrMaterialStock.Mtart = "Z022";
+                _ParamzrfidStrMaterialStock.Mtart = "";
                 _ParamzrfidStrMaterialStock.Mtbez = "";
                 _ParamzrfidStrMaterialStock.Werks = "";
+                
                 _ParamzrfidStrMaterialStock.Labst = 0;
                 _ParamzrfidStrMaterialStock.Speme = 0;
 
@@ -541,12 +543,34 @@ namespace CreateDatabase
 
                 ZrfidMaterialStockListResponse _CevapStoke = _Client.ZrfidMaterialStockList(_RequestStoke);
 
-
+                #region Önce Hepsini pasif yap
 
                 using (Session session = XpoManager.Instance.GetNewSession())
                 {
-                    for (int _veriSayac = 0; _veriSayac <= _CevapStoke.EtMaterialstock.Length; _veriSayac++)
+                    List<tblmalzemestoklistesiresponse> _Liste = session.Query<tblmalzemestoklistesiresponse>().Where(w => w.aktif == 1).ToList();
+
+                    foreach (var item in _Liste)
                     {
+                        item.aktif = 0;
+                        item.Save();
+                    }
+
+                    List<tblmalzemeserialstoklistesi> _Liste2 = session.Query<tblmalzemeserialstoklistesi>().Where(w => w.aktif == 1).ToList();
+
+                    foreach (var item in _Liste2)
+                    {
+                        item.aktif = 0;
+                        item.Save();
+                    }
+                }
+                #endregion
+
+                using (Session session = XpoManager.Instance.GetNewSession())
+                {
+                    for (int _veriSayac = 0; _veriSayac < _CevapStoke.EtMaterialstock.Length; _veriSayac++)
+                    {
+                        #region GelenDegerler
+
                         string _gelenMatnr = _CevapStoke.EtMaterialstock[_veriSayac].Matnr;
                         string _gelenLgort = _CevapStoke.EtMaterialstock[_veriSayac].Lgort;
                         string _gelenMaktx = _CevapStoke.EtMaterialstock[_veriSayac].Maktx;
@@ -554,47 +578,44 @@ namespace CreateDatabase
                         string _gelenMtart = _CevapStoke.EtMaterialstock[_veriSayac].Mtart;
                         string _gelenMtbez = _CevapStoke.EtMaterialstock[_veriSayac].Mtbez;
                         string _gelenWerks = _CevapStoke.EtMaterialstock[_veriSayac].Werks;
-                        decimal _gelenLabst = _CevapStoke.EtMaterialstock[_veriSayac].Labst;
-                        decimal _gelenSpeme = _CevapStoke.EtMaterialstock[_veriSayac].Speme;
-                        string _gelenLgpbe = _CevapStoke.EtMaterialstock[_veriSayac].Lgpbe;
+                        string _gelenLabst = _CevapStoke.EtMaterialstock[_veriSayac].Labst + "";
+                        string _gelenSpeme = _CevapStoke.EtMaterialstock[_veriSayac].Speme + "";
+                        string _gelenLgpbe = _CevapStoke.EtMaterialstock[_veriSayac].Lgpbe + "";
+                        #endregion
+
 
                         tblmalzemestoklistesiresponse _Temp = session.Query<tblmalzemestoklistesiresponse>().FirstOrDefault(w => w.matnr.Equals(_gelenMatnr));
 
-                        //if (_Temp != null)
-                        //{
-                        //    if (_Temp.werks.Equals(_CevapStoke.EtMaterialstock[_veriSayac].Werks) == false)
-                        //    {
-                        //        _Temp.werks = _CevapStoke.EtMaterialstock[_veriSayac].Werks;
-                        //        _Temp.guncellemezamani = DateTime.Now;
-                        //        _Temp.lastupdateuser = "servis";
-                        //        _Temp.Save();
-                        //    }
-                        //}
-
-
-
-                        //   if (_Temp == null)
-                        // {
-                        new tblmalzemestoklistesiresponse(session)
+                        if (_Temp != null)
                         {
-                            aktif = 1,
-                            createuser = "servis",
-                            databasekayitzamani = DateTime.Now,
-                            guncellemezamani = DateTime.Now,
-                            id = Guid.NewGuid().ToString().ToUpper(),
-                            lastupdateuser = "servis",
-                            maktx = _CevapStoke.EtMaterialstock[_veriSayac].Maktx,
-                            matnr = _CevapStoke.EtMaterialstock[_veriSayac].Matnr,
-                            meins = _CevapStoke.EtMaterialstock[_veriSayac].Meins,
-                            mtart = _CevapStoke.EtMaterialstock[_veriSayac].Mtart,
-                            mtbez = _CevapStoke.EtMaterialstock[_veriSayac].Mtbez,
-                            werks = _CevapStoke.EtMaterialstock[_veriSayac].Werks
-                        }.Save();
+                            _Temp.aktif = 1;
+                            _Temp.guncellemezamani = DateTime.Now;
+                            _Temp.Save();
+                        }
 
+                        else
+                        {
+                            new tblmalzemestoklistesiresponse(session)
+                            {
+                                labst = _gelenLabst,
+                                lgort = _gelenLgort,
+                                lgpbe = _gelenLgpbe,
+                                speme = _gelenSpeme,
+                                aktif = 1,
+                                createuser = "form",
+                                databasekayitzamani = DateTime.Now,
+                                guncellemezamani = DateTime.Now,
+                                id = Guid.NewGuid().ToString().ToUpper(),
+                                lastupdateuser = "form",
+                                maktx = _gelenMaktx,
+                                matnr = _gelenMatnr,
+                                meins = _gelenMeins,
+                                mtart = _gelenMtart,
+                                mtbez = _gelenMtbez,
+                                werks = _gelenWerks
 
-
-
-                        //   }
+                            }.Save();
+                        }
 
 
                         //new tblmalzemestoklistesi(session)
@@ -617,87 +638,107 @@ namespace CreateDatabase
 
                     }
 
-                    for (int _veriSayac = 0; _veriSayac <= _CevapStoke.EtMaterialstock.Length; _veriSayac++)
-                    {
-                        string _gelenMatnr = _CevapStoke.EtMaterialstock[_veriSayac].Matnr;
-                        string _gelenLgort = _CevapStoke.EtMaterialstock[_veriSayac].Lgort;
-                        string _gelenMaktx = _CevapStoke.EtMaterialstock[_veriSayac].Maktx;
-                        string _gelenMeins = _CevapStoke.EtMaterialstock[_veriSayac].Meins;
-                        string _gelenMtart = _CevapStoke.EtMaterialstock[_veriSayac].Mtart;
-                        string _gelenMtbez = _CevapStoke.EtMaterialstock[_veriSayac].Mtbez;
-                        string _gelenWerks = _CevapStoke.EtMaterialstock[_veriSayac].Werks;
-                        decimal _gelenLabst = _CevapStoke.EtMaterialstock[_veriSayac].Labst;
-                        decimal _gelenSpeme = _CevapStoke.EtMaterialstock[_veriSayac].Speme;
-                        string _gelenLgpbe = _CevapStoke.EtMaterialstock[_veriSayac].Lgpbe;
-
-                        tblmalzemestoklistesiresponse _Temp = session.Query<tblmalzemestoklistesiresponse>().FirstOrDefault(w => w.matnr.Equals(_gelenMatnr));
-
-                        //if (_Temp != null)
-                        //{
-                        //    if (_Temp.werks.Equals(_CevapStoke.EtMaterialstock[_veriSayac].Werks) == false)
-                        //    {
-                        //        _Temp.werks = _CevapStoke.EtMaterialstock[_veriSayac].Werks;
-                        //        _Temp.guncellemezamani = DateTime.Now;
-                        //        _Temp.lastupdateuser = "servis";
-                        //        _Temp.Save();
-                        //    }
-                        //}
 
 
+                    //for (int _veriSayac = 0; _veriSayac <= _CevapStoke.EtMaterialstock.Length; _veriSayac++)
+                    //{
+                    //    string _gelenMatnr = _CevapStoke.EtMaterialstock[_veriSayac].Matnr;
+                    //    string _gelenLgort = _CevapStoke.EtMaterialstock[_veriSayac].Lgort;
+                    //    string _gelenMaktx = _CevapStoke.EtMaterialstock[_veriSayac].Maktx;
+                    //    string _gelenMeins = _CevapStoke.EtMaterialstock[_veriSayac].Meins;
+                    //    string _gelenMtart = _CevapStoke.EtMaterialstock[_veriSayac].Mtart;
+                    //    string _gelenMtbez = _CevapStoke.EtMaterialstock[_veriSayac].Mtbez;
+                    //    string _gelenWerks = _CevapStoke.EtMaterialstock[_veriSayac].Werks;
+                    //    decimal _gelenLabst = _CevapStoke.EtMaterialstock[_veriSayac].Labst;
+                    //    decimal _gelenSpeme = _CevapStoke.EtMaterialstock[_veriSayac].Speme;
+                    //    string _gelenLgpbe = _CevapStoke.EtMaterialstock[_veriSayac].Lgpbe;
 
-                        //   if (_Temp == null)
-                        // {
-                        new tblmalzemelistesiresponse(session)
-                        {
-                            aktif = 1,
-                            createuser = "servis",
-                            databasekayitzamani = DateTime.Now,
-                            guncellemezamani = DateTime.Now,
-                            id = Guid.NewGuid().ToString().ToUpper(),
-                            lastupdateuser = "servis",
-                            maktx = _CevapStoke.EtMaterialstock[_veriSayac].Maktx,
-                            matnr = _CevapStoke.EtMaterialstock[_veriSayac].Matnr,
-                            meins = _CevapStoke.EtMaterialstock[_veriSayac].Meins,
-                            mtart = _CevapStoke.EtMaterialstock[_veriSayac].Mtart,
-                            mtbez = _CevapStoke.EtMaterialstock[_veriSayac].Mtbez,
-                            werks = _CevapStoke.EtMaterialstock[_veriSayac].Werks
-                        }.Save();
+                    //    tblmalzemestoklistesiresponse _Temp = session.Query<tblmalzemestoklistesiresponse>().FirstOrDefault(w => w.matnr.Equals(_gelenMatnr));
+
+                    //    //if (_Temp != null)
+                    //    //{
+                    //    //    if (_Temp.werks.Equals(_CevapStoke.EtMaterialstock[_veriSayac].Werks) == false)
+                    //    //    {
+                    //    //        _Temp.werks = _CevapStoke.EtMaterialstock[_veriSayac].Werks;
+                    //    //        _Temp.guncellemezamani = DateTime.Now;
+                    //    //        _Temp.lastupdateuser = "servis";
+                    //    //        _Temp.Save();
+                    //    //    }
+                    //    //}
 
 
 
-
-                        //   }
-
-
-                        //new tblmalzemestoklistesi(session)
-                        //{
-                        //    aktif = 1,
-                        //    databasekayitzamani = DateTime.Now,
-                        //    guncellemezamani = DateTime.Now,
-                        //    id = Guid.NewGuid().ToString(),
-                        //    matnr = _CevapStoke.EtSerialnumber[_veriSayac].Matnr,
-                        //    maktx=_CevapStoke.EtSerialnumber[_veriSayac].Maktx,
-                        //    blager=_CevapStoke.EtSerialnumber[_veriSayac].BLager,
-                        //    bwerk=_CevapStoke.EtSerialnumber[_veriSayac].BWerk,
-                        //    sernr=_CevapStoke.EtSerialnumber[_veriSayac].Sernr,
-                        //    aciklama=_CevapStoke.EtSerialnumber[_veriSayac].Aciklama
+                    //    //   if (_Temp == null)
+                    //    // {
+                    //    new tblmalzemelistesiresponse(session)
+                    //    {
+                    //        aktif = 1,
+                    //        createuser = "servis",
+                    //        databasekayitzamani = DateTime.Now,
+                    //        guncellemezamani = DateTime.Now,
+                    //        id = Guid.NewGuid().ToString().ToUpper(),
+                    //        lastupdateuser = "servis",
+                    //        maktx = _CevapStoke.EtMaterialstock[_veriSayac].Maktx,
+                    //        matnr = _CevapStoke.EtMaterialstock[_veriSayac].Matnr,
+                    //        meins = _CevapStoke.EtMaterialstock[_veriSayac].Meins,
+                    //        mtart = _CevapStoke.EtMaterialstock[_veriSayac].Mtart,
+                    //        mtbez = _CevapStoke.EtMaterialstock[_veriSayac].Mtbez,
+                    //        werks = _CevapStoke.EtMaterialstock[_veriSayac].Werks
+                    //    }.Save();
 
 
 
 
-                        //}.Save();
+                    //    //   }
+
+
+                    //    //new tblmalzemestoklistesi(session)
+                    //    //{
+                    //    //    aktif = 1,
+                    //    //    databasekayitzamani = DateTime.Now,
+                    //    //    guncellemezamani = DateTime.Now,
+                    //    //    id = Guid.NewGuid().ToString(),
+                    //    //    matnr = _CevapStoke.EtSerialnumber[_veriSayac].Matnr,
+                    //    //    maktx=_CevapStoke.EtSerialnumber[_veriSayac].Maktx,
+                    //    //    blager=_CevapStoke.EtSerialnumber[_veriSayac].BLager,
+                    //    //    bwerk=_CevapStoke.EtSerialnumber[_veriSayac].BWerk,
+                    //    //    sernr=_CevapStoke.EtSerialnumber[_veriSayac].Sernr,
+                    //    //    aciklama=_CevapStoke.EtSerialnumber[_veriSayac].Aciklama
 
 
 
-                        MessageBox.Show("İşlem Bitti");
-                    }
+
+                    //    //}.Save();
 
 
-                    _Client.Close();
+
+                    //    MessageBox.Show("İşlem Bitti");
+                    //}
+
+
+                   
 
 
 
                 }
+
+                #region Pasif kayıtların son güncellenme zamanını tut
+
+                using (Session session = XpoManager.Instance.GetNewSession())
+                {
+                    List<tblmalzemestoklistesiresponse> _Liste = session.Query<tblmalzemestoklistesiresponse>().Where(w => w.aktif == 0).ToList();
+
+                    foreach (var item in _Liste)
+                    {
+                        item.lastupdateuser = "servis";
+                        item.guncellemezamani = DateTime.Now;
+                        item.Save();
+                    }
+
+                }
+
+                #endregion
+                _Client.Close();
             }
             catch (Exception ex)
             {
